@@ -11,29 +11,40 @@
     text-decoration: none;
 }
 
-.arround{
-    width: 99px !important;
-    height: 97px !important;
+.arround {
+    width: 50px !important;
+    height: 48px !important;
 }
 
-.resize{
+.resize {
     resize: none;
 }
-.opa{
+
+.opa {
     opacity: 0;
     width: 50px;
 }
 
-.ico-size{
+.w-80 {
+    width: 80%;
+}
+
+.ico-size {
     font-size: 2rem;
 }
 
-.btn-color{
+
+.btn-color {
     background-color: #68c2e8;
 }
 
-.bgcolor68c2e8{
+.bgcolor68c2e8 {
     background-color: #68c2e8;
+}
+
+.sep {
+    height: 10px;
+    background-color: #e6ecf0;
 }
 
 .imgsugg {
