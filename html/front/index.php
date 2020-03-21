@@ -21,7 +21,26 @@
         <?php require 'header.php' ?>
 
         <div class="col-6">
-
+            <div>
+                <h1>Fil d'actualité</h1>
+            </div>
+            <div class="d-flex">
+                <div class="">
+                    <form method="POST" action="">
+                        <div class="w-100">
+                            <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                            <textarea class="border resize w-75" name="" id=""></textarea>
+                        </div>
+                        <div class="w-100 d-flex justify-content-around">
+                            <div class="position-relative w-50">
+                                <i class="icofont-image ico-size position-absolute w-100"></i>
+                                <input class="opa" name="publi" type="file">
+                            </div>
+                            <button type="submit" class="btn btn-color">Poster</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <?php require 'rightside.php' ?>
