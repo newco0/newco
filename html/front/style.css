@@ -12,8 +12,8 @@
 }
 
 .arround{
-    width: 99px !important;
-    height: 97px !important;
+    width: 50px !important;
+    height: 48px !important;
 }
 
 .resize{
@@ -21,14 +21,25 @@
 }
 .opa{
     opacity: 0;
+    width: 50px;
+}
+
+.w-80{
+    width: 80%;
 }
 
 .ico-size{
     font-size: 2rem;
 }
 
+
 .btn-color{
     background-color: #68c2e8;
+}
+
+.sep{
+    height: 10px;
+    background-color: #e6ecf0;
 }
 
 .imgsugg {
