@@ -1,3 +1,12 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
+.menulink{
+    font-size: 1.3rem;
+}
+
+.listmenu a{
+    color: black;
+    text-decoration: none;
+}
