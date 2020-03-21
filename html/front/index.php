@@ -9,17 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/icofont/icofont.css">
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container">
-    <div class="row">
+<body class="container-fluid">
+    <div class="row widthscreen mx-auto">
+
+        <?php require 'topmobile.php' ?>
+
         <?php require 'header.php' ?>
+
         <div class="col-6">
 
         </div>
+
         <?php require 'rightside.php' ?>
-       
+
+        <?php require 'footmobile.php' ?>
+
     </div>
 
 

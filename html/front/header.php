@@ -1,4 +1,4 @@
-<header class="col-3">
+<header class="col-3 d-none d-lg-block">
     <div class="w-75 mx-auto">
         <a href="#"><img src="../img/logo.png" class="img-fluid" alt=""></a>
     </div>
