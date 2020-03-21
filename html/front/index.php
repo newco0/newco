@@ -9,35 +9,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/icofont/icofont.css">
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container">
-    <div class="row">
+<body class="container-fluid">
+    <div class="row widthscreen mx-auto">
+
+        <?php require 'topmobile.php' ?>
+
         <?php require 'header.php' ?>
+
         <div class="col-6">
             <div>
                 <h1>Fil d'actualité</h1>
             </div>
             <div class="d-flex">
-                <div class="mr-2">
-                    <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
-                </div>
                 <div class="">
                     <form method="POST" action="">
-                        <textarea class="border resize" name="" id="" cols="40" rows="4"></textarea>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-color">Poster</button>
+                        <div class="w-100">
+                            <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                            <textarea class="border resize w-75" name="" id=""></textarea>
                         </div>
-                        <div>
-                            <i class="icofont-image"></i>
-                            <input class="op" name="publi" type="file">
+                        <div class="w-100 d-flex justify-content-around">
+                            <div class="position-relative w-50">
+                                <i class="icofont-image ico-size position-absolute w-100"></i>
+                                <input class="opa" name="publi" type="file">
+                            </div>
+                            <button type="submit" class="btn btn-color">Poster</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
         <?php require 'rightside.php' ?>
+
+        <?php require 'footmobile.php' ?>
 
     </div>
 
