@@ -1,4 +1,4 @@
-<div class="w-100 d-flex align-items-center d-lg-none border p-3">
+<div class="w-100 d-flex align-items-center d-lg-none p-3">
     <div class="col-3">
         <a href="#"><img src="../img/profil.jpg" class="img-fluid imgsugg rounded-circle" alt=""></a>
     </div>

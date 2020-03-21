@@ -13,7 +13,7 @@
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid p-0">
     <div class="row widthscreen mx-auto">
 
         <?php require 'topmobile.php' ?>
@@ -25,21 +25,21 @@
                 <h1>Fil d'actualité</h1>
             </div>
             <div class="d-flex">
-                <div class="">
-                    <form method="POST" action="">
+                    <form method="POST" action="" class="w-100">
                         <div class="w-100">
                             <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
                             <textarea class="border resize w-75" name="" id=""></textarea>
                         </div>
                         <div class="w-100 d-flex justify-content-around">
-                            <div class="position-relative w-50">
+                            <div class="position-relative text-center">
                                 <i class="icofont-image ico-size position-absolute w-100"></i>
                                 <input class="opa" name="publi" type="file">
                             </div>
-                            <button type="submit" class="btn btn-color">Poster</button>
+                            <div>
+                                <button type="submit" class="btn btn-color">Poster</button>
+                            </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
 
