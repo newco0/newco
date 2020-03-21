@@ -62,10 +62,10 @@
                     <img class="col-12 img-fluid" src="../img/centenario.jpg" alt="">
                 </div>
                 <div class="row">
-                    <div class="col-6 pr-1">
+                    <div class="col-6 p-3">
                         <img class="img-fluid " src="../img/centenario.jpg" alt="">
                     </div>
-                    <div class="col-6 pl-0">
+                    <div class="col-6 p-3">
                         <img class="img-fluid" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
