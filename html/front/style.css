@@ -25,18 +25,13 @@
     font-size: 1.5rem;
 }
 
-.starfilter {
-    font-size: 2.3rem;
+.fonticonmobilebottom {
+    font-size: 2.8rem;
+    color: #68c2e8;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
     .widthscreen {
         width: 80%;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .widthscreen {
-        width: 70%;
     }
 }

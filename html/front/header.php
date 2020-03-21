@@ -1,5 +1,5 @@
 <header class="col-3 d-none d-lg-block">
-    <div class="w-75 mx-auto">
+    <div class="w-75 mx-auto text-center">
         <a href="#"><img src="../img/logo.png" class="img-fluid" alt=""></a>
     </div>
     <ul class="w-75 mt-5 p-0 mx-auto text-center listmenu">
