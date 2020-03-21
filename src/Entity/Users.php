@@ -78,8 +78,26 @@ class Users
      */
     private $discussionHistories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Friend", mappedBy="id_user", orphanRemoval=true)
+     */
+    private $friends;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Publication", mappedBy="user", orphanRemoval=true)
+     */
+    private $publications;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Interaction", mappedBy="user")
+     */
+    private $interactions;
+
     public function __construct()
     {
+        $this->friends = new ArrayCollection();
+        $this->publications = new ArrayCollection();
+        $this->interactions = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->discussions = new ArrayCollection();
         $this->discussionHistories = new ArrayCollection();
@@ -212,6 +230,24 @@ class Users
             $this->contacts[] = $contact;
             $contact->setIdUser($this);
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Friend[]
+     */
+
+    public function getFriends(): Collection
+    {
+        return $this->friends;
+    }
+
+    public function addFriend(Friend $friend): self
+    {
+        if (!$this->friends->contains($friend)) {
+            $this->friends[] = $friend;
+            $friend->setIdUser($this);
+        }
 
         return $this;
     }
@@ -223,6 +259,18 @@ class Users
             // set the owning side to null (unless already changed)
             if ($contact->getIdUser() === $this) {
                 $contact->setIdUser(null);
+            }
+        }
+        return $this;
+    }
+
+    public function removeFriend(Friend $friend): self
+    {
+        if ($this->friends->contains($friend)) {
+            $this->friends->removeElement($friend);
+            // set the owning side to null (unless already changed)
+            if ($friend->getIdUser() === $this) {
+                $friend->setIdUser(null);
             }
         }
 
@@ -243,6 +291,23 @@ class Users
             $this->discussions[] = $discussion;
             $discussion->setIdExp($this);
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Publication[]
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function addPublication(Publication $publication): self
+    {
+        if (!$this->publications->contains($publication)) {
+            $this->publications[] = $publication;
+            $publication->setUser($this);
+        }
 
         return $this;
     }
@@ -254,6 +319,18 @@ class Users
             // set the owning side to null (unless already changed)
             if ($discussion->getIdExp() === $this) {
                 $discussion->setIdExp(null);
+            }
+        }
+        return $this;
+    }
+
+    public function removePublication(Publication $publication): self
+    {
+        if ($this->publications->contains($publication)) {
+            $this->publications->removeElement($publication);
+            // set the owning side to null (unless already changed)
+            if ($publication->getUser() === $this) {
+                $publication->setUser(null);
             }
         }
 
@@ -274,6 +351,23 @@ class Users
             $this->discussionHistories[] = $discussionHistory;
             $discussionHistory->setUser($this);
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Interaction[]
+     */
+    public function getInteractions(): Collection
+    {
+        return $this->interactions;
+    }
+
+    public function addInteraction(Interaction $interaction): self
+    {
+        if (!$this->interactions->contains($interaction)) {
+            $this->interactions[] = $interaction;
+            $interaction->setUser($this);
+        }
 
         return $this;
     }
@@ -285,6 +379,17 @@ class Users
             // set the owning side to null (unless already changed)
             if ($discussionHistory->getUser() === $this) {
                 $discussionHistory->setUser(null);
+            }
+        }
+        return $this;
+    }
+    public function removeInteraction(Interaction $interaction): self
+    {
+        if ($this->interactions->contains($interaction)) {
+            $this->interactions->removeElement($interaction);
+            // set the owning side to null (unless already changed)
+            if ($interaction->getUser() === $this) {
+                $interaction->setUser(null);
             }
         }
 
