@@ -16,10 +16,29 @@
     <div class="row">
         <?php require 'header.php' ?>
         <div class="col-6">
-
+            <div>
+                <h1>Fil d'actualité</h1>
+            </div>
+            <div class="d-flex">
+                <div class="mr-2">
+                    <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                </div>
+                <div class="">
+                    <form method="POST" action="">
+                        <textarea class="border resize" name="" id="" cols="40" rows="4"></textarea>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-color">Poster</button>
+                        </div>
+                        <div>
+                            <i class="icofont-image"></i>
+                            <input class="op" name="publi" type="file">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <?php require 'rightside.php' ?>
-       
+
     </div>
 
 

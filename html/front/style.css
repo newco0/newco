@@ -10,3 +10,19 @@
     color: black;
     text-decoration: none;
 }
+
+.arround{
+    width: 99px !important;
+    height: 97px !important;
+}
+
+.resize{
+    resize: none;
+}
+.opa{
+    opacity: 0;
+}
+
+.btn-color{
+    background-color: #68c2e8;
+}
