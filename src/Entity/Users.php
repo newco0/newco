@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,6 +62,28 @@ class Users
      * @ORM\Column(type="datetime")
      */
     private $date_delete;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Contact", mappedBy="id_user", orphanRemoval=true)
+     */
+    private $contacts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Discussion", mappedBy="id_exp", orphanRemoval=true)
+     */
+    private $discussions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DiscussionHistory", mappedBy="user", orphanRemoval=true)
+     */
+    private $discussionHistories;
+
+    public function __construct()
+    {
+        $this->contacts = new ArrayCollection();
+        $this->discussions = new ArrayCollection();
+        $this->discussionHistories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,6 +194,99 @@ class Users
     public function setDateDelete(\DateTimeInterface $date_delete): self
     {
         $this->date_delete = $date_delete;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contact[]
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts[] = $contact;
+            $contact->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->contains($contact)) {
+            $this->contacts->removeElement($contact);
+            // set the owning side to null (unless already changed)
+            if ($contact->getIdUser() === $this) {
+                $contact->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Discussion[]
+     */
+    public function getDiscussions(): Collection
+    {
+        return $this->discussions;
+    }
+
+    public function addDiscussion(Discussion $discussion): self
+    {
+        if (!$this->discussions->contains($discussion)) {
+            $this->discussions[] = $discussion;
+            $discussion->setIdExp($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiscussion(Discussion $discussion): self
+    {
+        if ($this->discussions->contains($discussion)) {
+            $this->discussions->removeElement($discussion);
+            // set the owning side to null (unless already changed)
+            if ($discussion->getIdExp() === $this) {
+                $discussion->setIdExp(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DiscussionHistory[]
+     */
+    public function getDiscussionHistories(): Collection
+    {
+        return $this->discussionHistories;
+    }
+
+    public function addDiscussionHistory(DiscussionHistory $discussionHistory): self
+    {
+        if (!$this->discussionHistories->contains($discussionHistory)) {
+            $this->discussionHistories[] = $discussionHistory;
+            $discussionHistory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiscussionHistory(DiscussionHistory $discussionHistory): self
+    {
+        if ($this->discussionHistories->contains($discussionHistory)) {
+            $this->discussionHistories->removeElement($discussionHistory);
+            // set the owning side to null (unless already changed)
+            if ($discussionHistory->getUser() === $this) {
+                $discussionHistory->setUser(null);
+            }
+        }
 
         return $this;
     }
