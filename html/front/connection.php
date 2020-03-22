@@ -17,60 +17,67 @@
     <div class="row h-100">
         <div class="col-12 col-lg-6 text-center logoside heightconnect d-flex flex-column align-items-center justify-content-center">
             <img src="../img/logo.png" class="img-fluid" alt="">
-            <button class="btn btn-light btnconnexion d-lg-none color68c2e8 my-2" type="button">Connexion</button>
-            <button class="btn btn-light btnsubscribe d-lg-none color68c2e8 my-2" type="button">Inscription</button>
+            <div class="d-flex align-items-center">
+                <button class="btn bgcolor0d1d3d btnconnexion d-lg-none text-white my-2 mx-5" type="button">Connexion</button>
+                <i class="icofont-close closeconnect"></i>
+            </div>
+            <div class="formmobileconnect"></div>
+            <div class="d-flex align-items-center mx-5">
+                <button class="btn bgcolor0d1d3d btnsubscribe d-lg-none text-white my-2 mx-5" type="button">Inscription</button>
+                <i class="icofont-close closesubscribe"></i>
+            </div>
+            <div class="formmobilesubscribe"></div>
         </div>
         <div class="col-12 col-lg-6 bgcolor68c2e8 heightconnect d-flex align-items-center d-lg-block">
             <div class="d-none d-lg-block">
-                <form method="post" action="">
+                <form method="post" action="" class="formconnect">
                     <div class="row form-group d-flex justify-content-center mt-4">
-                        <div class="col-8 col-xl-4 my-2">
+                        <div class="col-8 col-xl-4 m-2 p-0">
                             <input id="login" class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
                         </div>
-                        <div class="col-8 col-xl-3 my-2">
+                        <div class="col-8 col-xl-3 m-2 p-0">
                             <input id="password" class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
-                            <small id="pwdhelp" class="mx-xl-2 form-text text-center"><a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a></small>
+                            <small id="pwdhelp" class="form-text text-center"><a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a></small>
                         </div>
                         <div class="col-8 col-xl-2 my-2 text-center">
-                            <button type="submit" class="btn bg-white mx-xl-2">Connexion</button>
+                            <button type="submit" class="btn btnconnection bgcolor68c2e8 text-white mx-xl-2">Connexion</button>
                         </div>
-
                     </div>
                 </form>
             </div>
-            <div class="col-12 mt-lg-5 mx-auto text-center">
+            <div class="col-8 mt-lg-5 mx-auto text-center">
                 <h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social
                 </h1>
             </div>
             <div class="col-12 mt-5 mx-auto text-center d-none d-lg-block">
-                    <form method="post" action="">
-                        <div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="name" class="form-control mx-xl-2  text-center" type="text" name="name" placeholder="Nom">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="firstname" class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="datebirth" class="form-control mx-xl-2  text-center" type="date" name="datebirth">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="email" class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="password" class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="confirmpwd" class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <input id="pseudo" class="form-control mx-xl-2  text-center" type="text" name="pseudo" placeholder="Pseudo">
-                            </div>
-                            <div class="col-5 col-xl-5 my-2">
-                                <button type="submit" class="btn bg-white mx-xl-2">S'inscrire</button>
-                            </div>
+                <form method="post" action="" class="formsubscribe">
+                    <div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="name" class="form-control mx-xl-2  text-center" type="text" name="name" placeholder="Nom">
                         </div>
-                    </form>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="firstname" class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="datebirth" class="form-control mx-xl-2  text-center" type="date" name="datebirth">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="email" class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="password" class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="confirmpwd" class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <input id="pseudo" class="form-control mx-xl-2  text-center" type="text" name="pseudo" placeholder="Pseudo">
+                        </div>
+                        <div class="col-5 col-xl-5 my-2">
+                            <button type="submit" class="btn btninscription bgcolor68c2e8 text-white mx-xl-2">S'inscrire</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -83,6 +90,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

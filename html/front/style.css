@@ -55,6 +55,14 @@ body {
     background-color: #68c2e8;
 }
 
+.bgcolor0d1d3d {
+    background-color: #0d1d3d;
+}
+
+.color0d1d3d {
+    color: #0d1d3d;
+}
+
 .color68c2e8 {
     color: #68c2e8;
 }
@@ -101,6 +109,16 @@ body {
 
 .heightconnect{
     min-height: 50%;
+}
+
+.closesubscribe,
+.closeconnect{
+    opacity: 0;
+}
+
+.closesubscribe:hover,
+.closeconnect:hover{
+    cursor: pointer;
 }
 
 @media screen and (min-width: 992px) {
