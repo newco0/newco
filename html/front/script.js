@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  let formconnect = $(".formconnect").clone();
+  let formsubscribe = $(".formsubscribe").clone();
   $(window).resize(function() {
     if (
       window.location.pathname == "/newco/html/front/suggestionpage.php" ||
@@ -16,6 +18,19 @@ $(document).ready(function() {
       $(".closesubscribe").css("opacity", 0);
       $(".btnconnection").addClass("bgcolor0d1d3d");
       $(".btninscription").addClass("bgcolor0d1d3d");
+    } else {
+      formconnect
+        .children()
+        .children()
+        .last()
+        .children()
+        .removeClass("bgcolor0d1d3d");
+      formsubscribe
+        .children()
+        .children()
+        .last()
+        .children()
+        .removeClass("bgcolor0d1d3d");
     }
   });
 
@@ -36,9 +51,6 @@ $(document).ready(function() {
       .last()
       .toggleClass("d-none");
   });
-
-  let formconnect = $(".formconnect").clone();
-  let formsubscribe = $(".formsubscribe").clone();
 
   $(".btnconnexion").click(function() {
     $(".formmobileconnect").append(formconnect);

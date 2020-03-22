@@ -20,7 +20,7 @@
 
         <?php require 'header.php' ?>
 
-        <div class="col-12 col-sm-6 border">
+        <div class="col-12 col-sm-9 col-lg-6 border">
             <div class="mb-5">
                 <h1>Fil d'actualité</h1>
             </div>

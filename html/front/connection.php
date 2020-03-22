@@ -33,10 +33,10 @@
                 <form method="post" action="" class="formconnect">
                     <div class="row form-group d-flex justify-content-center mt-4">
                         <div class="col-8 col-xl-4 m-2 p-0">
-                            <input id="login" class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
+                            <input class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
                         </div>
                         <div class="col-8 col-xl-3 m-2 p-0">
-                            <input id="password" class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+                            <input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
                             <small id="pwdhelp" class="form-text text-center"><a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a></small>
                         </div>
                         <div class="col-8 col-xl-2 my-2 text-center">
@@ -53,25 +53,25 @@
                 <form method="post" action="" class="formsubscribe">
                     <div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="name" class="form-control mx-xl-2  text-center" type="text" name="name" placeholder="Nom">
+                            <input class="form-control mx-xl-2  text-center" type="text" name="name" placeholder="Nom">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="firstname" class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
+                            <input class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="datebirth" class="form-control mx-xl-2  text-center" type="date" name="datebirth">
+                            <input class="form-control mx-xl-2  text-center" type="date" name="datebirth">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="email" class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
+                            <input class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="password" class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+                            <input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="confirmpwd" class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
+                            <input class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
                         </div>
                         <div class="col-12 col-sm-6 col-xl-5 my-2">
-                            <input id="pseudo" class="form-control mx-xl-2  text-center" type="text" name="pseudo" placeholder="Pseudo">
+                            <input class="form-control mx-xl-2  text-center" type="text" name="pseudo" placeholder="Pseudo">
                         </div>
                         <div class="col-6 col-xl-5 my-2 p-0">
                             <button type="submit" class="btn btninscription bgcolor68c2e8 text-white mx-xl-2">S'inscrire</button>
