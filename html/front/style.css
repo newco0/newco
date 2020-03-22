@@ -42,17 +42,12 @@ body {
     width: 80%;
 }
 
-.img-size{
-    width: 342.59px;
-}
-
 .ico-size{
     font-size: 2rem;
 }
 
-
-.btn-color {
-    background-color: #68c2e8;
+.rad{
+    border-radius: 50px;
 }
 
 .bgcolor68c2e8 {
@@ -62,15 +57,6 @@ body {
 .sep {
     height: 10px;
     background-color: #e6ecf0;
-}
-
-.div-image{
-    padding: 3px;
-    padding-left: 28px !important;
-}
-
-.div-image2{
-    padding: 3px;
 }
 
 /* right side */
