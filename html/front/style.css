@@ -1,6 +1,7 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+/* header */
 
 html {
     height: 100%;
@@ -21,7 +22,9 @@ body {
     text-decoration: none;
 }
 
-.arround {
+/* body */
+
+.arround{
     width: 50px !important;
     height: 48px !important;
 }
@@ -39,7 +42,11 @@ body {
     width: 80%;
 }
 
-.ico-size {
+.img-size{
+    width: 342.59px;
+}
+
+.ico-size{
     font-size: 2rem;
 }
 
@@ -56,6 +63,17 @@ body {
     height: 10px;
     background-color: #e6ecf0;
 }
+
+.div-image{
+    padding: 3px;
+    padding-left: 28px !important;
+}
+
+.div-image2{
+    padding: 3px;
+}
+
+/* right side */
 
 .imgsugg {
     width: 50px;
