@@ -1,6 +1,7 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+/* header */
 
 .menulink {
     font-size: 1.3rem;
@@ -10,6 +11,8 @@
     color: black;
     text-decoration: none;
 }
+
+/* body */
 
 .arround{
     width: 50px !important;
@@ -28,6 +31,10 @@
     width: 80%;
 }
 
+.img-size{
+    width: 342.59px;
+}
+
 .ico-size{
     font-size: 2rem;
 }
@@ -41,6 +48,17 @@
     height: 10px;
     background-color: #e6ecf0;
 }
+
+.div-image{
+    padding: 3px;
+    padding-left: 28px !important;
+}
+
+.div-image2{
+    padding: 3px;
+}
+
+/* right side */
 
 .imgsugg {
     width: 50px;

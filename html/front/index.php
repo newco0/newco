@@ -58,15 +58,15 @@
                 <div class="ml-5">
                     <p>Ceci est notre premier post :-)</p>
                 </div>
-                <div>
-                    <img class="col-12 img-fluid" src="../img/centenario.jpg" alt="">
+                <div class="col-12">
+                    <img class="img-fluid" src="../img/centenario.jpg" alt="">
                 </div>
                 <div class="row">
-                    <div class="col-6 p-3">
-                        <img class="img-fluid " src="../img/centenario.jpg" alt="">
+                    <div class="col-6 pl-4 pr-0 m-0 div-image">
+                        <img class="img-fluid img-size" src="../img/centenario.jpg" alt="">
                     </div>
-                    <div class="col-6 p-3">
-                        <img class="img-fluid" src="../img/centenario.jpg" alt="">
+                    <div class="col-6 pl-0 m-0 div-image2">
+                        <img class="img-fluid img-size" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
             </div>
