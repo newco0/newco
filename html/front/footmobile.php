@@ -1,12 +1,12 @@
-<footer class="w-100 d-flex fixed-bottom align-items-center d-lg-none border p-3">
+<footer class="w-100 footmobile d-flex align-items-center d-sm-none border p-3 bg-white">
     <div class="col-3 text-center">
-        <a href="#" class="w-100 text-decoration-none"><i class="icofont-home fonticonmobilebottom"></i></a>
+        <a href="index.php" class="w-100 text-decoration-none"><i class="icofont-home fonticonmobilebottom"></i></a>
     </div>
     <div class="col-3 text-center">
-        <a href="#" class="w-100 text-decoration-none"><i class="icofont-search-1 fonticonmobilebottom"></i></a>
+        <a href="suggestionpage.php" class="w-100 text-decoration-none"><i class="icofont-search-1 fonticonmobilebottom"></i></a>
     </div>
     <div class="col-3 text-center">
-        <a href="#" class="w-100 text-decoration-none"><i class="icofont-alarm fonticonmobilebottom"></i></a>
+        <a href="notificationpage.php" class="w-100 text-decoration-none"><i class="icofont-alarm fonticonmobilebottom"></i></a>
     </div>
     <div class="col-3 text-center">
         <a href="#" class="w-100 text-decoration-none"><i class="icofont-ui-message fonticonmobilebottom"></i></a>

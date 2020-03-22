@@ -2,6 +2,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .menulink {
     font-size: 1.3rem;
 }
@@ -61,13 +71,50 @@
     font-size: 1.5rem;
 }
 
+.titleconnect {
+    font-size: 1.8rem;
+}
+
 .fonticonmobilebottom {
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: #68c2e8;
+}
+
+.footmobile{
+    position: sticky;
+    bottom: 0;
+}
+
+.menulink{
+    font-size: 1.1rem;
+}
+
+@media screen and (min-width: 992px) {
+    .menulink{
+        font-size: 1.3rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     .widthscreen {
+        width: 90%;
+    }
+
+    .titleconnect {
+        margin-top: 50%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .unread {
+        font-size: 1rem;
+    }
+
+    .widthscreen {
         width: 80%;
+    }
+
+    .titleconnect {
+        margin-top: 50%;
     }
 }

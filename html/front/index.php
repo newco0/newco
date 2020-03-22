@@ -19,8 +19,8 @@
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
-
-        <div class="col-6 border">
+        
+        <div class="col-12 col-sm-9 col-lg-6 border maincontent d-sm-block">
             <div class="mb-5">
                 <h1>Fil d'actualité</h1>
             </div>
@@ -81,6 +81,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

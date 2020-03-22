@@ -14,20 +14,34 @@
 </head>
 
 <body class="container-fluid p-0">
-    <div class="row">
-
-        <div class="col-12 col-lg-6 text-center">
+    <div class="row h-100">
+        <div class="col-12 col-xl-6 text-center logoside h-100 d-flex align-items-center justify-content-center">
             <img src="../img/logo.png" class="img-fluid" alt="">
         </div>
+        <div class="col-12 col-xl-6 bgcolor68c2e8 h-100">
+            <form method="post" action="">
+                <div class="row form-group d-flex justify-content-center mt-4">
+                    <div class="col-8 col-xl-4 my-2">
+                        <input id="login" class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
+                    </div>
+                    <div class="col-8 col-xl-3 my-2">
+                        <input id="password" class="form-control mx-xl-2 text-center" type="text" name="password" placeholder="Mot de passe">
+                        <small id="pwdhelp" class="mx-xl-2 form-text text-center"><a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a></small>
+                    </div>
+                    <div class="col-8 col-xl-2 my-2 text-center">
+                        <button type="submit" class="btn bg-white mx-xl-2">Connexion</button>
+                    </div>
 
-        <div class="col-12 bgcolor68c2e8 col-lg-6">
-<form method="get" action="">
-    <div class="form-group">
-        <label for="my-input">Text</label>
-        <input id="my-input" class="form-control" type="text" name="">
-    </div>
-</form>
+                </div>
+            </form>
+            <div class="col-12 col-xl-6 mt-5 mx-auto text-center">
+                <h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social
+                </h1>
+            </div>
         </div>
+
+
+    </div>
 
     </div>
 
