@@ -14,7 +14,7 @@
 </head>
 
 <body class="container-fluid p-0">
-    <div class="row widthscreen mx-auto">
+    <div class="row widthscreen mx-auto h-100">
 
         <?php require 'topmobile.php' ?>
 
@@ -55,18 +55,20 @@
                         <a class="ml-2 mt-2" href="#">Save the orang-utang</a>
                     </div>
                 </div>
-                <div class="ml-5">
+                <div class="mt-2 ml-5">
                     <p>Ceci est notre premier post :-)</p>
                 </div>
-                <div class="col-12">
-                    <img class="img-fluid" src="../img/centenario.jpg" alt="">
-                </div>
-                <div class="row">
-                    <div class="col-6 pl-4 pr-0 m-0 div-image">
-                        <img class="img-fluid img-size" src="../img/centenario.jpg" alt="">
+                <div class="row w-100 mx-auto">
+                    <div class="col-12 p-0">
+                        <img class="img-fluid" src="../img/centenario.jpg" alt="">
                     </div>
-                    <div class="col-6 pl-0 m-0 div-image2">
-                        <img class="img-fluid img-size" src="../img/centenario.jpg" alt="">
+                </div>
+                <div class="row w-100 p-0 mx-auto mt-3 d-flex justify-content-center">
+                    <div class="col-6 p-1">
+                        <img class="img-fluid w-100" src="../img/centenario.jpg" alt="">
+                    </div>
+                    <div class="col-6 p-1">
+                        <img class="img-fluid w-100" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
 /* header */
 
 html {
@@ -24,7 +25,7 @@ body {
 
 /* body */
 
-.arround{
+.arround {
     width: 50px !important;
     height: 48px !important;
 }
@@ -42,14 +43,13 @@ body {
     width: 80%;
 }
 
-.img-size{
+.img-size {
     width: 342.59px;
 }
 
-.ico-size{
+.ico-size {
     font-size: 2rem;
 }
-
 
 .btn-color {
     background-color: #68c2e8;
@@ -59,28 +59,24 @@ body {
     background-color: #68c2e8;
 }
 
+.color68c2e8 {
+    color: #68c2e8;
+}
+
 .sep {
     height: 10px;
     background-color: #e6ecf0;
 }
 
-.div-image{
-    padding: 3px;
-    padding-left: 28px !important;
-}
-
-.div-image2{
-    padding: 3px;
-}
-
 /* right side */
 
 .imgsugg {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .unread {
+    font-size: 1.2rem;
     background-color: rgba(104, 194, 232, 0.25);
     color: #0d1d3d;
 }
@@ -98,18 +94,30 @@ body {
     color: #68c2e8;
 }
 
-.footmobile{
+.footmobile {
     position: sticky;
     bottom: 0;
 }
 
-.menulink{
+.menulink {
     font-size: 1.1rem;
 }
 
+.heightconnect{
+    min-height: 50%;
+}
+
 @media screen and (min-width: 992px) {
-    .menulink{
+    .menulink {
         font-size: 1.3rem;
+    }
+
+    .inscriptionform{
+        width: 100% !important;
+    }
+
+    .heightconnect{
+        height: 100%;
     }
 }
 
@@ -119,20 +127,12 @@ body {
     }
 
     .titleconnect {
-        margin-top: 50%;
+        margin-top: 10rem;
     }
 }
 
 @media screen and (min-width: 1400px) {
-    .unread {
-        font-size: 1rem;
-    }
-
     .widthscreen {
         width: 80%;
-    }
-
-    .titleconnect {
-        margin-top: 50%;
     }
 }
