@@ -19,8 +19,8 @@
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
-        
-        <div class="col-12 col-sm-9 col-lg-6 border maincontent d-sm-block">
+
+        <div class="col-12 col-sm-6 border">
             <div class="mb-5">
                 <h1>Fil d'actualité</h1>
             </div>
@@ -31,7 +31,7 @@
                 <form method="POST" action="" class="w-100">
                     <div class="w-100">
                         <!-- <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil"> -->
-                        <textarea class="border resize w-80" name="" id="" rows="5" placeholder="post"></textarea>
+                        <textarea class="border resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
                     </div>
                     <div class="w-100 d-flex justify-content-around">
                         <div class="position-relative text-center">
@@ -40,7 +40,7 @@
                             <i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-color">Poster</button>
+                            <button type="submit" class="btn bgcolor68c2e8 text-white">Poster</button>
                         </div>
                     </div>
                 </form>
@@ -71,19 +71,48 @@
                         <img class="img-fluid w-100" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
+                <div class="row d-flex justify-content-around">
+                    <div class="mt-2 mx-5">
+                        <i class="far fa-2x fa-thumbs-up"></i>
+                    </div>
+                    <div class="mt-2 mx-5">
+                        <i class="far fa-2x fa-comment"></i>
+                    </div>
+                    <div class="mt-2 mx-5">
+                        <i class="fas fa-2x fa-share"></i>
+                    </div>
+                </div>
+                <div class="d-block d-lg-none">
+                    <p class="link-com">Voir tout les commentaires</p>
+                </div>
+                <div class="d-none d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
+                    <div class="row d-flex">
+                        <div class="ml-4 mt-3">
+                            <img class="arround rounded-circle ml-2" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="d-flex">
+                            <a class="ml-2 mt-4" href="#">Save the orang-utang</a>
+                        </div>
+                        <div class="ml-2 mt-2 w-80 mx-auto">
+                            <p class="ml-3">coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication</p>
+                        </div>
+                    </div>
+                    <div class="mt-2 mx-5 text-center">
+                        <i class="far fa-2x fa-thumbs-up"></i>
+                    </div>
+                </div>
             </div>
         </div>
         <?php require 'rightside.php' ?>
-
         <?php require 'footmobile.php' ?>
-
     </div>
 
-
+    <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>

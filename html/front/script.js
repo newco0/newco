@@ -22,4 +22,7 @@ $(document).ready(function() {
       .last()
       .toggleClass("d-none");
   });
+  $('.link-com').on('click', function(){
+    $('.div-com').addClass('d-block');
+  });
 });
