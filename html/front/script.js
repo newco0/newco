@@ -14,13 +14,14 @@ $(document).ready(function() {
       $(".formmobilesubscribe").html("");
       $(".closeconnect").css("opacity", 0);
       $(".closesubscribe").css("opacity", 0);
+      $(".btnconnection").addClass("bgcolor0d1d3d");
+      $(".btninscription").addClass("bgcolor0d1d3d");
     }
   });
 
-
   if ($(window).width() > 991) {
-    $(".btnconnection").addClass('bgcolor0d1d3d');
-    $(".btninscription").addClass('bgcolor0d1d3d');
+    $(".btnconnection").addClass("bgcolor0d1d3d");
+    $(".btninscription").addClass("bgcolor0d1d3d");
   }
 
   $(".showmore").on("click", function() {

@@ -43,11 +43,11 @@ body {
     width: 80%;
 }
 
-.ico-size{
+.ico-size {
     font-size: 2rem;
 }
 
-.rad{
+.rad {
     border-radius: 50px;
 }
 
@@ -107,18 +107,22 @@ body {
     font-size: 1.1rem;
 }
 
-.heightconnect{
+.heightconnect {
     min-height: 50%;
 }
 
 .closesubscribe,
-.closeconnect{
+.closeconnect {
     opacity: 0;
 }
 
 .closesubscribe:hover,
-.closeconnect:hover{
+.closeconnect:hover {
     cursor: pointer;
+}
+
+.btnconnection {
+    margin-left: -1rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -126,11 +130,11 @@ body {
         font-size: 1.3rem;
     }
 
-    .inscriptionform{
+    .inscriptionform {
         width: 100% !important;
     }
 
-    .heightconnect{
+    .heightconnect {
         height: 100%;
     }
 }
