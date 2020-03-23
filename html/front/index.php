@@ -20,7 +20,7 @@
 
         <?php require 'header.php' ?>
 
-        <div class="col-12 col-sm-9 col-lg-6 border">
+        <div class="col-12 col-sm-10 col-lg-6">
             <div class="mb-5">
                 <h1>Fil d'actualité</h1>
             </div>
@@ -104,7 +104,9 @@
             </div>
         </div>
         <?php require 'rightside.php' ?>
-        <?php require 'footmobile.php' ?>
+        <div class="footmobile w-100">
+            <?php require 'footmobile.php' ?>
+        </div>
     </div>
 
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>

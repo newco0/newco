@@ -79,4 +79,6 @@ $(document).ready(function() {
   $(".link-com").on("click", function() {
     $(".div-com").addClass("d-block");
   });
+
+  $(".listmessage").scrollTop($(".listmessage").height());
 });

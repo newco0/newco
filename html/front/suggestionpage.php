@@ -20,7 +20,7 @@
 
         <?php require 'header.php' ?>
 
-        <div class="col-12 col-sm-9 col-lg-6 mt-3 border maincontent d-sm-block text-center">
+        <div class="col-12 col-sm-10 col-lg-6 mt-3 maincontent d-sm-block text-center">
             <h5 class="mt-2">Suggestions</h5>
             <ul class="list-unstyled font-weight-bold">
                 <li class="p-2 unread rounded my-2"><img class="imgsugg rounded-circle mx-2" src="../img/profil.jpg" alt=""><span class="font-weight-normal">Hugo Lloris</span><i class="mx-2 icofont-close"></i></li>
@@ -37,7 +37,9 @@
         </div>
         <?php require 'rightside.php' ?>
 
-        <?php require 'footmobile.php' ?>
+        <div class="footmobile w-100">
+            <?php require 'footmobile.php' ?>
+        </div>
 
     </div>
 

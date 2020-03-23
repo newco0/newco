@@ -20,7 +20,7 @@
 
         <?php require 'header.php' ?>
 
-        <div class="col-12 col-sm-9 col-lg-6 border maincontent d-sm-block text-center mt-3">
+        <div class="col-12 col-sm-10 col-lg-6 border maincontent d-sm-block text-center mt-3">
             <h5 class="mt-2">Notifications</h5>
             <ul class="list-unstyled">
                 <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
@@ -39,7 +39,9 @@
 
         <?php require 'rightside.php' ?>
 
-        <?php require 'footmobile.php' ?>
+        <div class="footmobile w-100">
+            <?php require 'footmobile.php' ?>
+        </div>
 
     </div>
 
