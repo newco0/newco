@@ -25,7 +25,7 @@
                 <h1>Save the orang-utang</h1>
             </div>
             <div class="border p-2">
-                <div style="background:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
+                <div style="background-image:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
                     <!-- <img class="img-fluid" src="../img/centenario.jpg" alt=""> -->
                     <div class="pos">
                         <button type="submit" class="btn bgcolor68c2e8 text-white">Modifier mon profil</button>
