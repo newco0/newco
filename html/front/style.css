@@ -242,5 +242,20 @@ body {
 .pos {
     position: absolute;
     top: 85%;
-    left: 60%;
+    left: 54%;
+}
+
+.dnone{
+    display: none;
+}
+
+.prec{
+    font-size: 2em;
+}
+
+@media screen and (max-width: 1024px) {
+    .img-profil-mobile{
+        position: absolute;
+        bottom: -40px; 
+    }
 }

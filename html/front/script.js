@@ -79,4 +79,8 @@ $(document).ready(function() {
   $(".link-com").on("click", function() {
     $(".div-com").addClass("d-block");
   });
+
+  $( ".block-menu" ).click(function() {
+    $(".menu").toggle(3000, "slow")
+  });
 });
