@@ -39,9 +39,8 @@
 
         <?php require 'rightside.php' ?>
 
-        <div class="footmobile w-100">
-            <?php require 'footmobile.php' ?>
-        </div>
+        <?php require 'footmobile.php' ?>
+
 
     </div>
 

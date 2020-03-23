@@ -52,6 +52,32 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
+  let clonelistmessage = $(".listmessage").clone();
+  let sendmessagemobile = $(".sendmessagemobile").clone();
+  let prevlistmessage = $('.prevlistmessage')
+     
+
+  if ($(window).width() < 576) {
+    $(".conversationuser").click(function() {
+      $(".content-mobile").html(clonelistmessage);
+      $("body").scrollTop($("body").height());
+      console.log($("body").scrollTop())
+      $(".footmobile").removeClass("h-25");
+      $(".widthscreen").removeClass("h-100");
+      sendmessagemobile.removeClass("h-25");
+      sendmessagemobile.removeClass("border");
+      prevlistmessage.removeClass("d-none");
+      prevlistmessage.addClass("d-block");
+      $(".footmobile").html(sendmessagemobile);
+      $('.textmessage').removeClass("w-50");
+      $('.textmessage').addClass("w-75");
+    });
+  }
+
+  prevlistmessage.click(function(){
+    location.reload('listmessage.php');
+  })
+
   $(".btnconnexion").click(function() {
     $(".formmobileconnect").append(formconnect);
     $(".formmobilesubscribe").html("");
@@ -82,8 +108,7 @@ $(document).ready(function() {
 
   $(".listmessage").scrollTop($(".listmessage").height());
 
-  $( ".block-menu" ).click(function() {
-    $(".menu").toggle(3000, "slow")
+  $(".block-menu").click(function() {
+    $(".menu").toggle(3000, "slow");
   });
 });
-

@@ -14,62 +14,63 @@
 </head>
 
 <body class="container-fluid p-0">
-    <div class="row widthscreen mx-auto h-100">
 
+    <div class="row widthscreen mx-auto h-100">
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
 
         <div class="col-10 mx-auto">
-            <div class="my-2 d-none d-sm-block">
+            <div class="my-2 d-flex">
+                <i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
                 <h1>Mes messages</h1>
             </div>
-            <div class="d-flex h-100 row">
+            <div class="d-flex row content-conversation content-mobile">
                 <div class="listconversation col-12 col-sm-4 mx-auto h-75 p-2">
                     <ul class="p-0">
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
                             </li>
                         </a>
-                        <a href="#" class="text-decoration-none">
+                        <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
                                 <h6 class="font-weight-bold">Charles A.</h6>
                                 <p>Saviez vous que nous savions ce que vous savez ?</p>
@@ -142,7 +143,7 @@
                         </div>
                     </div>
 
-                    <form class="h-25 w-100 border mx-auto d-flex flex-row justify-content-center align-items-center" action="">
+                    <form class="h-25 w-100 border mx-auto d-flex flex-row justify-content-center align-items-center sendmessagemobile" action="">
                         <textarea name="" id="" class="textmessage h-50 w-50"></textarea>
                         <button class="my-auto mr-3 sendbtn bg-white" type="submit"><i class="icofont-paper-plane icofont-2x"></i></button>
                     </form>
@@ -150,10 +151,8 @@
                 </div>
             </div>
         </div>
+        <?php require 'footmobile.php' ?>
 
-        <div class="footmobile w-100">
-            <?php require 'footmobile.php' ?>
-        </div>
     </div>
 
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
