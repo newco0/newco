@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="conversation w-75 border h-75">
-                    <div class="listmessage border w-100 h-75">
+                    <div class="listmessage d-flex flex-column justify-content-end border w-100 h-75">
                         <div class="d-flex justify-content-start w-100 p-3">
                             <div class="w-50 d-flex align-items-center">
                                 <img src="../img/profil.jpg" class="imgsugg rounded-circle">
@@ -91,11 +91,12 @@
                         </div>
                     </div>
                     <div class="h-25 border">
+                        <form action=""></form>
                         <div class="h-75">
                             <textarea name="" id="" class="h-100 w-100"></textarea>
                         </div>
                         <div class="h-25 d-flex justify-content-end">
-                            <button class="btn btn-primary" type="button">Text</button>
+                            <button class="btn btn-primary" type="submit">Envoyer</button>
                         </div>
                     </div>
                 </div>

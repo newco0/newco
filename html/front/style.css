@@ -22,11 +22,11 @@ body {
     width: 70%;
 }
 
-.h10{
+.h10 {
     height: 10%;
 }
 
-.h90{
+.h90 {
     height: 90%;
 }
 
@@ -90,7 +90,7 @@ body {
     background-color: #e6ecf0;
 }
 
-.bord{
+.bord {
     border: none !important;
 }
 
@@ -153,13 +153,8 @@ body {
 
 /* listconversation */
 
-.listconversation{
+.listconversation {
     overflow: scroll;
-}
-
-.listconversation::-webkit-scrollbar{
-    width: 8px;
-	color: black;
 }
 
 .listconversation li {
@@ -176,13 +171,17 @@ body {
     font-size: 0.85rem;
 }
 
-.datemessage{
+.datemessage {
     font-size: 0.5rem;
 }
 
 @media screen and (min-width: 992px) {
     .menulink {
         font-size: 1.3rem;
+    }
+
+    .listconversation::-webkit-scrollbar {
+        width: 0px;
     }
 
     .inscriptionform {
@@ -220,27 +219,27 @@ body {
 
 /* newspaper */
 
-.arround-newspaper{
+.arround-newspaper {
     width: 110px !important;
     height: 108px !important;
     border-radius: 50%;
     border: solid white 5px;
 }
 
-.cover-newspaper{
-    background-position: bottom 50% right 50% !;
-    /* background-size: contain; */
+.cover-newspaper {
+    background-position: bottom 30% right 30%;
+    background-size: cover;
     width: 100%;
     height: 300px;
 }
 
-.pos-img-profil{
+.pos-img-profil {
     position: absolute;
     left: 10%;
     bottom: 1%;
 }
 
-.pos{
+.pos {
     position: absolute;
     top: 91%;
     left: 60%;
