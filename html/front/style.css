@@ -3,6 +3,7 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
 html {
     height: 100%;
 }
@@ -11,6 +12,22 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.w70 {
+    width: 70%;
+}
+
+.h10{
+    height: 10%;
+}
+
+.h90{
+    height: 90%;
 }
 
 /* header */
@@ -126,6 +143,35 @@ body {
     margin-left: -1rem;
 }
 
+/* listconversation */
+
+.listconversation{
+    overflow: scroll;
+}
+
+.listconversation::-webkit-scrollbar{
+    width: 8px;
+	color: black;
+}
+
+.listconversation li {
+    background-color: rgba(223, 223, 223, 0.856);
+}
+
+.listconversation li p {
+    font-size: 0.85rem;
+}
+
+/* conversation */
+
+.conversation p {
+    font-size: 0.85rem;
+}
+
+.datemessage{
+    font-size: 0.5rem;
+}
+
 @media screen and (min-width: 992px) {
     .menulink {
         font-size: 1.3rem;
@@ -137,6 +183,10 @@ body {
 
     .heightconnect {
         height: 100%;
+    }
+
+    .unread {
+        font-size: 1rem;
     }
 }
 
@@ -162,7 +212,7 @@ body {
 
 /* newspaper */
 
-.arround-journal{
+.arround-journal {
     width: 50px !important;
     height: 48px !important;
 }

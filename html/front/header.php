@@ -1,12 +1,12 @@
 <header class="col-sm-3 d-none d-sm-block p-0">
     <div class="w-75 mx-auto text-center">
-        <a href="#"><img src="../img/logo.png" class="img-fluid" alt=""></a>
+        <a href="index.php"><img src="../img/logo.png" class="img-fluid" alt=""></a>
     </div>
     <ul class="w-75 mt-5 p-0 mx-auto text-center listmenu">
         <a href="#">
             <li class="list-unstyled p-2 font-weight-bold menulink">Accueil</li>
         </a>
-        <a href="#">
+        <a href="conversation.php">
             <li class="list-unstyled p-2 font-weight-bold menulink">Message</li>
         </a>
         <a href="#">
