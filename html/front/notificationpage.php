@@ -14,15 +14,29 @@
 </head>
 
 <body class="container-fluid p-0">
-    <div class="row widthscreen mx-auto">
+    <div class="row widthscreen mx-auto h-100">
 
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-9 col-lg-6 border maincontent d-sm-block text-center mt-3">
-            <?php require('notification.php') ?>
+            <h5 class="mt-2">Notifications</h5>
+            <ul class="list-unstyled">
+                <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Dimitry Payet vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Florian Thauvin vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Hugo LLoris vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Kylian Mbappé vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Dimitry Payet vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Florian Thauvin vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Hugo LLoris vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+                <li class="p-2 unread rounded my-2">Kylian Mbappé vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
+            </ul>
+
         </div>
+
         <?php require 'rightside.php' ?>
 
         <?php require 'footmobile.php' ?>

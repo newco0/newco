@@ -13,14 +13,14 @@
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container-fluid">
-    <div class="row widthscreen mx-auto">
+<body class="container-fluid p-0">
+    <div class="row widthscreen mx-auto h-100">
 
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
 
-        <div class="col-12 col-sm-6 border">
+        <div class="col-12 col-sm-9 col-lg-6 border">
             <div class="mb-5">
                 <h1>Fil d'actualité</h1>
             </div>
@@ -55,7 +55,7 @@
                         <a class="ml-2 mt-2" href="#">Save the orang-utang</a>
                     </div>
                 </div>
-                <div class="ml-5">
+                <div class="mt-2 ml-5">
                     <p>Ceci est notre premier post :-)</p>
                 </div>
                 <div class="row w-100 mx-auto">
