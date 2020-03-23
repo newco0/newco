@@ -52,16 +52,16 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
+  $(".listmessage").scrollTop($(".listmessage").height());
+
   let clonelistmessage = $(".listmessage").clone();
   let sendmessagemobile = $(".sendmessagemobile").clone();
-  let prevlistmessage = $('.prevlistmessage')
-     
+  let prevlistmessage = $(".prevlistmessage");
 
   if ($(window).width() < 576) {
     $(".conversationuser").click(function() {
       $(".content-mobile").html(clonelistmessage);
-      $("body").scrollTop($("body").height());
-      console.log($("body").scrollTop())
+      console.log($("body").scrollTop($(document).height()));
       $(".footmobile").removeClass("h-25");
       $(".widthscreen").removeClass("h-100");
       sendmessagemobile.removeClass("h-25");
@@ -69,14 +69,40 @@ $(document).ready(function() {
       prevlistmessage.removeClass("d-none");
       prevlistmessage.addClass("d-block");
       $(".footmobile").html(sendmessagemobile);
-      $('.textmessage').removeClass("w-50");
-      $('.textmessage').addClass("w-75");
+      $(".textmessage").removeClass("w-50");
+      $(".textmessage").addClass("w-75");
+      $(".titlemessage").text("Conversation");
+      sendmessage(sendmessagemobile);
+      setTimeout(function() {
+        $(window).scrollTop($(document).height());
+      }, 100);
+    });
+  } else {
+    sendmessage($(".sendmessagemobile"));
+  }
+  // $(".sendmessagemobile")
+  function sendmessage(arg) {
+    arg.submit(function(e) {
+      e.preventDefault();
+      if ($(".textmessage").val().length > 0) {
+        $(".listmessage")
+          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
+          ".textmessage"
+        ).val()} <span class="datemessage d-block text-right">Envoyé le ${new Date(
+          Date.now()
+        ).toLocaleString("en-GB")}</span>
+                                </p>
+                            </div>
+                        </div>`);
+        $(".textmessage").val("");
+        $(window).scrollTop($(document).height());
+      }
     });
   }
 
-  prevlistmessage.click(function(){
-    location.reload('listmessage.php');
-  })
+  prevlistmessage.click(function() {
+    location.reload("listmessage.php");
+  });
 
   $(".btnconnexion").click(function() {
     $(".formmobileconnect").append(formconnect);
@@ -105,8 +131,6 @@ $(document).ready(function() {
   $(".link-com").on("click", function() {
     $(".div-com").addClass("d-block");
   });
-
-  $(".listmessage").scrollTop($(".listmessage").height());
 
   $(".block-menu").click(function() {
     $(".menu").toggle(3000, "slow");

@@ -23,7 +23,7 @@
         <div class="col-10 mx-auto">
             <div class="my-2 d-flex">
                 <i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
-                <h1>Mes messages</h1>
+                <h1 class="titlemessage">Mes messages</h1>
             </div>
             <div class="d-flex row content-conversation content-mobile">
                 <div class="listconversation col-12 col-sm-4 mx-auto h-75 p-2">
