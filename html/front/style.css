@@ -122,3 +122,10 @@ body {
         margin-top: 50%;
     }
 }
+
+/* newspaper */
+
+.arround-journal{
+    width: 50px !important;
+    height: 48px !important;
+}
