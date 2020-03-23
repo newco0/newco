@@ -24,14 +24,28 @@
             <div class="mb-5">
                 <h1>Save the orang-utang</h1>
             </div>
-            <div class="d-flex border p-2 position-relative">
-                <div class="col-12 col-lg-12">
-                    <img class="img-fluid" src="../img/centenario.jpg" alt="">
+            <div class="border p-2">
+                <div style="background-image:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
+                    <!-- <img class="img-fluid" src="../img/centenario.jpg" alt=""> -->
+                    <div class="pos">
+                        <button type="submit" class="btn bgcolor68c2e8 text-white">Modifier mon profil</button>
+                        <button type="submit" class="btn bgcolor68c2e8 text-white">Historique</button>
+                    </div>
                 </div>
-                <div class="position-absolute">
-                    <img class="arround-journal rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
+                <div class="col-12 mt-2 position-relative">
+                    <div class="text-center">
+                        <a class="mx-3" href="#">Journal</a>
+                        <a class="mx-3" href="#">À Propos</a>
+                        <a class="mx-3" href="#">Amis</a>
+                        <a class="mx-3" href="#">Photos</a>
+                    </div>
+                    <div class="pos-img-profil border-img-profil">
+                        <img class="arround-newspaper rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
+                    </div>
                 </div>
+
             </div>
+
             <div class="d-flex border p-2 mt-5">
                 <div>
                     <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
@@ -39,7 +53,7 @@
                 <form method="POST" action="" class="w-100">
                     <div class="w-100">
                         <!-- <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil"> -->
-                        <textarea class="border resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
+                        <textarea class="bord outline resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
                     </div>
                     <div class="w-100 d-flex justify-content-around">
                         <div class="position-relative text-center">

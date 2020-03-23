@@ -31,7 +31,7 @@
                 <form method="POST" action="" class="w-100">
                     <div class="w-100">
                         <!-- <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil"> -->
-                        <textarea class="border resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
+                        <textarea class="bord resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
                     </div>
                     <div class="w-100 d-flex justify-content-around">
                         <div class="position-relative text-center">
