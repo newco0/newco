@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-10 col-lg-6">
-            <div class="mb-5">
+            <div class="my-2 d-none d-sm-block">
                 <h1>Fil d'actualité</h1>
             </div>
             <div class="d-flex border p-2">

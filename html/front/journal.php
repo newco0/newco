@@ -19,9 +19,9 @@
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
-
+        
         <div class="col-12 col-sm-10 col-lg-6">
-            <div class="mb-5 d-none">
+            <div class="my-2 d-none d-sm-block">
                 <h1>Save the orang-utang</h1>
             </div>
             <div class="bgcolor68c2e8 my-2 d-flex d-xl-none">
