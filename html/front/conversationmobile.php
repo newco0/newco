@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-10 col-lg-6 maincontent d-sm-block text-center">
-            <h5 class="mt-2">Conversation</h5>
+            <h5 class="my-2 d-none d-sm-block">Conversation</h5>
             <div class="conversation col-12 d-block">
                 <div class="listmessage border d-flex flex-column w-100 h-75">
                     <div class="d-flex justify-content-start w-100 p-3">

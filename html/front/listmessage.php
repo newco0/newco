@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-10 mx-auto">
-            <div class="mb-2 my-2">
+            <div class="my-2 d-none d-sm-block">
                 <h1>Mes messages</h1>
             </div>
             <div class="d-flex h-100 row">

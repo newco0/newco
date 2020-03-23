@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-6">
-            <div class="mb-5">
+            <div class="my-2 d-none d-sm-block">
                 <h1>Save the orang-utang</h1>
             </div>
             <div class="bgcolor68c2e8 row mb-2 d-xl-none">
