@@ -73,6 +73,14 @@ body {
     background-color: #e6ecf0;
 }
 
+.bord{
+    border: none !important;
+}
+
+.outline:focus {
+    outline: none !important;
+}
+
 /* right side */
 
 .imgsugg {
@@ -160,7 +168,28 @@ body {
 
 /* newspaper */
 
-.arround-journal{
-    width: 50px !important;
-    height: 48px !important;
+.arround-newspaper{
+    width: 110px !important;
+    height: 108px !important;
+    border-radius: 50%;
+    border: solid white 5px;
+}
+
+.cover-newspaper{
+    background-position: bottom 50% right 50%;
+    /* background-size: contain; */
+    width: 100%;
+    height: 300px;
+}
+
+.pos-img-profil{
+    position: absolute;
+    left: 10%;
+    bottom: 1%;
+}
+
+.pos{
+    position: absolute;
+    top: 91%;
+    left: 60%;
 }
