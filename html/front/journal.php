@@ -24,28 +24,54 @@
             <div class="mb-5">
                 <h1>Save the orang-utang</h1>
             </div>
+            <div class="bgcolor68c2e8 row mb-2 d-xl-none">
+                <div class="mt-3 ml-2 mr-4">
+                    <i class="fas fa-arrow-left text-white fa-2x"></i>
+                </div>
+                <div class="mt-2 p-0 m-0">
+                    <p class="prec text-white">Save the orang-utang</p>
+                </div>
+            </div>
             <div class="border p-2">
                 <div style="background-image:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
                     <!-- <img class="img-fluid" src="../img/centenario.jpg" alt=""> -->
-                    <div class="pos">
+                    <div class="pos d-none d-xl-block">
                         <button type="submit" class="btn bgcolor68c2e8 text-white mr-3">Modifier mon profil</button>
                         <button type="submit" class="btn bgcolor68c2e8 text-white">Historique</button>
                     </div>
                 </div>
+
                 <div class="col-12 mt-2 position-relative">
-                    <div class="text-center">
+                    <div class="text-center d-none d-xl-block">
                         <a class="mx-3" href="#">Journal</a>
                         <a class="mx-3" href="#">À Propos</a>
                         <a class="mx-3" href="#">Amis</a>
                         <a class="mx-3" href="#">Photos</a>
                     </div>
-                    <div class="pos-img-profil border-img-profil">
+                    <div class="pos-img-profil border-img-profil img-profil-mobile">
                         <img class="arround-newspaper rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
                     </div>
                 </div>
+                <div class="mb-3 mt-5 d-xl-none d-block">
+                    <h1>Save the orang-utang</h1>
+                </div>
+                <div class="d-xl-none d-block">
 
+                    <div class="text-center">
+                        <a class="mx-3" href="#">Journal</a>
+                        <a class="mx-3" href="#">À Propos</a>
+                        <i class="block-menu icofont-dotted-down"></i>
+                    </div>
+                    <div class="text-right">
+                        <ul class="dnone list-unstyled menu">
+                            <li><a class="" href="#">Amis</a></li>
+                            <li><a class="" href="#">Photos</a></li>
+                            <li><a class="" href="#">Modifier mon profil</a></li>
+                            <li><a class="" href="#">Historique</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
             <div class="d-flex border p-2 mt-5">
                 <div>
                     <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">

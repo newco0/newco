@@ -81,4 +81,9 @@ $(document).ready(function() {
   });
 
   $(".listmessage").scrollTop($(".listmessage").height());
+
+  $( ".block-menu" ).click(function() {
+    $(".menu").toggle(3000, "slow")
+  });
 });
+
