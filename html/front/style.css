@@ -315,4 +315,15 @@ h1 {
         position: absolute;
         bottom: -40px;
     }
+    .prec{
+        font-size: 1em;
+    }
 }
+
+/* contact */
+
+.bord-input-contact{
+    border: none;
+    border-bottom: solid black 1px;
+}
+

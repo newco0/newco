@@ -24,11 +24,11 @@
             <div class="my-2 d-none d-sm-block">
                 <h1>Save the orang-utang</h1>
             </div>
-            <div class="bgcolor68c2e8 row my-2 d-none d-sm-block d-xl-none">
-                <div class="mt-3 ml-2 mr-4">
+            <div class="bgcolor68c2e8 my-2 d-flex d-xl-none">
+                <div class="mt-2 mt-sm-3 ml-2 mr-4">
                     <i class="fas fa-arrow-left text-white fa-2x"></i>
                 </div>
-                <div class="mt-2 p-0 m-0">
+                <div class="mt-2 mt-sm-3 p-0 m-0">
                     <p class="prec text-white">Save the orang-utang</p>
                 </div>
             </div>
