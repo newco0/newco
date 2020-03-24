@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="../../css/icofont/icofont.css">
     <link rel="stylesheet" href="style_admin.css">
-    <title>User</title>
+    <title>Profil utilisateur</title>
 </head>
 
 <body>
+    <?php require 'header.php'; ?>
 
     <main class="container-fluid row p-0">
         <div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">

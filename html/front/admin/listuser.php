@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="../../css/icofont/icofont.css">
     <link rel="stylesheet" href="style_admin.css">
-    <title>Admins</title>
+    <title>Utilisateurs</title>
 </head>
 
 <body>
+    <?php require 'header.php'; ?>
 
     <main class="container-fluid row p-0">
         <div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">
-            <h5 class="text-center">Liste des administrateurs</h5>
+            <h5 class="text-center">Liste des utilisateurs</h5>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -24,10 +25,8 @@
                             <th>Id</th>
                             <th class="text-center">Nom</th>
                             <th class="text-center">Prénom</th>
-                            <th class="text-center">Level</th>
-                            <th class="text-center">Activer</th>
                             <th class="text-center">Voir</th>
-                            <th class="text-center">Supprimer</th>
+                            <th class="text-center">Activer / Supprimer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,29 +34,25 @@
                             <th>1</th>
                             <td class="text-center">Laslaa</td>
                             <td class="text-center">Mohammed</td>
-                            <td class="text-center">SuperAdmin</td>
+                            <td class="text-center"><i class="icofont-arrow-right"></td>
                             <td class="text-center">
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
                                     <label class="custom-control-label" for="customSwitchesTop1"></label>
                                 </div>
                             </td>
-                            <td class="text-center"><i class="icofont-arrow-right"></td>
-                            <td class="text-center"><i class="icofont-ui-delete"></i></td>
                         </tr>
                         <tr>
                             <th>1</th>
                             <td class="text-center">Dufour</td>
                             <td class="text-center">Olivier</td>
-                            <td class="text-center">SuperAdmin</td>
+                            <td class="text-center"><i class="icofont-arrow-right"></td>
                             <td class="text-center">
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
                                     <label class="custom-control-label" for="customSwitchesTop1"></label>
                                 </div>
                             </td>
-                            <td class="text-center"><i class="icofont-arrow-right"></td>
-                            <td class="text-center"><i class="icofont-ui-delete"></i></td>
                         </tr>
                     </tbody>
                 </table>
