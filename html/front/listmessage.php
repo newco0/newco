@@ -13,7 +13,7 @@
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container-fluid p-0">
+<body class="container-fluid p-0 h-100">
 
     <div class="row widthscreen mx-auto h-100">
         <?php require 'topmobile.php' ?>

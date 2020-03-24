@@ -52,9 +52,13 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
-if(window.location.href == "http://localhost/newco/html/front/listmessage.php" || window.location.href == "http://localhost/newco/html/front/listmessage.php#"){
-  $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
-}
+  if (
+    window.location.href ==
+      "http://localhost/newco/html/front/listmessage.php" ||
+    window.location.href == "http://localhost/newco/html/front/listmessage.php#"
+  ) {
+    $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+  }
 
   let clonelistmessage = $(".listmessage").clone();
   let sendmessagemobile = $(".sendmessagemobile").clone();
@@ -74,6 +78,9 @@ if(window.location.href == "http://localhost/newco/html/front/listmessage.php" |
       $(".textmessage").addClass("w-75");
       $(".titlemessage").text("Conversation");
       sendmessage(sendmessagemobile);
+      setTimeout(function() {
+        $(window).scrollTop($(document).height());
+      }, 300);
     });
   } else {
     sendmessage($(".sendmessagemobile"));
@@ -96,33 +103,33 @@ if(window.location.href == "http://localhost/newco/html/front/listmessage.php" |
         setTimeout(function() {
           if ($(window).width() < 576) {
             $(window).scrollTop($(document).height());
-          } else {   
+          } else {
             $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
           }
-        }, 300);
+        }, 200);
       }
     });
   }
 
-  $('.imgprofil').mouseenter(function(){
-    $('.editimgprofil').css('opacity', 1)
-  })
+  $(".imgprofil").mouseenter(function() {
+    $(".editimgprofil").css("opacity", 1);
+  });
 
-  $('.editimgprofil').mouseenter(function(){
-    $('.editimgprofil').css('opacity', 1)
-    console.log('coucou')
-  })
+  $(".editimgprofil").mouseenter(function() {
+    $(".editimgprofil").css("opacity", 1);
+    console.log("coucou");
+  });
 
-  $('.fileprofil').mouseenter(function(){
-    $('.editimgprofil').css('opacity', 1)
-  })
+  $(".fileprofil").mouseenter(function() {
+    $(".editimgprofil").css("opacity", 1);
+  });
 
-  $('.fileprofil').mouseleave(function(){
-    $('.editimgprofil').css('opacity', 0)
-  })
-  $('.imgprofil').mouseleave(function(){
-    $('.editimgprofil').css('opacity', 0)
-  })
+  $(".fileprofil").mouseleave(function() {
+    $(".editimgprofil").css("opacity", 0);
+  });
+  $(".imgprofil").mouseleave(function() {
+    $(".editimgprofil").css("opacity", 0);
+  });
 
   prevlistmessage.click(function() {
     location.reload("listmessage.php");
@@ -158,5 +165,11 @@ if(window.location.href == "http://localhost/newco/html/front/listmessage.php" |
 
   $(".block-menu").click(function() {
     $(".menu").toggle(3000, "slow");
+  });
+
+  $(".icofont-close").click(function() {
+    $(this)
+      .parent()
+      .remove();
   });
 });
