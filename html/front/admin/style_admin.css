@@ -3,8 +3,10 @@
 }
 
 .arround {
-    width: 70px !important;
-    height: 68px !important;
+    min-width: 60px;
+    max-width: 70px;
+    min-height: 58px;
+    max-height: 68px;
 }
 
 .bgcolor68c2e8 {
@@ -15,16 +17,18 @@
     background-color: #0d1d3d;
 }
 
-.nav-height{
+.nav-height {
     height: 40px;
 }
 
-.logo{
+.logo {
+    min-width: 90px;
+    min-height: 90px;
     max-width: 125px;
     max-height: 125px;
 }
 
-.hamb1{
+.hamb1 {
     height: 5px;
     width: 40px;
 }
@@ -41,7 +45,7 @@
 }
 
 .imgcouv {
-    max-width: 200px; 
+    max-width: 200px;
 }
 
 .imgcouv:hover {
@@ -71,8 +75,4 @@ input[type=file]::-webkit-file-upload-button {
 
 .topprofil {
     width: 100% !important;
-}
-
-* {
-    font-family: 'Montserrat', sans-serif;
 }
