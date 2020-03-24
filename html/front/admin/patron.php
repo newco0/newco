@@ -22,10 +22,10 @@
                 <div class="d-flex align-items-center">
                     <nav class="">
                         <ul class="list-unstyled d-flex border nav-height">
-                            <li class="mx-2 border-right"><a class="text-black text-dark" href="index.php">Accueil</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Utilisateurs</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Messages</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Administrateurs</a></li>
+                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-black text-dark" href="index.php">Accueil</a></li>
+                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Utilisateurs</a></li>
+                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Messages</a></li>
+                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Administrateurs</a></li>
                         </ul>
                     </nav>
                 </div>
