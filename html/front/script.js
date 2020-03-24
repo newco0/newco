@@ -52,7 +52,9 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
-  $(".listmessage").scrollTop($(".listmessage").height());
+if(window.location.href == "http://localhost/newco/html/front/listmessage.php" || window.location.href == "http://localhost/newco/html/front/listmessage.php#"){
+  $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+}
 
   let clonelistmessage = $(".listmessage").clone();
   let sendmessagemobile = $(".sendmessagemobile").clone();
@@ -61,7 +63,6 @@ $(document).ready(function() {
   if ($(window).width() < 576) {
     $(".conversationuser").click(function() {
       $(".content-mobile").html(clonelistmessage);
-      console.log($("body").scrollTop($(document).height()));
       $(".footmobile").removeClass("h-25");
       $(".widthscreen").removeClass("h-100");
       sendmessagemobile.removeClass("h-25");
@@ -73,20 +74,17 @@ $(document).ready(function() {
       $(".textmessage").addClass("w-75");
       $(".titlemessage").text("Conversation");
       sendmessage(sendmessagemobile);
-      setTimeout(function() {
-        $(window).scrollTop($(document).height());
-      }, 100);
     });
   } else {
     sendmessage($(".sendmessagemobile"));
   }
-  // $(".sendmessagemobile")
+
   function sendmessage(arg) {
     arg.submit(function(e) {
       e.preventDefault();
       if ($(".textmessage").val().length > 0) {
         $(".listmessage")
-          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
+          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
           ".textmessage"
         ).val()} <span class="datemessage d-block text-right">Envoyé le ${new Date(
           Date.now()
@@ -95,10 +93,36 @@ $(document).ready(function() {
                             </div>
                         </div>`);
         $(".textmessage").val("");
-        $(window).scrollTop($(document).height());
+        setTimeout(function() {
+          if ($(window).width() < 576) {
+            $(window).scrollTop($(document).height());
+          } else {   
+            $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+          }
+        }, 300);
       }
     });
   }
+
+  $('.imgprofil').mouseenter(function(){
+    $('.editimgprofil').css('opacity', 1)
+  })
+
+  $('.editimgprofil').mouseenter(function(){
+    $('.editimgprofil').css('opacity', 1)
+    console.log('coucou')
+  })
+
+  $('.fileprofil').mouseenter(function(){
+    $('.editimgprofil').css('opacity', 1)
+  })
+
+  $('.fileprofil').mouseleave(function(){
+    $('.editimgprofil').css('opacity', 0)
+  })
+  $('.imgprofil').mouseleave(function(){
+    $('.editimgprofil').css('opacity', 0)
+  })
 
   prevlistmessage.click(function() {
     location.reload("listmessage.php");

@@ -25,8 +25,8 @@
                 <i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
                 <h1 class="titlemessage">Mes messages</h1>
             </div>
-            <div class="d-flex row content-conversation content-mobile">
-                <div class="listconversation col-12 col-sm-4 mx-auto h-75 p-2">
+            <div class="d-flex row content-conversation content-mobile h-100">
+                <div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
                     <ul class="p-0">
                         <a href="#" class="text-decoration-none conversationuser">
                             <li class="list-unstyled color0d1d3d rounded p-2 my-1">
@@ -79,15 +79,15 @@
                     </ul>
                 </div>
 
-                <div class="conversation col-8 h-75 d-none d-sm-block">
-                    <div class="listmessage border d-flex flex-column w-100 h-75">
+                <div class="conversation col-8 d-none d-sm-block">
+                    <div class="listmessage border d-flex flex-column w-100">
                         <div class="d-flex justify-content-start w-100 p-3">
                             <div class="w-75 d-flex">
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg d-sm rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle">
                                 <p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">Je vous parle d'un temps
                                     Que les moins de vingt ans Ne peuvent pas connaître
                                     Montmartre en ce temps-là
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
                             </div>
                         </div>
@@ -96,18 +96,18 @@
                                 <p class="mx-2 p-2 rounded bg-secondary text-white">Accrochait ses lilas
                                     Jusque sous nos fenêtres
                                     Et si l'humble garni
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
                             </div>
                         </div>
                         <div class="d-flex justify-content-start w-100 p-3">
                             <div class="w-75 d-flex">
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
                                 <p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">Je vous parle d'un temps
                                     Que les moins de vingt ans Ne peuvent pas connaître
                                     Montmartre en ce temps-là
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
                             </div>
                         </div>
@@ -116,18 +116,18 @@
                                 <p class="mx-2 p-2 rounded bg-secondary text-white">Accrochait ses lilas
                                     Jusque sous nos fenêtres
                                     Et si l'humble garni
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
                             </div>
                         </div>
                         <div class="d-flex justify-content-start w-100 p-3">
                             <div class="w-75 d-flex">
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
                                 <p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">Je vous parle d'un temps
                                     Que les moins de vingt ans Ne peuvent pas connaître
                                     Montmartre en ce temps-là
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
                             </div>
                         </div>
@@ -136,15 +136,15 @@
                                 <p class="mx-2 p-2 rounded bg-secondary text-white">Accrochait ses lilas
                                     Jusque sous nos fenêtres
                                     Et si l'humble garni
-                                    <span class="datemessage d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
+                                    <span class="datemessage my-1 d-block text-right">Envoyé le 15/08/2020 à 15h22</span>
                                 </p>
-                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgsugg rounded-circle">
+                                <img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
                             </div>
                         </div>
                     </div>
 
-                    <form class="h-25 w-100 border mx-auto d-flex flex-row justify-content-center align-items-center sendmessagemobile" action="">
-                        <textarea name="" id="" class="textmessage h-50 w-50"></textarea>
+                    <form class="heightform w-100 border bg-white mx-auto d-flex flex-row justify-content-center align-items-center sendmessagemobile" action="">
+                        <textarea name="" id="" class="textmessage rounded w-50"></textarea>
                         <button class="my-auto mr-3 sendbtn bg-white" type="submit"><i class="icofont-paper-plane icofont-2x"></i></button>
                     </form>
 

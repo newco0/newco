@@ -12,8 +12,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    min-height: 900px;
 }
-
 
 h1 {
     font-size: 1.3rem;
@@ -47,7 +47,7 @@ h1 {
 /* header */
 
 .menulink {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 .listmenu a {
@@ -139,12 +139,14 @@ h1 {
 .footmobile {
     position: sticky;
     bottom: 0;
+    max-height: 5rem;
 }
 
-.topmobile{
+.topmobile {
     position: sticky;
     top: 0;
     z-index: 10;
+    max-height: 6rem;
 }
 
 /* Page connection */
@@ -174,7 +176,7 @@ h1 {
 /* listconversation */
 
 .listconversation {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .listconversation li {
@@ -185,6 +187,13 @@ h1 {
     font-size: 0.75rem;
 }
 
+.heightconv {
+    height: 100%;
+}
+
+.heightform {
+    height: 25%;
+}
 
 /* conversation */
 
@@ -192,12 +201,18 @@ h1 {
     font-size: 0.85rem;
 }
 
+.imgconv {
+    width: 25px;
+    height: 25px;
+}
+
 .textmessage {
     resize: none;
 }
 
 .listmessage {
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .sendbtn {
@@ -217,6 +232,74 @@ h1 {
     bottom: 0;
 }
 
+.arround-search {
+    width: 80px !important;
+    height: 78px !important;
+}
+
+/* profil */
+
+.imgprofil {
+    width: 120px;
+    height: 120px;
+}
+
+.imgprofil:hover {
+    cursor: pointer;
+}
+
+.fileprofil {
+    opacity: 0;
+    z-index: 2;
+    top: 33%;
+}
+
+.editimgprofil {
+    opacity: 0;
+    z-index: 1;
+    top: 33%;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.topprofil {
+    width: 100% !important;
+}
+
+@media screen and (min-width: 576px) {
+    .heightconv {
+        height: 75%;
+    }
+
+    .heightform {
+        height: 10%;
+    }
+
+    .listmessage {
+        height: 500px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .sendmessagemobile {
+        position: relative;
+    }
+
+    .imgprofil {
+        width: 90px;
+        height: 90px;
+    }
+
+    .pseudoprofil {
+        width: 50%;
+    }
+}
 
 @media screen and (min-width: 992px) {
     .menulink {
@@ -239,7 +322,6 @@ h1 {
         height: 800px;
     }
 }
-
 
 @media screen and (min-width: 1200px) {
     .widthscreen {
@@ -315,15 +397,15 @@ h1 {
         position: absolute;
         bottom: -40px;
     }
-    .prec{
+
+    .prec {
         font-size: 1em;
     }
 }
 
 /* contact */
 
-.bord-input-contact{
+.bord-input-contact {
     border: none;
     border-bottom: solid black 1px;
 }
-

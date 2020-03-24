@@ -20,8 +20,8 @@
 
         <?php require 'header.php' ?>
 
-        <div class="border col-12 col-sm-10 col-lg-6">
-            <div class="mb-5 mt-5">
+        <div class="border col-12 col-sm-9 col-lg-6">
+            <div class="my-2">
                 <h1>Contactez-nous</h1>
             </div>
             <div class="w-75 mx-auto">

@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-10 col-lg-6 border text-center">
-            <h5 class="my-2 d-none d-sm-block">Notifications</h5>
+            <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Notifications</h5>
             <ul class="list-unstyled">
                 <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
                 <li class="p-2 unread rounded my-2">Dimitry Payet vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
