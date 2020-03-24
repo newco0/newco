@@ -262,6 +262,9 @@ h1 {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
         background-color: grey;
     }
+    .w75 {
+        width: 75% !important;
+    }
 }
 
 @media screen and (min-width: 1400px) {
@@ -334,9 +337,8 @@ h1 {
     height: 78px !important;
 }
 
-@media screen and (min-width: 1200px) {
-    .w75 {
-        width: 75% !important;
+@media screen and (max-width: 1024px) {
+    .w75{
+        width: 75%;
     }
-    
 }
