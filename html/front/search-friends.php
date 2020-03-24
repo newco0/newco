@@ -24,7 +24,13 @@
             <div class="mb-5 mt-5">
                 <h1>Recherche d'amis</h1>
             </div>
-        
+            <div class="border d-flex justify-content-center">
+                <img class="arround rounded-circle m-2" src="../img/orang.jpg" alt="photo de profil">
+                <a class="ml-3 mt-3" href="#">Jean Dupont</a>
+                <div>
+                    <button class="btn mt-2">Ajouter</button>
+                </div>
+            </div>
         </div>
         <?php require 'rightside.php' ?>
         <div class="footmobile w-100">
