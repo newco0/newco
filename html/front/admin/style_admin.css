@@ -18,3 +18,61 @@
 .nav-height{
     height: 40px;
 }
+
+.logo{
+    max-width: 125px;
+    max-height: 125px;
+}
+
+.hamb1{
+    height: 5px;
+    width: 40px;
+}
+
+/* user */
+
+.imgprofil {
+    width: 120px;
+    height: 120px;
+}
+
+.imgprofil:hover {
+    cursor: pointer;
+}
+
+.imgcouv {
+    max-width: 200px; 
+}
+
+.imgcouv:hover {
+    cursor: pointer;
+}
+
+.fileprofil {
+    opacity: 0;
+    z-index: 2;
+    top: 33%;
+}
+
+.editimgprofil {
+    opacity: 0;
+    z-index: 1;
+    top: 33%;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.topprofil {
+    width: 100% !important;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
