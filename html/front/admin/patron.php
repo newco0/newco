@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <header class="container-fluid">
         <div class="row">
             <div class="mx-auto d-flex justify-content-center">
@@ -21,11 +20,11 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <nav class="">
-                        <ul class="list-unstyled d-flex border nav-height">
-                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-black text-dark" href="index.php">Accueil</a></li>
-                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Utilisateurs</a></li>
-                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Messages</a></li>
-                            <li class="mx-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Administrateurs</a></li>
+                        <ul class="list-unstyled d-flex nav-height">
+                            <li class="p-2 border-right d-flex align-items-center"><a class="text-black text-dark" href="index.php">Accueil</a></li>
+                            <li class="p-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Utilisateurs</a></li>
+                            <li class="p-2 border-right d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Messages</a></li>
+                            <li class="p-2 d-flex align-items-center"><a class="text-dark my-auto" href="users.php">Administrateurs</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -38,6 +37,7 @@
             </div>
         </div>
     </header>
+
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
