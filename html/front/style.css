@@ -327,3 +327,16 @@ h1 {
     border-bottom: solid black 1px;
 }
 
+/* search-friend*/
+
+.arround-search{
+    width: 80px !important;
+    height: 78px !important;
+}
+
+@media screen and (min-width: 1200px) {
+    .w75 {
+        width: 75% !important;
+    }
+    
+}

@@ -24,11 +24,99 @@
             <div class="mb-5 mt-5">
                 <h1>Recherche d'amis</h1>
             </div>
-            <div class="border d-flex justify-content-center">
-                <img class="arround rounded-circle m-2" src="../img/orang.jpg" alt="photo de profil">
-                <a class="ml-3 mt-3" href="#">Jean Dupont</a>
-                <div>
-                    <button class="btn mt-2">Ajouter</button>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sep w75 w-100 mx-auto"></div>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sep w75 w-100 mx-auto"></div>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sep w75 w-100 mx-auto"></div>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sep w75 w-100 mx-auto"></div>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sep w75 w-100 mx-auto"></div>
+            <div class="border d-lg-flex w-100 mx-auto w75">
+                <div class="row w-100 d-flex align-items-start justify-content-around align-items-center">
+                    <div class="d-flex col-9 align-items-center">
+                        <div class="ml-2 ml-lg-2 my-3">
+                            <img class="arround-search rounded-circle" src="../img/orang.jpg" alt="photo de profil">
+                        </div>
+                        <div class="col-8 col-lg-6 mb-5">
+                            <a href="#">Jean Dupont</a>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex d-lg-flex col-lg-3 justify-content-end mb-5">
+                        <a href="#" class="btn">Ajouter</a>
+                    </div>
                 </div>
             </div>
         </div>
