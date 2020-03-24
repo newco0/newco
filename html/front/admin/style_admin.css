@@ -3,8 +3,10 @@
 }
 
 .arround {
-    width: 70px !important;
-    height: 68px !important;
+    min-width: 60px;
+    max-width: 70px;
+    min-height: 58px;
+    max-height: 68px;
 }
 
 .bgcolor68c2e8 {
@@ -20,6 +22,21 @@
 }
 
 .logo{
+    min-width: 90px;
+    min-height: 90px;
     max-width: 125px;
     max-height: 125px;
+}
+
+.hamb1{
+    height: 5px;
+    width: 40px;
+}
+
+.w75 {
+    width: 75%;
+}
+
+@media screen and (min-width: 1400px) {
+    
 }

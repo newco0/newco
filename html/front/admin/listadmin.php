@@ -15,7 +15,12 @@
     <?php
     require 'header.php'; 
     ?>
-
+    <main class="container-fluid row p-0">
+        <div class="col-12 col-sm-10 col-xl-8 mx-auto">
+            
+        </div>
+    </main>
+    
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
