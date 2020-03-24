@@ -1,0 +1,20 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.arround {
+    width: 70px !important;
+    height: 68px !important;
+}
+
+.bgcolor68c2e8 {
+    background-color: #68c2e8;
+}
+
+.bgcolor0d1d3d {
+    background-color: #0d1d3d;
+}
+
+.nav-height{
+    height: 40px;
+}
