@@ -104,9 +104,9 @@
             </div>
         </div>
         <?php require 'rightside.php' ?>
-        <div class="footmobile w-100">
-            <?php require 'footmobile.php' ?>
-        </div>
+
+        <?php require 'footmobile.php' ?>
+
     </div>
 
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
