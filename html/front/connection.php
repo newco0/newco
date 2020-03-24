@@ -13,7 +13,7 @@
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container-fluid p-0">
+<body class="container-fluid p-0 h-100">
     <div class="row h-100 m-0">
         <div class="col-12 col-lg-6 text-center logoside heightconnect d-flex flex-column align-items-center justify-content-center">
             <img src="../img/logo.png" class="img-fluid" alt="">

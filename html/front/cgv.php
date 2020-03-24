@@ -13,7 +13,7 @@
     <title>Accueil NewCo</title>
 </head>
 
-<body class="container-fluid p-0">
+<body class="container-fluid p-0 h-100">
     <div class="row widthscreen mx-auto h-100">
 
         <?php require 'topmobile.php' ?>
@@ -56,7 +56,7 @@
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Condition générale
+                                Condition générale
                             </button>
                         </h2>
                     </div>
@@ -68,10 +68,8 @@
                 </div>
             </div>
         </div>
-
-            <?php require 'footmobile.php' ?>
     </div>
-
+    <?php require 'footmobile.php' ?>
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
