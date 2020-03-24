@@ -136,7 +136,6 @@
                                     <a href="#">Jean Dupont</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
