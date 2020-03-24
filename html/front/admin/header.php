@@ -2,11 +2,11 @@
         <div class="row">
             <div class="mx-auto d-flex justify-content-center">
                 <div class="mr-5">
-                    <a href="index.php"><img src="../../img/logo.png" class="img-fluid" alt=""></a>
+                    <a href="index.php"><img src="../../img/logo.png" class="img-fluid logo" alt=""></a>
                 </div>
                 <div class="d-flex align-items-center">
                     <nav class="">
-                        <ul class="list-unstyled d-flex nav-height">
+                        <ul class="list-unstyled d-flex nav-height border">
                             <li class="p-2 border-right d-flex align-items-center"><a class="text-dark" href="index.php">Accueil</a></li>
                             <li class="p-2 border-right d-flex align-items-center"><a class="text-dark" href="users.php">Utilisateurs</a></li>
                             <li class="p-2 border-right d-flex align-items-center"><a class="text-dark" href="users.php">Messages</a></li>

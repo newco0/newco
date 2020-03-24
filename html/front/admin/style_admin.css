@@ -18,3 +18,8 @@
 .nav-height{
     height: 40px;
 }
+
+.logo{
+    max-width: 125px;
+    max-height: 125px;
+}
