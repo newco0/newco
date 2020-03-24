@@ -12,36 +12,12 @@
 </head>
 
 <body>
-
-    <header class="container-fluid">
-        <div class="row">
-            <div class="mx-auto d-flex justify-content-center">
-                <div class="mr-5">
-                    <a href="index.php"><img src="../../img/logo.png" class="img-fluid" alt=""></a>
-                </div>
-                <div class="d-flex align-items-center">
-                    <nav class="">
-                        <ul class="list-unstyled d-flex border nav-height">
-                            <li class="mx-2 border-right"><a class="text-black text-dark" href="index.php">Accueil</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Utilisateurs</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Messages</a></li>
-                            <li class="mx-2 border-right"><a class="text-dark my-auto" href="users.php">Administrateurs</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="d-flex align-items-center ml-5">
-                    <img class="arround rounded-circle mr-2" src="../../img/orang.jpg" alt="photo de profil">
-                </div>
-                <div class="d-flex align-items-center ml-5">
-                    <i class="fas fa-sign-out-alt fa-3x"></i>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php
+    require 'header.php'; 
+    ?>
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>
