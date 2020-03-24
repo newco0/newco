@@ -15,6 +15,7 @@
     <?php
     require 'header.php'; 
     ?>
+    
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
