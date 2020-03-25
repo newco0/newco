@@ -36,18 +36,6 @@
     width: 40px;
 }
 
-@media screen and (max-width: 768px) {
-    .menu{
-        display: none;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .w75 {
-        width: 75% !important;
-    }
-}
-
 /* user */
 
 .imgprofil {
@@ -90,4 +78,19 @@ input[type=file]::-webkit-file-upload-button {
 
 .topprofil {
     width: 100% !important;
+}
+
+@media screen and (max-width: 769px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        background-color: black;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .w75 {
+        width: 75% !important;
+    }
 }
