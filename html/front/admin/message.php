@@ -16,8 +16,8 @@
     <?php require 'header.php'; ?>
 
     <main class="container-fluid">
-        
-        <h5 class="text-center">Message</h5>
+
+        <h3 class="text-center my-5 my-md-2">Message</h3>
         <form method="post" class="form-group my-5 messagesendform" action="">
             <div class="row d-md-flex mx-auto justify-content-center align-items-center">
                 <div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center">
@@ -31,13 +31,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-8 col-lg-6 my-4 mx-auto text-center">
+                <div class="col-12 col-sm-8 col-lg-6 my-4 mx-auto text-center messageshow">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa soluta aspernatur consequatur eius mollitia doloribus blanditiis ex. Magni soluta suscipit in. Ad velit mollitia hic explicabo minus a quaerat?</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-sm-8 col-lg-5 my-2 my-lg-4 text-center mx-auto">
-                    <textarea class="w-100" name="response" rows="4"></textarea>
+                    <textarea class="w-100 responsemessage" name="response" rows="4"></textarea>
                 </div>
             </div>
             <div class="col-12 my-1 my-lg-2 text-center">
