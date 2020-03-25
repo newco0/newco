@@ -17,7 +17,7 @@
 
     <main class="container-fluid position-relative">
 
-        <h3 class="text-center mt-5 my-md-2">Message</h3>
+        <h3 class="text-center mt-5 my-md-2 titlepage">Message</h3>
         <form method="post" class="form-group mb-5 messagesendform" action="">
             <div class="row d-md-flex mx-auto justify-content-center align-items-center">
                 <div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center">

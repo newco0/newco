@@ -160,7 +160,8 @@ $(document).ready(function() {
   });
 
   $(".link-com").on("click", function() {
-    $(".div-com").addClass("d-block");
+    console.log('coucou')
+    $(".div-com").toggle('slow');
   });
 
   $(".block-menu").click(function() {
@@ -183,7 +184,7 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
-  if (window.location.pathname == "/newco/html/front/journal.php") {
+  if (window.location.pathname == "/newco/html/front/journal.php" || window.location.pathname == "/newco/html/front/journal") {
     $(document).click(function(e) {
       if (!$(e.target).hasClass("imgen")) {
         $(".zoomer").html("");

@@ -18,7 +18,7 @@
     <main class="container-fluid">
         <div class="row p-0">
             <div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">
-                <h5 class="text-center">Profil administrateur</h5>
+                <h5 class="text-center titlepage">Profil administrateur</h5>
                 <form method="post" class="form-group my-5" action="">
                     <div class="row d-md-flex mx-auto align-items-center">
                         <div class="col-12 col-md-4 my-2 d-flex justify-content-center position-relative">

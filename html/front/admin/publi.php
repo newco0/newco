@@ -19,31 +19,31 @@
     <main class="container-fluid">
         <div class="row p-0">
             <div class="col-12 col-xl-8 mx-auto my-3">
-                <h5 class="text-center">Publication</h5>
+                <h5 class="text-center titlepage">Publication</h5>
                 <div class="w-100 mt-4 zoomcontain position-relative">
                     <div class="d-flex justify-content-center mx-auto">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ex eveniet cupiditate tenetur fugiat? Odio recusandae in ipsa vel hic quisquam cum dignissimos, nostrum quasi voluptatibus repudiandae laboriosam explicabo aspernatur.</p>
                     </div>
                     <div class="zoomer"></div>
                     <div class="mx-auto mt-4 d-flex flex-wrap justify-content-center">
-                        <div class="col-3 col-lg-4">
+                        <div class="col-8 mx-auto col-md-4 col-lg-4 mt-2">
                             <img class="w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
                         </div>
-                        <div class="col-3 col-lg-4">
+                        <div class="col-8 mx-auto col-md-4 col-lg-4 mt-2">
                             <img class="w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
                         </div>
-                        <div class="col-3 col-lg-4">
+                        <div class="col-8 mx-auto col-md-4 col-lg-4 mt-2">
                             <img class="w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
                         </div>
-                        <div class="col-3 col-lg-4">
+                        <div class="col-8 mx-auto col-md-4 col-lg-4 mt-2 mt-2">
                             <img class="w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
                         </div>
-                        <div class="col-3 col-lg-4">
+                        <div class="col-8 mx-auto col-md-4 col-lg-4 mt-2 mt-2">
                             <img class="w-100 zoom p-0 mr-2" src="../../img/profil.jpg" alt="">
                         </div>
                     </div>
                 </div>
-                <h5 class="text-center mt-4 mb-4">Commentaire</h5>
+                <h5 class="text-center mt-4 mb-4 titlepage">Commentaire</h5>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -71,7 +71,7 @@
                         </tbody>
                     </table>
                 </div>
-                <h5 class="text-center mt-4 mb-4">Réaction</h5>
+                <h5 class="text-center mt-4 mb-4 titlepage">Réaction</h5>
                 <div class="table-responsive col-12 col-md-6 mx-auto">
                     <table class="table">
                         <thead>

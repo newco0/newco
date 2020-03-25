@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="row d-flex justify-content-center mx-auto w75">
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 rounded border">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-lg-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="sep w75 w-100 mx-auto d-sm-none"></div>
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -52,10 +52,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="sep w75 w-100 mx-auto d-sm-none"></div>
+                <div class="sep w75 w-100 mx-auto d-none"></div>
                 <div class="sep w75 mx-auto"></div>
                 <div class="row d-flex justify-content-center mx-auto w75">
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="sep w75 w-100 mx-auto d-sm-none"></div>
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -81,10 +81,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="sep w75 w-100 mx-auto d-sm-none"></div>
+                <div class="sep w75 w-100 mx-auto d-none"></div>
                 <div class="sep w75 mx-auto"></div>
                 <div class="row d-flex justify-content-center mx-auto w75">
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="sep w75 w-100 mx-auto d-sm-none"></div>
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -110,10 +110,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="sep w75 w-100 mx-auto d-sm-none"></div>
+                <div class="sep w75 w-100 mx-auto d-none"></div>
                 <div class="sep w75 mx-auto"></div>
                 <div class="row d-flex justify-content-center mx-auto w75">
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <div class="sep w75 w-100 mx-auto d-sm-none"></div>
-                    <div class="col-12 col-md-6 border">
+                    <div class="col-12 col-md-6 border rounded">
                         <div class="row w-100 d-flex justify-content-around align-items-center">
                             <div class="d-flex col-12 col-xl-9 align-items-center">
                                 <div class="ml-2 ml-lg-2 my-3">
