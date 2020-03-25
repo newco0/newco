@@ -15,10 +15,10 @@
 <body>
     <?php require 'header.php'; ?>
 
-    <main class="container-fluid">
+    <main class="container-fluid position-relative">
 
-        <h3 class="text-center my-5 my-md-2">Message</h3>
-        <form method="post" class="form-group my-5 messagesendform" action="">
+        <h3 class="text-center mt-5 my-md-2">Message</h3>
+        <form method="post" class="form-group mb-5 messagesendform" action="">
             <div class="row d-md-flex mx-auto justify-content-center align-items-center">
                 <div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center">
                     <p>Nom : <br><span class="font-weight-bold">Laslaa</span></p>
@@ -26,12 +26,12 @@
                 <div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center name">
                     <p>Prénom : <br><span class="font-weight-bold">Mohammed</span></p>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 col-xl-3 my-1 my-lg-2 text-center">
+                <div class="col-12 col-md-5 col-lg-3 col-xl-3 my-1 my-lg-2 text-center">
                     <p>Email : <br><span class="font-weight-bold">mohamed.laslaa@gmail.com</span></p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-8 col-lg-6 my-4 mx-auto text-center messageshow">
+                <div class="col-10 col-sm-6 col-lg-4 my-4 bg-secondary text-white p-2 rounded mx-auto text-center messageshow">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa soluta aspernatur consequatur eius mollitia doloribus blanditiis ex. Magni soluta suscipit in. Ad velit mollitia hic explicabo minus a quaerat?</p>
                 </div>
             </div>
