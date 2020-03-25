@@ -6,7 +6,7 @@
                 <div class="hamb1 bg-dark mb-2"></div>
                 <div class="hamb1 bg-dark"></div>
             </div>
-            <div class="menu col-lg-6 d-lg-flex align-items-center w-50">
+            <div class="menu col-lg-6 d-lg-none w-50">
                 <nav class="mx-auto">
                     <ul class="list-unstyled">
                         <li class="p-2"><a class="text-white" href="index.php">Accueil</a></li>

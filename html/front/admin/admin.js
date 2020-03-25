@@ -1,10 +1,8 @@
 $(document).ready(function () {
     $('.hamb').click(function () {
-        console.log('coucou')
-        $('.menu').toggle()
-    })
-});
-$(document).ready(function () {
+        $('.menu').toggle("slow")
+    });
+
     $(".imgprofil").mouseenter(function () {
         $(this)
             .next()
