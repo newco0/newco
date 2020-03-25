@@ -20,13 +20,69 @@
         <div class="row p-0">
             <div class="col-12 col-xl-8 mx-auto my-3">
                 <h5 class="text-center">Publication</h5>
-                <div class="w-100">
+                <div class="w-100 mt-4">
                     <div class="d-flex justify-content-center mx-auto">
-                        <img class="col-4 arround w-100 p-0 mr-2" src="../../img/orang.jpg" alt="">
-                        <img class="col-4 arround w-100 p-0 mr-2" src="../../img/orang.jpg" alt="">
-                        <img class="col-4 arround w-100 p-0 mr-2" src="../../img/orang.jpg" alt="">
-                        <img class="col-4 arround w-100 p-0 mr-2" src="../../img/orang.jpg" alt="">
-                        <img class="col-4 arround w-100 p-0" src="../../img/orang.jpg" alt="">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ex eveniet cupiditate tenetur fugiat? Odio recusandae in ipsa vel hic quisquam cum dignissimos, nostrum quasi voluptatibus repudiandae laboriosam explicabo aspernatur.</p>
+                    </div>
+                    <div class="mx-auto mt-4">
+                        <div class="d-flex justify-content-center">
+                            <img class="col-3 col-lg-4 col-xl-3 w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
+                            <img class="col-3 col-lg-4 col-xl-3 w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
+                            <img class="col-3 col-lg-4 col-xl-3 w-100 zoom p-0 mr-2" src="../../img/orang.jpg" alt="">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <img class="col-3 col-lg-4 col-xl-3 w-100 zoom p-0 mt-2 mr-2" src="../../img/orang.jpg" alt="">
+                            <img class="col-3 col-lg-4 col-xl-3 w-100 zoom p-0 mt-2" src="../../img/orang.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="zoomer d-none"></div>
+                    <h5 class="text-center mt-4 mb-4">Commentaire</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">ID utilisateur</th>
+                                    <th class="text-center">Pseudo</th>
+                                    <th class="text-center">Commentaire</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">Coucou</td>
+                                    <td class="text-center"><i class="icofont-eye-alt"></i></td>
+                                    <td class="text-center">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
+                                            <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h5 class="text-center mt-4 mb-4">Réaction</h5>
+                    <div class="table-responsive col-12 col-md-6 mx-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">ID utilisateur</th>
+                                    <th class="text-center">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">2</td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

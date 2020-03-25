@@ -64,5 +64,11 @@ $(document).ready(function () {
 
     $('.name').click(function(){
         $('.text').toggle( "slow");
+    });
+
+    $('.zoom').click(function(){
+        $('.zoomer').removeClass('d-none');
+        $('.zoom').removeClass('col-3', 'col-lg-4', 'col-xl-3')
+        $('.zoomer').append($(this));
     })
 });
