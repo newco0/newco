@@ -87,13 +87,13 @@ input[type=file]::-webkit-file-upload-button {
     resize: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
     .textanch {
         color: black !important;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .menu {
         display: none;
         width: 75% !important;
