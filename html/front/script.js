@@ -177,14 +177,18 @@ $(document).ready(function() {
     $(".zoomer").html("");
     let imgtozoom = $(this).clone();
     imgtozoom.removeClass("arround-newspaper rounded-circle mr-2");
-    imgtozoom.addClass("w-100");
+    imgtozoom.addClass("w-100 imgen");
     $(".zoomer").css("display", "block");
     $(".zoomer").append(imgtozoom);
     e.stopPropagation();
-  }); 
-  
-  $(document).click(function() {
-      $(".zoomer").html("");
-      $(".zoomer").css("display", "none");
   });
+
+  if (window.location.pathname == "/newco/html/front/journal.php") {
+    $(document).click(function(e) {
+      if (!$(e.target).hasClass("imgen")) {
+        $(".zoomer").html("");
+        $(".zoomer").css("display", "none");
+      }
+    });
+  }
 });
