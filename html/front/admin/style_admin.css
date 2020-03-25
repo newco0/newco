@@ -2,6 +2,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
+
 .arround {
     min-width: 60px;
     max-width: 60px;
@@ -33,7 +36,7 @@
     width: 40px;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
     .menu{
         display: none;
     }
@@ -43,6 +46,8 @@
     .w75 {
         width: 75% !important;
     }
+}
+
 /* user */
 
 .imgprofil {

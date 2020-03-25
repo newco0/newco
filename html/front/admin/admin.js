@@ -3,8 +3,7 @@ $(document).ready(function () {
         console.log('coucou')
         $('.menu').toggle()
     })
-});
-$(document).ready(function () {
+
     $(".imgprofil").mouseenter(function () {
         $(this)
             .next()
