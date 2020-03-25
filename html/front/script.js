@@ -172,4 +172,19 @@ $(document).ready(function() {
       .parent()
       .remove();
   });
+
+  $(".zoom").click(function(e) {
+    $(".zoomer").html("");
+    let imgtozoom = $(this).clone();
+    imgtozoom.removeClass("arround-newspaper rounded-circle mr-2");
+    imgtozoom.addClass("w-100");
+    $(".zoomer").css("display", "block");
+    $(".zoomer").append(imgtozoom);
+    e.stopPropagation();
+  }); 
+  
+  $(document).click(function() {
+      $(".zoomer").html("");
+      $(".zoomer").css("display", "none");
+  });
 });

@@ -30,7 +30,7 @@
                         <i class="w-25 icofont-edit editimgprofil position-absolute"></i>
                     </div>
                     <div class="col-12 col-md-6 mt-5 my-md-0">
-                        <p></p>
+                        <p class="text-center">Changer la photo de couverture</p>
                         <input class="form-control-file w-75 mx-auto" type="file" name="imgcover">
                     </div>
                 </div>

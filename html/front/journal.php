@@ -33,6 +33,7 @@
                 </div>
             </div>
             <div class="border p-2">
+                <div class="zoomer"></div>
                 <div style="background-image:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
                     <!-- <img class="img-fluid" src="../img/centenario.jpg" alt=""> -->
                     <div class="pos d-none d-xl-block">
@@ -49,8 +50,9 @@
                         <a class="mx-3" href="#">Photos</a>
                     </div>
                     <div class="pos-img-profil border-img-profil img-profil-mobile">
-                        <img class="arround-newspaper rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
+                        <img class="arround-newspaper rounded-circle mr-2 zoom" src="../img/orang.jpg" alt="photo de profil">
                     </div>
+                    
                 </div>
                 <div class="mb-3 mt-5 d-xl-none d-block">
                     <h1>Save the orang-utang</h1>

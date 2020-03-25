@@ -87,7 +87,17 @@ input[type=file]::-webkit-file-upload-button {
     resize: none;
 }
 
-@media screen and (min-width: 768px) {
+.zoomer{
+    display: none;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+@media screen and (min-width: 992px) {
     .textanch {
         color: black !important;
     }

@@ -66,26 +66,32 @@ $(document).ready(function() {
     );
     $(".responsemessage").val("");
   });
-    $(".fileprofil").mouseleave(function () {
-        $(this)
-            .next()
-            .css("opacity", 0);
-        $(this)
-            .prev()
-            .css("opacity", 1);
-    });
+  $(".fileprofil").mouseleave(function() {
+    $(this)
+      .next()
+      .css("opacity", 0);
+    $(this)
+      .prev()
+      .css("opacity", 1);
+  });
 
-    $('.messagesendform').submit(function(){
+  $(".messagesendform").submit(function() {});
 
-    })
+  $(".name").click(function() {
+    $(".text").toggle("slow");
+  });
 
-    $('.name').click(function(){
-        $('.text').toggle( "slow");
-    });
-
-    $('.zoom').click(function(){
-        $('.zoomer').removeClass('d-none');
-        $('.zoom').removeClass('col-3', 'col-lg-4', 'col-xl-3')
-        $('.zoomer').append($(this));
-    })
+  $(".zoom").click(function(e) {
+    $(".zoomer").html("");
+    let imgtozoom = $(this).clone();
+    imgtozoom.removeClass("col-3 col-lg-4 col-xl-3");
+    $(".zoomer").css("display", "block");
+    $(".zoomer").append(imgtozoom);
+    e.stopPropagation();
+  }); 
+  
+  $(document).click(function() {
+      $(".zoomer").html("");
+      $(".zoomer").css("display", "none");
+  });
 });

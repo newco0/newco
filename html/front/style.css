@@ -237,6 +237,16 @@ h1 {
 
 /* profil */
 
+.zoomer{
+    display: none;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
 .imgprofil {
     width: 120px;
     height: 120px;
