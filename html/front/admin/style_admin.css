@@ -72,6 +72,9 @@
     cursor: pointer;
 }
 
+.text{
+    display: none;
+}
 input[type=file]::-webkit-file-upload-button {
     cursor: pointer;
 }

@@ -57,4 +57,12 @@ $(document).ready(function () {
             .prev()
             .css("opacity", 1);
     });
+
+    $('.messagesendform').submit(function(){
+
+    })
+
+    $('.name').click(function(){
+        $('.text').toggle( "slow");
+    })
 });
