@@ -18,6 +18,7 @@
     
     <main class="container-fluid row p-0">
         <div class="col-12 col-sm-10 col-xl-8 mx-auto">
+            
         </div>
     </main>
 
