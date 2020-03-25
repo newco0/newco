@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="../../css/icofont/icofont.css">
     <link rel="stylesheet" href="style_admin.css">
-    <title>Utilisateurs</title>
+    <title>Messages</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <main class="container-fluid">
         <div class="row p-0">
             <div class="col-12 col-xl-8 mx-auto my-3">
-                <h5 class="text-center">Liste des utilisateurs</h5>
+                <h5 class="text-center">Liste des administrateurs</h5>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -26,8 +26,11 @@
                                 <th>Id</th>
                                 <th class="text-center">Nom</th>
                                 <th class="text-center">Prénom</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Objet</th>
                                 <th class="text-center">Voir</th>
-                                <th class="text-center">Activer / Supprimer</th>
+                                <th class="text-center">Marquer lu</th>
+                                <th class="text-center">Supprimer</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +38,15 @@
                                 <th>1</th>
                                 <td class="text-center">Laslaa</td>
                                 <td class="text-center">Mohammed</td>
-                                <td class="text-center"><i class="icofont-arrow-right"></td>
+                                <td class="text-center">mohamed.laslaa@gmail.com</td>
+                                <td class="text-center">Urgent !</td>
+                                <td class="text-center"><i class="icofont-eye-alt"></i></td>
+                                <td class="text-center">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
+                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
@@ -44,10 +55,18 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>1</th>
+                                <th>2</th>
                                 <td class="text-center">Dufour</td>
                                 <td class="text-center">Olivier</td>
-                                <td class="text-center"><i class="icofont-arrow-right"></td>
+                                <td class="text-center">olivier.dufour@yahoo.com</td>
+                                <td class="text-center">Urgent !</td>
+                                <td class="text-center"><i class="icofont-eye-alt"></i></td>
+                                <td class="text-center">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
+                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
