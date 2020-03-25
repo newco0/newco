@@ -50,8 +50,8 @@
                                 <td class="text-center"><i class="icofont-arrow-right"></td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop2">
+                                        <label class="custom-control-label" for="customSwitchesTop2"></label>
                                     </div>
                                 </td>
                             </tr>

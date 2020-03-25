@@ -19,19 +19,25 @@
         <?php require 'topmobile.php' ?>
 
         <?php require 'header.php' ?>
-    
+
         <div class="col-12 col-sm-10 col-xl-8 mx-auto">
             <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Mon profil</h5>
             <form method="post" class="row form-group my-5" action="">
-                <div class="row d-md-flex col-12 align-items-center">
-                    <div class="col-12 col-md-6 d-flex justify-content-center position-relative">
+                <div class="row d-md-flex col-12 align-items-center m-0 p-0">
+                    <div class="col-12 col-md-5 d-flex justify-content-center position-relative">
                         <img class="imgprofil rounded-circle" src="../img/profil.jpg" alt="">
                         <input class="w-25 form-control-file fileprofil position-absolute" type="file" name="imgprofil">
                         <i class="w-25 icofont-edit editimgprofil position-absolute"></i>
                     </div>
-                    <div class="col-12 col-md-6 mt-5 my-md-0">
+                    <div class="col-10 col-sm-8 col-md-5 mx-auto mt-5 my-md-0">
                         <p class="text-center">Changer la photo de couverture</p>
-                        <input class="form-control-file w-75 mx-auto" type="file" name="imgcover">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                <label class="custom-file-label" for="inputGroupFile04">Choisir un fichier</label>
+                            </div>
+                        
+                        </div>
                     </div>
                 </div>
                 <div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">

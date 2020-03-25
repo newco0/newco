@@ -49,8 +49,8 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop2">
+                                        <label class="custom-control-label" for="customSwitchesTop2"></label>
                                     </div>
                                 </td>
                             </tr>
@@ -63,14 +63,14 @@
                                 <td class="text-center"><i class="icofont-eye-alt"></i></td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop3">
+                                        <label class="custom-control-label" for="customSwitchesTop3"></label>
                                     </div>
                                 </td>
                                 <td class="text-center">
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
+                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop4">
+                                        <label class="custom-control-label" for="customSwitchesTop4"></label>
                                     </div>
                                 </td>
                             </tr>

@@ -2,6 +2,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+html{
+    height: 100%;
+}
+
+.titleconnect {
+    font-size: 1.8rem;
+}
+
 .arround {
     min-width: 60px;
     max-width: 60px;
@@ -87,6 +95,10 @@ input[type=file]::-webkit-file-upload-button {
     resize: none;
 }
 
+.messageclient{
+    overflow: auto;
+    overflow-wrap: break-word;
+}
 .zoomer{
     display: none;
     position: absolute;
@@ -118,5 +130,17 @@ input[type=file]::-webkit-file-upload-button {
 @media screen and (min-width: 1200px) {
     .w75 {
         width: 75% !important;
+    }  
+    
+    .titleconnect {
+        margin-top: 10rem;
+    }
+}
+
+
+@media screen and (min-width: 1400px) {
+
+    .titleconnect {
+        margin-top: 30%;
     }
 }

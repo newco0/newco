@@ -21,7 +21,7 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-10 col-lg-6 mt-3 maincontent d-sm-block text-center">
-            <h5 class="my-2 d-none d-sm-block">Suggestions</h5>
+            <h5 class="my-2 titlepage d-none d-sm-block">Suggestions</h5>
             <ul class="list-unstyled font-weight-bold">
                 <li class="p-2 unread rounded my-2"><img class="imgsugg rounded-circle mx-2" src="../img/profil.jpg" alt=""><span class="font-weight-normal">Hugo Lloris</span><i class="mx-2 icofont-close"></i></li>
                 <li class="p-2 unread rounded my-2"><img class="imgsugg rounded-circle mx-2" src="../img/profil.jpg" alt=""><span class="font-weight-normal">Raphaël Varane</span><i class="mx-2 icofont-close"></i></li>

@@ -59,11 +59,14 @@ $(document).ready(function() {
 
   $(".messagesendform").submit(function(e) {
     e.preventDefault();
-    $(".messageshow").append(
-      `<p class="bgcolor68c2e8 rounded text-white p-2 w-75 mx-auto">${$(
-        ".responsemessage"
-      ).val()}</p>`
-    );
+    console.log($(".responsemessage").val())
+    if ($(".responsemessage").val().length > 0) {
+      $(".messageshow").append(
+        `<p class="bgcolor68c2e8 rounded text-white p-2 w-75 mx-auto messageclient">${$(
+          ".responsemessage"
+        ).val()}</p>`
+      );
+    }
     $(".responsemessage").val("");
   });
   $(".fileprofil").mouseleave(function() {

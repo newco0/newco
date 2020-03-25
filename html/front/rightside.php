@@ -1,4 +1,4 @@
-<div class="col-3 d-none d-lg-block">
+<div class="col-4 d-none d-lg-block">
     
     <form class="form-inline mt-3">
         <input class="form-control w-75" type="search" placeholder="Search">

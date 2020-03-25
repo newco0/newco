@@ -135,7 +135,7 @@ h1 {
 }
 
 .footmobile {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     max-height: 5rem;
 }
@@ -324,9 +324,14 @@ input[type=file]::-webkit-file-upload-button {
         width: 100% !important;
     }
 
+    .titleconnect {
+        font-size: 1.4rem;
+    }
+
+/* 
     .heightconnect {
         height: 100%;
-    }
+    } */
 
     .unread {
         font-size: 1rem;
@@ -369,9 +374,9 @@ input[type=file]::-webkit-file-upload-button {
         width: 80%;
     }
 
-    .titleconnect {
+    /* .titleconnect {
         margin-top: 50%;
-    }
+    } */
 }
 
 /* newspaper */
@@ -398,8 +403,8 @@ input[type=file]::-webkit-file-upload-button {
 
 .pos {
     position: absolute;
-    top: 85%;
-    left: 54%;
+    bottom: 0;
+    right: 1rem;
 }
 
 .dnone {

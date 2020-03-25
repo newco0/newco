@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-10 col-sm-6 col-lg-4 my-4 bg-secondary text-white p-2 rounded mx-auto text-center messageshow">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa soluta aspernatur consequatur eius mollitia doloribus blanditiis ex. Magni soluta suscipit in. Ad velit mollitia hic explicabo minus a quaerat?</p>
+                <div class="col-10 col-sm-6 col-lg-4 my-4  p-2 rounded mx-auto text-center messageshow">
+                    <p class="bg-secondary text-white p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa soluta aspernatur consequatur eius mollitia doloribus blanditiis ex. Magni soluta suscipit in. Ad velit mollitia hic explicabo minus a quaerat?</p>
                 </div>
             </div>
             <div class="row">

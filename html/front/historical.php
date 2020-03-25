@@ -21,17 +21,17 @@
         <?php require 'header.php' ?>
 
         <div class="col-12 col-sm-10 col-xl-8 mx-auto">
-            <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">CGV</h5>
+            <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Historique</h5>
             <div class="mt-md-5">
                 <div class="contenthistoricalday mt-2 row p-0">
                     <p class="text-center col-12">Aujourd'hui</p>
                     <div class="contenthistorical mx-auto col-12 col-md-8">
                         <div class="mt-1 p-2 bgcolor68c2e8 text-white">
-                            <i class="icofont-close"></i>
+                            <i class="icofont-close clearcomment"></i>
                             <span class="p-2">Vous avez commenté votre publication</span>
                         </div>
                         <div class="mt-1 p-2 bgcolor68c2e8 text-white">
-                            <i class="icofont-close"></i>
+                            <i class="icofont-close clearcomment"></i>
                             <span class="p-2">Vous avez aimé la publication de Marc</span>
                         </div>
                     </div>
@@ -40,11 +40,11 @@
                     <p class="text-center col-12">Hier</p>
                     <div class="mx-auto col-12 col-md-8">
                         <div class="mt-1 p-2 bgcolor68c2e8 text-white">
-                            <i class="icofont-close"></i>
+                            <i class="icofont-close clearcomment"></i>
                             <span class="p-2">Vous avez commenté votre publication</span>
                         </div>
                         <div class="mt-1 p-2 bgcolor68c2e8 text-white">
-                            <i class="icofont-close"></i>
+                            <i class="icofont-close clearcomment"></i>
                             <span class="p-2">Vous avez aimé la publication de Marc</span>
                         </div>
                     </div>

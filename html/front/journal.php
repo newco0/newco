@@ -36,14 +36,13 @@
                 <div class="zoomer"></div>
                 <div style="background-image:url(../img/centenario.jpg)" class="cover-newspaper col-12 col-lg-12 position-relative">
                     <!-- <img class="img-fluid" src="../img/centenario.jpg" alt=""> -->
-                    <div class="pos d-none d-xl-block">
-                        <button type="submit" class="btn bgcolor68c2e8 text-white mr-3">Modifier mon profil</button>
-                        <button type="submit" class="btn bgcolor68c2e8 text-white">Historique</button>
+                    <div class="w-100 row pos d-none d-xl-flex justify-content-end">
+                        <button type="submit" class="btn bgcolor68c2e8 text-white mr-3 col-5">Modifier mon profil</button>
+                        <button type="submit" class="btn bgcolor68c2e8 text-white col-3">Historique</button>
                     </div>
                 </div>
-
                 <div class="col-12 mt-2 position-relative">
-                    <div class="text-center d-none d-xl-block">
+                    <div class="text-center d-none d-xl-flex justify-content-end">
                         <a class="mx-3" href="#">Journal</a>
                         <a class="mx-3" href="#">À Propos</a>
                         <a class="mx-3" href="#">Amis</a>
