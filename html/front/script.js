@@ -1,14 +1,13 @@
 $(document).ready(function() {
-  $('.currentpagetitle').html(`<h1>${$('.titlepage').text()}</h1>`)
+  $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
   let formconnect = $(".formconnect").clone();
   let formsubscribe = $(".formsubscribe").clone();
   $(window).resize(function() {
     if (
       window.location.pathname == "/newco/html/front/suggestionpage.php" ||
-      window.location.pathname == "/newco/html/front/notificationpage.php" 
-      // ||
-      // window.location.pathname == "/newco/html/front/suggestionpage" ||
-      // window.location.pathname == "/newco/html/front/notificationpage"
+      window.location.pathname == "/newco/html/front/notificationpage.php" ||
+      window.location.pathname == "/newco/html/front/suggestionpage" ||
+      window.location.pathname == "/newco/html/front/notificationpage"
     ) {
       if ($(window).width() > 991) {
         document.location.href = "index.php";
@@ -164,7 +163,8 @@ $(document).ready(function() {
   });
 
   $(".link-com").on("click", function() {
-    $(".div-com").addClass("d-block");
+    console.log("coucou");
+    $(".div-com").toggle("slow");
   });
 
   $(".block-menu").click(function() {
@@ -186,8 +186,11 @@ $(document).ready(function() {
     $(".zoomer").append(imgtozoom);
     e.stopPropagation();
   });
-  
-  if (window.location.pathname == "/newco/html/front/journal.php" || window.location.pathname == "/newco/html/front/journal") {
+
+  if (
+    window.location.pathname == "/newco/html/front/journal.php" ||
+    window.location.pathname == "/newco/html/front/journal"
+  ) {
     $(document).click(function(e) {
       if (!$(e.target).hasClass("imgen")) {
         $(".zoomer").html("");

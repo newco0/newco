@@ -18,7 +18,7 @@
     <main class="container-fluid">
         <div class="row p-0">
             <div class="col-12 col-xl-8 mx-auto my-3">
-                <h5 class="text-center">Liste des utilisateurs</h5>
+                <h5 class="text-center titlepage">Liste des utilisateurs</h5>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

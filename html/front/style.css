@@ -110,6 +110,7 @@ h1 {
     outline: none !important;
 }
 
+
 /* right side */
 
 .imgsugg {
@@ -313,6 +314,8 @@ input[type=file]::-webkit-file-upload-button {
     .pseudoprofil {
         width: 50%;
     }
+
+   
 }
 
 @media screen and (min-width: 992px) {
@@ -340,6 +343,8 @@ input[type=file]::-webkit-file-upload-button {
     .content-conversation {
         height: 800px;
     }
+
+    
 }
 
 @media screen and (min-width: 1200px) {
@@ -444,4 +449,14 @@ input[type=file]::-webkit-file-upload-button {
     .w75 {
         width: 75%;
     }
+}
+
+@media screen and (min-width: 767px) {
+    .ico {
+        font-size: 2em;
+    }
+}
+
+.div-com{
+    display: none;
 }

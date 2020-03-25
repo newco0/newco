@@ -24,14 +24,14 @@
             <div class="my-2 d-none d-sm-block">
                 <h1>Fil d'actualité</h1>
             </div>
-            <div class="d-flex border p-2">
+            <div class="d-flex border rounded p-2">
                 <div>
                     <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil">
                 </div>
                 <form method="POST" action="" class="w-100">
                     <div class="w-100">
                         <!-- <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil"> -->
-                        <textarea class="bord resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
+                        <textarea class="bord outline resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
                     </div>
                     <div class="w-100 d-flex justify-content-around">
                         <div class="position-relative text-center">
@@ -60,32 +60,32 @@
                 </div>
                 <div class="row w-100 mx-auto">
                     <div class="col-12 p-0">
-                        <img class="img-fluid" src="../img/centenario.jpg" alt="">
+                        <img class="img-fluid rounded" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
                 <div class="row w-100 p-0 mx-auto mt-3 d-flex justify-content-center">
                     <div class="col-6 p-1">
-                        <img class="img-fluid w-100" src="../img/centenario.jpg" alt="">
+                        <img class="img-fluid w-100 rounded" src="../img/centenario.jpg" alt="">
                     </div>
                     <div class="col-6 p-1">
-                        <img class="img-fluid w-100" src="../img/centenario.jpg" alt="">
+                        <img class="img-fluid w-100 rounded" src="../img/centenario.jpg" alt="">
                     </div>
                 </div>
-                <div class="row d-flex justify-content-around">
-                    <div class="mt-2 mx-5">
-                        <i class="far fa-2x fa-thumbs-up"></i>
+                <div class="text-center d-flex justify-content-center">
+                    <div class="col-3 mt-2">
+                        <i class="far ico fa-thumbs-up"></i>
                     </div>
-                    <div class="mt-2 mx-5">
-                        <i class="far fa-2x fa-comment"></i>
+                    <div class="col-3 mt-2">
+                        <i class="far ico fa-comment"></i>
                     </div>
-                    <div class="mt-2 mx-5">
-                        <i class="fas fa-2x fa-share"></i>
+                    <div class="col-3 mt-2">
+                        <i class="fas ico fa-share"></i>
                     </div>
                 </div>
                 <div class="d-block d-lg-none">
                     <p class="link-com">Voir tout les commentaires</p>
                 </div>
-                <div class="d-none d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
+                <div class="d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
                     <div class="row d-flex">
                         <div class="ml-4 mt-3">
                             <img class="arround rounded-circle ml-2" src="../img/orang.jpg" alt="photo de profil">
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="mt-2 mx-5 text-center">
-                        <i class="far fa-2x fa-thumbs-up"></i>
+                        <i class="far ico fa-thumbs-up"></i>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
     </div>
 
     <script src="https://kit.fontawesome.com/a2bab1df4f.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
