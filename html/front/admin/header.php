@@ -6,7 +6,6 @@
                 <div class="hamb1 bg-dark mb-2"></div>
                 <div class="hamb1 bg-dark"></div>
             </div>
-           
             <div class="col-3 mx-auto col-lg-2 d-flex justify-content-center align-items-center p-0">
                 <a href="index.php"><img src="../../img/logo.png" class="w-100 col-4 img-fluid logo p-0" alt=""></a>
             </div> 
