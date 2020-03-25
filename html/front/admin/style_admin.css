@@ -4,9 +4,9 @@
 
 .arround {
     min-width: 60px;
-    max-width: 70px;
+    max-width: 60px;
     min-height: 58px;
-    max-height: 68px;
+    max-height: 88px;
 }
 
 .bgcolor68c2e8 {
@@ -17,26 +17,30 @@
     background-color: #0d1d3d;
 }
 
-.nav-height{
+.nav-height {
     height: 40px;
 }
 
-.logo{
+.logo {
     min-width: 90px;
     min-height: 90px;
     max-width: 125px;
     max-height: 125px;
 }
 
-.hamb1{
+.hamb1 {
     height: 5px;
     width: 40px;
 }
 
-.w75 {
-    width: 75%;
+@media screen and (max-width: 769px) {
+    .menu{
+        display: none;
+    }
 }
 
-@media screen and (min-width: 1400px) {
-    
+@media screen and (min-width: 1200px) {
+    .w75 {
+        width: 75% !important;
+    }
 }
