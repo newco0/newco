@@ -1,0 +1,146 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+html{
+    height: 100%;
+}
+
+.titleconnect {
+    font-size: 1.8rem;
+}
+
+.arround {
+    min-width: 60px;
+    max-width: 60px;
+    min-height: 58px;
+    max-height: 88px;
+}
+
+.bgcolor68c2e8 {
+    background-color: #68c2e8;
+}
+
+.bgcolor0d1d3d {
+    background-color: #0d1d3d;
+}
+
+.nav-height {
+    height: 40px;
+}
+
+.logo {
+    min-width: 90px;
+    min-height: 90px;
+    max-width: 125px;
+    max-height: 125px;
+}
+
+.hamb1 {
+    height: 5px;
+    width: 40px;
+}
+
+/* user */
+
+.imgprofil {
+    width: 120px;
+    height: 120px;
+}
+
+.imgprofil:hover {
+    cursor: pointer;
+}
+
+.imgcouv {
+    max-width: 200px;
+}
+
+.imgcouv:hover {
+    cursor: pointer;
+}
+
+.fileprofil {
+    opacity: 0;
+    z-index: 2;
+    top: 33%;
+}
+
+.editimgprofil {
+    opacity: 0;
+    z-index: 1;
+    top: 33%;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.text {
+    display: none;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.topprofil {
+    width: 100% !important;
+}
+
+/* message */
+
+.responsemessage {
+    resize: none;
+}
+
+.messageclient{
+    overflow: auto;
+    overflow-wrap: break-word;
+}
+.zoomer{
+    display: none;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+@media screen and (min-width: 992px) {
+    .textanch {
+        color: black !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        display: none;
+        width: 75% !important;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        background-color: black;
+        z-index: 1000;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .w75 {
+        width: 75% !important;
+    }  
+    
+    .titleconnect {
+        margin-top: 10rem;
+    }
+}
+
+
+@media screen and (min-width: 1400px) {
+
+    .titleconnect {
+        margin-top: 30%;
+    }
+}
