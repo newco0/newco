@@ -85,12 +85,12 @@
                 <div class="d-block d-lg-none">
                     <p class="link-com">Voir tout les commentaires</p>
                 </div>
-                <div class="row rounded addcomment">
+                <div class="row addcomment">
                     <div class="ml-4 mt-3">
                         <img class="arround rounded-circle ml-2 mr-5" src="../img/orang.jpg" alt="photo de profil">
                     </div>
                     <form method="POST" action="">
-                            <textarea class="resize mt-2" name="" id="" cols="60" rows="3"></textarea>
+                            <textarea class="border resize mt-2" name="" id="" cols="60" rows="3"></textarea>
                         <div class="d-flex justify-content-end">
                             <button class="btn bgcolor68c2e8 text-white">Commenter</button>
                         </div>

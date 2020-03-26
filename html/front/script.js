@@ -164,7 +164,7 @@ $(document).ready(function() {
 
   $(".link-com").on("click", function() {
     console.log("coucou");
-    $(".div-com").toggle("slow");
+    $(".div-com").toggle(500);
   });
 
   $(".block-menu").click(function() {
@@ -201,6 +201,6 @@ $(document).ready(function() {
 
   $(".comment").click(function() {
     console.log('coucou')
-    $(".addcomment").toggle(3000, "slow");
+    $(".addcomment").toggle(300);
   });
 });
