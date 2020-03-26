@@ -90,7 +90,7 @@
                         <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
                     </div>
                     <form method="POST" action="" class="col-10">
-                        <textarea class="resize mt-2" name="" id="" cols="60" rows="3"></textarea>
+                        <textarea class="border resize mt-2" name="" id="" cols="60" rows="3"></textarea>
                         <div class="d-flex justify-content-end">
                             <button class="btn bgcolor68c2e8 text-white">Commenter</button>
                         </div>
