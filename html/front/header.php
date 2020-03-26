@@ -13,11 +13,12 @@
             <li class="list-unstyled p-2 font-weight-bold menulink">Publier</li>
         </a>
         <a href="#">
-            <li class="list-unstyled p-2 font-weight-bold menulink">Contact</li>
-        </a>
-        <a href="#">
             <li class="list-unstyled p-2 font-weight-bold menulink">Journal</li>
         </a>
+        <a href="#">
+            <li class="list-unstyled p-2 font-weight-bold menulink">Contact</li>
+        </a>
+
         <a href="notificationpage.php">
             <li class="list-unstyled d-lg-none p-2 font-weight-bold menulink notificationlink">Notification</li>
         </a>

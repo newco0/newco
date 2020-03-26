@@ -200,7 +200,13 @@ $(document).ready(function() {
   }
 
   $(".comment").click(function() {
-    console.log('coucou')
-    $(".addcomment").toggle(300);
+    if($('.addcomment').hasClass('addFlex')){
+      $('.addcomment').fadeOut('normal');
+    $(".addcomment").toggleClass("addFlex");
+    }else{
+      $('.addcomment').fadeIn('normal');
+    $(".addcomment").toggleClass("addFlex");
+    }
+    
   });
 });
