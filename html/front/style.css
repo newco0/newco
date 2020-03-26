@@ -417,7 +417,7 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 .prec {
-    font-size: 2em;
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width: 1024px) {
