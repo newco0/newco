@@ -199,5 +199,14 @@ $(document).ready(function() {
     });
   }
 
-  
+  $(".comment").click(function() {
+    if($('.addcomment').hasClass('addFlex')){
+      $('.addcomment').fadeOut('normal');
+    $(".addcomment").toggleClass("addFlex");
+    }else{
+      $('.addcomment').fadeIn('normal');
+    $(".addcomment").toggleClass("addFlex");
+    }
+    
+  });
 });

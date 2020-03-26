@@ -460,3 +460,11 @@ input[type=file]::-webkit-file-upload-button {
 .div-com{
     display: none;
 }
+
+.addcomment{
+    display: none;
+}
+
+.addFlex{
+    display: flex !important;
+}
