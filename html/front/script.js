@@ -198,4 +198,9 @@ $(document).ready(function() {
       }
     });
   }
+
+  $(".comment").click(function() {
+    console.log('coucou')
+    $(".addcomment").toggle(3000, "slow");
+  });
 });

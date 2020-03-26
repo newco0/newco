@@ -76,7 +76,7 @@
                         <i class="far ico fa-thumbs-up"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="far ico fa-comment"></i>
+                        <i class="far comment ico fa-comment"></i>
                     </div>
                     <div class="col-3 mt-2">
                         <i class="fas ico fa-share"></i>
@@ -84,6 +84,17 @@
                 </div>
                 <div class="d-block d-lg-none">
                     <p class="link-com">Voir tout les commentaires</p>
+                </div>
+                <div class="row rounded addcomment">
+                    <div class="ml-4 mt-3">
+                        <img class="arround rounded-circle ml-2 mr-5" src="../img/orang.jpg" alt="photo de profil">
+                    </div>
+                    <form method="POST" action="">
+                            <textarea class="resize mt-2" name="" id="" cols="60" rows="3"></textarea>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn bgcolor68c2e8 text-white">Commenter</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
                     <div class="row d-flex">
