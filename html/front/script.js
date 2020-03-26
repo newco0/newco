@@ -200,6 +200,7 @@ $(document).ready(function() {
   }
 
   $(".comment").click(function() {
+    console.log('coucou')
     if ($(".addcomment").hasClass("d-none")) {
       $(".addcomment").fadeIn("slow");
       $(".addcomment").addClass("d-flex");
