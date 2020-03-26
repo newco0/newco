@@ -2,7 +2,6 @@ $(document).ready(function() {
   $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
   let formconnect = $(".formconnect").clone();
   let formsubscribe = $(".formsubscribe").clone();
-
   $(window).resize(function() {
     if (
       window.location.pathname == "/newco/html/front/suggestionpage.php" ||
