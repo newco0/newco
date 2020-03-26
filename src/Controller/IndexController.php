@@ -10,24 +10,18 @@ use App\Form\PublicationType;
 
 class IndexController extends AbstractController
 {
-
-    public function index()
-    {
-        return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
-    }
-
-    /**
+  /**
      * @Route("/index", name="index")
      */
-    public function add()
+
+
+    public function index()
     {
         $publication = new Publication();
         $image = new Image();
         $form = $this->createForm(PublicationType::class, [$publication, $image]);
 
-        return $this->render('index/index.html.twig', [
+        return $this->render('front/index/index.html.twig', [
             'form' => $form->createView()
         ]);
     }

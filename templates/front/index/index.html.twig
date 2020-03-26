@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/front/base.html.twig' %}
 
 {% block title %}Hello IndexController!{% endblock %}
 
@@ -9,10 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-{{ form(form.Post, {'attr': {'class': 'border'}})}}
+    <h1>Hello ! ✅</h1>
+    {{ form(form.Post, { 'attr': {'class': 'foo'} }) }}
+
+    This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ 'C:/wamp64/www/newco/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/wamp64/www/newco/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
     </ul>
 </div>
+
 {% endblock %}
