@@ -123,13 +123,13 @@
                 </div>
                 <div class="text-center d-flex justify-content-center">
                     <div class="col-3 mt-2">
-                        <i class="far ico fa-thumbs-up"></i>
+                        <i class="far ico grab fa-thumbs-up"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="far ico comment fa-comment"></i>
+                        <i class="far ico grab comment fa-comment"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="fas ico fa-share"></i>
+                        <i class="fas grab ico fa-share"></i>
                     </div>
                 </div>
                 <div class="d-block d-lg-none">

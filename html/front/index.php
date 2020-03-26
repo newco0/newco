@@ -73,13 +73,13 @@
                 </div>
                 <div class="text-center d-flex justify-content-center">
                     <div class="col-3 mt-2">
-                        <i class="far ico fa-thumbs-up"></i>
+                        <i class="far ico grab fa-thumbs-up"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="far comment ico fa-comment"></i>
+                        <i class="far comment grab ico fa-comment"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="fas ico fa-share"></i>
+                        <i class="fas ico grab fa-share"></i>
                     </div>
                 </div>
                 <div class="d-block d-lg-none">
