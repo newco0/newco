@@ -126,7 +126,7 @@
                         <i class="far ico fa-thumbs-up"></i>
                     </div>
                     <div class="col-3 mt-2">
-                        <i class="far ico fa-comment"></i>
+                        <i class="far ico comment fa-comment"></i>
                     </div>
                     <div class="col-3 mt-2">
                         <i class="fas ico fa-share"></i>
