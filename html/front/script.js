@@ -200,13 +200,15 @@ $(document).ready(function() {
   }
 
   $(".comment").click(function() {
-    if($('.addcomment').hasClass('addFlex')){
-      $('.addcomment').fadeOut('normal');
-    $(".addcomment").toggleClass("addFlex");
-    }else{
-      $('.addcomment').fadeIn('normal');
-    $(".addcomment").toggleClass("addFlex");
+    if ($(".addcomment").hasClass("d-none")) {
+      $(".addcomment").fadeIn("slow");
+      $(".addcomment").addClass("d-flex");
+      $(".addcomment").removeClass("d-none");
+    } else {
+      $(".addcomment").fadeOut("slow", function() {
+        $(this).addClass("d-none");
+        $(this).removeClass("d-flex");
+      });
     }
-    
   });
 });

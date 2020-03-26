@@ -85,7 +85,7 @@
                 <div class="d-block d-lg-none">
                     <p class="link-com">Voir tout les commentaires</p>
                 </div>
-                <div class="row rounded addcomment m-0">
+                <div class="row m-0 addcomment d-none">
                     <div class="col-2">
                         <img class="arround rounded-circle" src="../img/orang.jpg" alt="photo de profil">
                     </div>
