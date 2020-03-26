@@ -22,6 +22,11 @@ class Publication
      * @ORM\Column(type="boolean")
      */
     private $isActive;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $text;
 
     /**
      * @ORM\Column(type="datetime")
@@ -69,6 +74,18 @@ class Publication
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
     }
 
     public function getIsActive(): ?bool
