@@ -115,7 +115,7 @@ input[type=file]::-webkit-file-upload-button {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .menu {
         display: none;
         width: 75% !important;

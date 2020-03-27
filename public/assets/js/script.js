@@ -55,9 +55,7 @@ $(document).ready(function() {
   });
 
   if (
-    window.location.href ==
-      "http://localhost/newco/html/front/listmessage.php" ||
-    window.location.href == "http://localhost/newco/html/front/listmessage.php#"
+    window.location.pathname == "/message"
   ) {
     $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
   }
@@ -93,7 +91,7 @@ $(document).ready(function() {
       e.preventDefault();
       if ($(".textmessage").val().length > 0) {
         $(".listmessage")
-          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="../img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
+          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
           ".textmessage"
         ).val()} <span class="datemessage d-block text-right">Envoyé le ${new Date(
           Date.now()
