@@ -67,7 +67,7 @@ class Contact
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="contacts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="contacts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -197,12 +197,12 @@ class Contact
         return $this;
     }
 
-    public function getIdUser(): ?users
+    public function getIdUser(): ?Users
     {
         return $this->user;
     }
-
-    public function setIdUser(?users $user): self
+    
+    public function setIdUser($user): self
     {
         $this->user = $user;
 

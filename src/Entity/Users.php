@@ -120,6 +120,13 @@ class Users
         return $this->id;
     }
 
+    public function setId($id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getLastname(): ?string
     {
         return $this->lastname;
