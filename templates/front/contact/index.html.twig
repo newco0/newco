@@ -1,0 +1,35 @@
+{% extends '/front/base.html.twig' %}
+{% block title %}Fil d'actualités
+{% endblock %}
+{% block content %}
+	<div class="border col-12 col-sm-9 col-lg-6">
+		<div class="my-2">
+			<h1>Contactez-nous</h1>
+		</div>
+		<div class="w-75 mx-auto">
+			<form class="row" method="post" action="">
+				<div class="col-12 col-sm-6 col-xl-6 my-5">
+					<input class="form-control mx-xl-2 text-center bord-input-contact shadow-none" type="text" name="lastname" placeholder="Nom">
+				</div>
+				<div class="col-12 col-sm-6 col-xl-6 my-5">
+					<input class="form-control mx-xl-2 text-center bord-input-contact shadow-none" type="text" name="firstname" placeholder="Prénom">
+				</div>
+				<div class="col-12 col-sm-6 col-xl-6 my-5">
+					<input class="form-control mx-xl-2 text-center bord-input-contact shadow-none" type="email" name="email" placeholder="Adresse email">
+				</div>
+				<div class="col-12 col-sm-6 col-xl-6 my-5">
+					<input class="form-control mx-xl-2 text-center bord-input-contact shadow-none" type="text" name="object" placeholder="Sujet">
+				</div>
+				<div class="col-12 col-sm-12 col-xl-12 my-5">
+					<textarea class="bord-input-contact resize w-100 text-center shadow-none" name="" id="" rows="5" placeholder="Message"></textarea>
+				</div>
+				<div class="d-flex justify-content-center col-12">
+					<button class="btn bgcolor68c2e8 text-white">Envoyer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+{% block rightside %}
+	{% include './front/partial/rightside.html.twig' %}
+{% endblock %}
