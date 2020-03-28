@@ -44,22 +44,22 @@ class Users
     private $password;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":true})
      */
     private $isActive;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -102,6 +102,11 @@ class Users
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
      */
     private $images;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
 
     public function __construct()
     {
@@ -466,6 +471,18 @@ class Users
                 $image->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
