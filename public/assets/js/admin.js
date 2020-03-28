@@ -59,7 +59,7 @@ $(document).ready(function() {
 
   $(".messagesendform").submit(function(e) {
     e.preventDefault();
-    console.log($(".responsemessage").val())
+    console.log($(".responsemessage").val());
     if ($(".responsemessage").val().length > 0) {
       $(".messageshow").append(
         `<p class="bgcolor68c2e8 rounded text-white p-2 w-75 mx-auto messageclient">${$(
@@ -99,5 +99,33 @@ $(document).ready(function() {
       $(".zoomer").html("");
       $(".zoomer").css("display", "none");
     }
+  });
+
+  $(".isreadmessage").on("change", function() {
+    const id = $(this).attr("messageid");
+    $.ajax({
+      url: `/listmessageadmin/updateisread/${id}`
+    }).done(function(resp) {
+      if(resp==1){
+        $('.successupdate').removeClass('d-none');
+        setTimeout(function(){
+          $('.successupdate').addClass('d-none');
+        },1500)
+      }
+    });
+  });
+
+  $(".isactivemessage").on("change", function() {
+    const id = $(this).attr("messageid");
+    $.ajax({
+      url: `/listmessageadmin/updateisactive/${id}`
+    }).done(function(resp) {
+      if(resp==1){
+        $('.successupdate').removeClass('d-none');
+        setTimeout(function(){
+          $('.successupdate').addClass('d-none');
+        },1500)
+      }
+    });
   });
 });

@@ -44,22 +44,22 @@ class Users
     private $password;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     private $isActive;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_delete;
 
@@ -103,6 +103,11 @@ class Users
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\AdminResponse", mappedBy="admin")
+     */
+    private $adminResponses;
+
     public function __construct()
     {
         $this->friends = new ArrayCollection();
@@ -113,6 +118,7 @@ class Users
         $this->discussionHistories = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->adminResponses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -471,6 +477,37 @@ class Users
             // set the owning side to null (unless already changed)
             if ($image->getUser() === $this) {
                 $image->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AdminResponse[]
+     */
+    public function getAdminResponses(): Collection
+    {
+        return $this->adminResponses;
+    }
+
+    public function addAdminResponse(AdminResponse $adminResponse): self
+    {
+        if (!$this->adminResponses->contains($adminResponse)) {
+            $this->adminResponses[] = $adminResponse;
+            $adminResponse->setAdmin($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdminResponse(AdminResponse $adminResponse): self
+    {
+        if ($this->adminResponses->contains($adminResponse)) {
+            $this->adminResponses->removeElement($adminResponse);
+            // set the owning side to null (unless already changed)
+            if ($adminResponse->getAdmin() === $this) {
+                $adminResponse->setAdmin(null);
             }
         }
 

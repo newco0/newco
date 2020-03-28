@@ -2,65 +2,56 @@
 {% block title %}Liste des messages
 {% endblock %}
 {% block content %}
-<div class="col-12 col-xl-8 mx-auto my-3">
-                <h5 class="text-center titlepage">Liste des administrateurs</h5>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th class="text-center">Nom</th>
-                                <th class="text-center">Prénom</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Objet</th>
-                                <th class="text-center">Voir</th>
-                                <th class="text-center">Marquer lu</th>
-                                <th class="text-center">Supprimer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td class="text-center">Laslaa</td>
-                                <td class="text-center">Mohammed</td>
-                                <td class="text-center">mohamed.laslaa@gmail.com</td>
-                                <td class="text-center">Urgent !</td>
-                                <td class="text-center"><i class="icofont-eye-alt"></i></td>
-                                <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop2">
-                                        <label class="custom-control-label" for="customSwitchesTop2"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <td class="text-center">Dufour</td>
-                                <td class="text-center">Olivier</td>
-                                <td class="text-center">olivier.dufour@yahoo.com</td>
-                                <td class="text-center">Urgent !</td>
-                                <td class="text-center"><i class="icofont-eye-alt"></i></td>
-                                <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop3">
-                                        <label class="custom-control-label" for="customSwitchesTop3"></label>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop4">
-                                        <label class="custom-control-label" for="customSwitchesTop4"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+
+	<div class="col-12 col-xl-8 mx-auto my-3">
+		<h5 class="text-center titlepage">Liste des administrateurs</h5>
+        <p class="bg-success p-1 text-white text-center successupdate d-none">Mise à jour avec succés</p>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th class="text-center">Nom</th>
+						<th class="text-center">Prénom</th>
+						<th class="text-center">Email</th>
+						<th class="text-center">Objet</th>
+						<th class="text-center">Voir</th>
+						<th class="text-center">Marquer lu</th>
+						<th class="text-center">Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for message in allmessage %}
+						<tr>
+							<th>{{ message.id }}</th>
+							<td class="text-center">{{ message.name }}</td>
+							<td class="text-center">{{ message.firstname }}</td>
+							<td class="text-center">{{ message.email }}</td>
+							<td class="text-center">{{ message.object }}</td>
+							<td class="text-center">
+								<a href="/messageadmin/{{ message.id }}" class="text-decoration-none text-dark">
+									<i class="icofont-eye-alt"></i>
+								</a>
+							</td>
+							<td class="text-center">
+								<div class="custom-control custom-switch">
+									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isreadmessage" {% if message.isread == true %} checked {% endif %} id="{{ message.id }}read">
+									<label class="custom-control-label" for="{{ message.id }}read"></label>
+								</div>
+							</td>
+							<td class="text-center">
+								<div class="custom-control custom-switch">
+									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isactivemessage" {% if message.isactive == true %} checked {% endif %} id="{{ message.id }}delete">
+									<label class="custom-control-label" for="{{ message.id }}delete"></label>
+								</div>
+							</td>
+						</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
 {% endblock %}

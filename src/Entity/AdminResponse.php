@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AdminResponseRepository")
  */
-class Image
+class AdminResponse
 {
     /**
      * @ORM\Id()
@@ -17,26 +17,33 @@ class Image
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\contact", inversedBy="adminResponses")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $type;
+    private $contact;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="adminResponses")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $name;
+    private $admin;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $path;
+    private $message;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isActive;
 
-     /**
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isRead;
+
+    /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
@@ -51,53 +58,43 @@ class Image
      */
     private $date_delete;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\publication", inversedBy="images")
-     */
-    private $publi;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="images")
-     */
-    private $user;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getType(): ?int
+    public function getContact(): ?contact
     {
-        return $this->type;
+        return $this->contact;
     }
 
-    public function setType(int $type): self
+    public function setContact(?contact $contact): self
     {
-        $this->type = $type;
+        $this->contact = $contact;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getAdmin(): ?users
     {
-        return $this->name;
+        return $this->admin;
     }
 
-    public function setName(string $name): self
+    public function setAdmin(?users $admin): self
     {
-        $this->name = $name;
+        $this->admin = $admin;
 
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getMessage(): ?string
     {
-        return $this->path;
+        return $this->message;
     }
 
-    public function setPath(string $path): self
+    public function setMessage(string $message): self
     {
-        $this->path = $path;
+        $this->message = $message;
 
         return $this;
     }
@@ -110,6 +107,18 @@ class Image
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getIsRead(): ?bool
+    {
+        return $this->isRead;
+    }
+
+    public function setIsRead(bool $isRead): self
+    {
+        $this->isRead = $isRead;
 
         return $this;
     }
@@ -131,7 +140,7 @@ class Image
         return $this->date_update;
     }
 
-    public function setDateUpdate(\DateTimeInterface $date_update): self
+    public function setDateUpdate(?\DateTimeInterface $date_update): self
     {
         $this->date_update = $date_update;
 
@@ -143,33 +152,9 @@ class Image
         return $this->date_delete;
     }
 
-    public function setDateDelete(\DateTimeInterface $date_delete): self
+    public function setDateDelete(?\DateTimeInterface $date_delete): self
     {
         $this->date_delete = $date_delete;
-
-        return $this;
-    }
-
-    public function getPubli(): ?publication
-    {
-        return $this->publi;
-    }
-
-    public function setPubli(?publication $publi): self
-    {
-        $this->publi = $publi;
-
-        return $this;
-    }
-
-    public function getUser(): ?users
-    {
-        return $this->user;
-    }
-
-    public function setUser(?users $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }

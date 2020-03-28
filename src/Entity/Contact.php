@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -15,62 +18,80 @@ class Contact
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $object;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank
      */
     private $message;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private $isActive = true;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isRead;
+    private $isRead =false;
 
-    /**
-     * @ORM\Column(type="date")
+     /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_delete;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="contacts")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\AdminResponse", mappedBy="contact")
+     */
+    private $adminResponses;
+
+    
+    public function __construct()
+    {
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
+        $this->adminResponses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -197,14 +218,45 @@ class Contact
         return $this;
     }
 
-    public function getIdUser(): ?Users
+    public function getIdUser(): ?users
     {
         return $this->user;
     }
     
-    public function setIdUser($user): self
+    public function setIdUser(?users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AdminResponse[]
+     */
+    public function getAdminResponses(): Collection
+    {
+        return $this->adminResponses;
+    }
+
+    public function addAdminResponse(AdminResponse $adminResponse): self
+    {
+        if (!$this->adminResponses->contains($adminResponse)) {
+            $this->adminResponses[] = $adminResponse;
+            $adminResponse->setContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdminResponse(AdminResponse $adminResponse): self
+    {
+        if ($this->adminResponses->contains($adminResponse)) {
+            $this->adminResponses->removeElement($adminResponse);
+            // set the owning side to null (unless already changed)
+            if ($adminResponse->getContact() === $this) {
+                $adminResponse->setContact(null);
+            }
+        }
 
         return $this;
     }

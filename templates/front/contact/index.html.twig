@@ -6,26 +6,31 @@
 		<div class="my-2">
 			<h1>Contactez-nous</h1>
 		</div>
-		<div class="w-75 mx-auto">
-			{{ form_start(form, {'attr': {'class': 'row', 'placeholder': 'Nom'}}) }}
-				<div class="col-12 col-sm-6 col-xl-6 my-5">
-					{{ form_widget(form.name, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Nom'}}) }}
+		<div class="w-75 mx-auto containform">
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
 				</div>
-				<div class="col-12 col-sm-6 col-xl-6 my-5">
-					{{ form_widget(form.firstname, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Prénom'}}) }}
-				</div>
-				<div class="col-12 col-sm-6 col-xl-6 my-5">
-					{{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Addresse email'}}) }}
-				</div>
-				<div class="col-12 col-sm-6 col-xl-6 my-5">
-					{{ form_widget(form.object, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Objet'}}) }}
-				</div>
-				<div class="col-12 col-sm-12 col-xl-12 my-5">
-					{{ form_widget(form.message, {'attr': {'class': 'bord-input-contact resize w-100 text-center shadow-none', 'rows':5, 'placeholder': 'Message'}}) }}
-				</div>
-				<div class="d-flex justify-content-center col-12">
-					<button class="btn bgcolor68c2e8 text-white">Envoyer</button>
-				</div>
+			{% endfor %}
+			{{ form_start(form, {'attr': {'class': 'row formcontact'}}) }}
+			<div class="col-12 col-sm-6 col-xl-6 my-5">
+				{{ form_widget(form.name, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Nom'}}) }}
+			</div>
+			<div class="col-12 col-sm-6 col-xl-6 my-5">
+				{{ form_widget(form.firstname, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Prénom'}}) }}
+			</div>
+			<div class="col-12 col-sm-6 col-xl-6 my-5">
+				{{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Addresse email'}}) }}
+			</div>
+			<div class="col-12 col-sm-6 col-xl-6 my-5">
+				{{ form_widget(form.object, {'attr': {'class': 'form-control mx-xl-2 text-center bord-input-contact shadow-none', 'placeholder': 'Objet'}}) }}
+			</div>
+			<div class="col-12 col-sm-12 col-xl-12 my-5">
+				{{ form_widget(form.message, {'attr': {'class': 'bord-input-contact resize w-100 text-center shadow-none', 'rows':5, 'placeholder': 'Message'}}) }}
+			</div>
+			<div class="d-flex justify-content-center col-12">
+				<button class="btn bgcolor68c2e8 formtosend text-white">Envoyer</button>
+			</div>
 			{{ form_end(form) }}
 		</div>
 	</div>

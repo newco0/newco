@@ -15,21 +15,23 @@ class ContactController extends AbstractController
      * @Route("/contact", name="contact")
      */
 
-     
     public function index(Request $request)
     {
+        unset($form);
+        $entityManager = $this->getDoctrine()->getManager();
         $contact = new Contact();
-        $user = new Users();
-        $user->setId(4);
-        $id = $user->getId();
-        $contact->setIdUser($id);
-        $contact->setDateRegister(new \DateTime());
+        $user = $entityManager
+            ->getRepository(Users::class)
+            ->find(2);
+        $contact->setIdUser($user);
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $task = $form->getData();
-            var_dump($task);
-            // return $this->redirectToRoute('connection');
+            $contact = $form->getData();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+            $this->addFlash('success', 'Message envoyé!');
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('front/contact/index.html.twig', [

@@ -36,18 +36,18 @@ class DiscussionHistory
      */
     private $isSeen;
 
-    /**
-     * @ORM\Column(type="date")
+     /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_delete;
 

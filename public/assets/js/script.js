@@ -54,9 +54,7 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
-  if (
-    window.location.pathname == "/message"
-  ) {
+  if (window.location.pathname == "/message") {
     $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
   }
 
@@ -208,4 +206,18 @@ $(document).ready(function() {
       });
     }
   });
+
+  // $('.formtosend').on('click',function(e){
+  //   e.preventDefault();
+  //   $(".formcontact").prepend('<p class="text-center col-12 bg-success text-white p-2 rounded">En cours d\'envoi...</p>')
+  //   setTimeout(function(){
+  //     $('.formcontact').submit();
+  //   },1000)
+  // })
+
+  if ($(".containform").children(".alert-success").length == 1) {
+    setTimeout(function() {
+      $(".alert-success").remove();
+    }, 2000);
+  }
 });

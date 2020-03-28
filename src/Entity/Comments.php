@@ -31,18 +31,18 @@ class Comments
      */
     private $isSeen;
 
-    /**
-     * @ORM\Column(type="datetime")
+     /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_delete;
 
