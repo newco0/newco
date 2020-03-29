@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Contact;
 use App\Entity\Users;
 use App\Form\ContactType;
@@ -30,8 +31,11 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             $entityManager->persist($contact);
             $entityManager->flush();
-            $this->addFlash('success', 'Message envoyé!');
-            return $this->redirectToRoute('contact');
+            return new JsonResponse(true);
+        }else if ($form->isSubmitted() && !$form->isValid()) {
+            return $this->render('front/contact/index.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
 
         return $this->render('front/contact/index.html.twig', [

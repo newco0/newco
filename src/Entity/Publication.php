@@ -19,7 +19,7 @@ class Publication
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean",  options={"default": true})
      */
     private $isActive;
     
@@ -34,12 +34,12 @@ class Publication
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -66,6 +66,9 @@ class Publication
 
     public function __construct()
     {
+        $this->setIsActive(true);
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
         $this->interactions = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();

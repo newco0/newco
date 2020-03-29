@@ -36,18 +36,18 @@ class Image
      */
     private $isActive;
 
-     /**
+    /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -60,6 +60,13 @@ class Image
      * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="images")
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->setIsActive(true);
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
+    }
 
     public function getId(): ?int
     {

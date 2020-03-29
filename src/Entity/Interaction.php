@@ -32,12 +32,12 @@ class Interaction
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -52,6 +52,13 @@ class Interaction
      * @ORM\JoinColumn(nullable=false)
      */
     private $publication;
+
+    public function __construct()
+    {
+        $this->setIsActive(true);
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
+    }
 
     public function getId(): ?int
     {

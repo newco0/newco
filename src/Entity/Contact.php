@@ -52,12 +52,12 @@ class Contact
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive = true;
+    private $isActive;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isRead =false;
+    private $isRead;
 
      /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
@@ -65,12 +65,12 @@ class Contact
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -88,6 +88,8 @@ class Contact
     
     public function __construct()
     {
+        $this->setIsActive(true);
+        $this->setIsRead(false);
         $this->setDateRegister(new \DateTime());
         $this->setDateUpdate(new \DateTime());
         $this->adminResponses = new ArrayCollection();

@@ -207,13 +207,30 @@ $(document).ready(function() {
     }
   });
 
-  // $('.formtosend').on('click',function(e){
-  //   e.preventDefault();
-  //   $(".formcontact").prepend('<p class="text-center col-12 bg-success text-white p-2 rounded">En cours d\'envoi...</p>')
-  //   setTimeout(function(){
-  //     $('.formcontact').submit();
-  //   },1000)
-  // })
+  $(".formcontact").submit(function(e) {
+    e.preventDefault();
+    let data = {};
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    $.ajax({
+      type: "POST",
+      url: `/contact`,
+      data: data
+    }).done(function(resp) {
+      if (resp === true) { // strict equal to true
+        $('.successsend').removeClass('d-none')
+        setTimeout(function() {
+          $('.formcontact')[0].reset();
+        $('.successsend').addClass('d-none')
+        }, 1500);
+      }else{
+        $('body').html(resp);
+      }
+    });
+  });
 
   if ($(".containform").children(".alert-success").length == 1) {
     setTimeout(function() {

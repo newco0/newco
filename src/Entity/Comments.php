@@ -21,7 +21,7 @@ class Comments
      */
     private $text;
 
-    /**
+   /**
      * @ORM\Column(type="boolean")
      */
     private $isActive;
@@ -37,12 +37,12 @@ class Comments
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -56,6 +56,14 @@ class Comments
      * @ORM\ManyToOne(targetEntity="App\Entity\publication", inversedBy="comments")
      */
     private $publication;
+
+    public function __construct()
+    {
+        $this->setIsActive(true);
+        $this->setIsSeen(false);
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
+    }
 
     public function getId(): ?int
     {

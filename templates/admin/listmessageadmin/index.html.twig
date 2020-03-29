@@ -37,13 +37,13 @@
 							</td>
 							<td class="text-center">
 								<div class="custom-control custom-switch">
-									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isreadmessage" {% if message.isread == true %} checked {% endif %} id="{{ message.id }}read">
+									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isreadmessage" {% if message.isread %} checked {% endif %} id="{{ message.id }}read">
 									<label class="custom-control-label" for="{{ message.id }}read"></label>
 								</div>
 							</td>
 							<td class="text-center">
 								<div class="custom-control custom-switch">
-									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isactivemessage" {% if message.isactive == true %} checked {% endif %} id="{{ message.id }}delete">
+									<input messageid={{ message.id }} type="checkbox" class="custom-control-input isactivemessage" {% if message.isactive %} checked {% endif %} id="{{ message.id }}delete">
 									<label class="custom-control-label" for="{{ message.id }}delete"></label>
 								</div>
 							</td>

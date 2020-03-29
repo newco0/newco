@@ -59,16 +59,38 @@ $(document).ready(function() {
 
   $(".messagesendform").submit(function(e) {
     e.preventDefault();
-    console.log($(".responsemessage").val());
-    if ($(".responsemessage").val().length > 0) {
-      $(".messageshow").append(
-        `<p class="bgcolor68c2e8 rounded text-white p-2 w-75 mx-auto messageclient">${$(
-          ".responsemessage"
-        ).val()}</p>`
-      );
-    }
-    $(".responsemessage").val("");
+    let data = {};
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    const location = window.location.pathname.split("/");
+    const id = location[location.length - 1];
+    $.ajax({
+      type: "POST",
+      url: `/messageadmin/${id}`,
+      data: data
+    }).done(function(resp) {
+      if (resp === true) {
+        $(".messageshow").append(
+          `<p class="bgcolor68c2e8 rounded text-white p-2 w-100 mx-auto messageclient">${$(
+            ".responsemessage"
+          ).val()}</p>`
+        );
+        $(".responsemessage").val("");
+        $("main").addClass("position-relative");
+        $(".containmessage").removeClass("d-none");
+        setTimeout(function() {
+          $("main").removeClass("position-relative");
+          $(".containmessage").addClass("d-none");
+        }, 1500);
+      }else{
+        $('body').html(resp);
+      }
+    });
   });
+
   $(".fileprofil").mouseleave(function() {
     $(this)
       .next()
@@ -106,11 +128,11 @@ $(document).ready(function() {
     $.ajax({
       url: `/listmessageadmin/updateisread/${id}`
     }).done(function(resp) {
-      if(resp==1){
-        $('.successupdate').removeClass('d-none');
-        setTimeout(function(){
-          $('.successupdate').addClass('d-none');
-        },1500)
+      if (resp == 1) {
+        $(".successupdate").removeClass("d-none");
+        setTimeout(function() {
+          $(".successupdate").addClass("d-none");
+        }, 1500);
       }
     });
   });
@@ -120,11 +142,11 @@ $(document).ready(function() {
     $.ajax({
       url: `/listmessageadmin/updateisactive/${id}`
     }).done(function(resp) {
-      if(resp==1){
-        $('.successupdate').removeClass('d-none');
-        setTimeout(function(){
-          $('.successupdate').addClass('d-none');
-        },1500)
+      if (resp == 1) {
+        $(".successupdate").removeClass("d-none");
+        setTimeout(function() {
+          $(".successupdate").addClass("d-none");
+        }, 1500);
       }
     });
   });

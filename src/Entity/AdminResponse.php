@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminResponseRepository")
@@ -30,6 +31,7 @@ class AdminResponse
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $message;
 
@@ -49,14 +51,23 @@ class AdminResponse
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
+
+     
+    public function __construct()
+    {
+        $this->setIsActive(true);
+        $this->setIsRead(false);
+        $this->setDateRegister(new \DateTime());
+        $this->setDateUpdate(new \DateTime());
+    }
 
     public function getId(): ?int
     {

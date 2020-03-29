@@ -20,11 +20,8 @@
 
 		{% include './admin/partial/header.html.twig' %}
 
-		<main class="container-fluid">
-			<div class="row p-0"> 
-			{% block content %}
-	
-			{% endblock %}
+		<main class="container-fluid"> {% block topmain %}{% endblock %}
+			<div class="row p-0"> {% block content %}{% endblock %}
 				</div>
 			</main>
 			{% block javascripts %}

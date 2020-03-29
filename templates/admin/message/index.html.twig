@@ -1,45 +1,53 @@
 {% extends '/admin/base.html.twig' %}
 {% block title %}Message
 {% endblock %}
+{% block topmain %}<div class="position-absolute d-none containmessage w-100 h-100">
+<p class="popupmessagesend text-white bg-success rounded d-flex justify-content-center align-items-center">Message envoyé</p>
+</div>{% endblock %}
 {% block content %}
 	<div class="col-12 col-xl-8 mx-auto my-3">
 		<h3 class="text-center mt-5 my-md-2 titlepage">Message</h3>
-		{{ form_start(form, {'attr': {'class': 'form-group mb-5 messagesendform', 'placeholder': 'Nom'}}) }}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="row d-md-flex mx-auto justify-content-center align-items-center">
-
-			<div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center">
-				<p>Nom :
+			<div class="col-12 col-md-8 my-1 my-lg-2 text-center d-flex justify-content-around justify-content-sm-center">
+				<p class="mx-sm-5">Nom :
 					<br><span class="font-weight-bold">{{message.name}}</span>
 				</p>
-			</div>
-			<div class="col-12 col-md-3 col-xl-2 my-1 my-lg-2 text-center name">
-				<p>Prénom :
+				<p class="mx-sm-5">Prénom :
 					<br><span class="font-weight-bold">{{message.firstname}}</span>
 				</p>
 			</div>
-			<div class="col-12 col-md-5 col-lg-3 col-xl-3 my-1 my-lg-2 text-center">
-				<p>Email :
+			<div class="col-12 col-md-8 d-flex flex-column flex-md-row justify-content-around align-items-center my-1 my-lg-2 text-center name">
+				<p class="usermail">Email :
 					<br><span class="font-weight-bold">{{message.email}}</span>
+				</p>
+				<p>Objet :
+					<br><span class="font-weight-bold">{{message.object}}</span>
 				</p>
 			</div>
 		</div>
-		<div class="row d-md-flex mx-auto justify-content-center align-items-center">
-			<p>Objet :
-				<span class="font-weight-bold">{{message.object}}</span>
-			</p>
-		</div>
 		<div class="row">
-			<div class="col-10 col-sm-6 col-lg-4 my-4  p-2 rounded mx-auto text-center messageshow">
+			<div class="col-10 col-md-6 col-lg-4 p-2 rounded mx-auto text-center messageshow">
 				<p class="bg-secondary text-white p-2">{{message.message}}</p>
+				{% if response %}
+					{% for message in response %}
+						<p class="bgcolor68c2e8 rounded text-white p-2 w-100 mx-auto messageclient">{{message.message}}</p>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
+		{{ form_start(form, {'attr': {'class': 'form-group messagesendform', 'placeholder': 'Nom'}}) }}
 		<div class="row">
-			<div class="col-12 col-sm-8 col-lg-5 my-2 my-lg-4 text-center mx-auto">
+			<div class="col-12 col-sm-10 col-sm-8 col-lg-5 my-2 text-center mx-auto">
 				{{ form_widget(form.message, {'attr': {'class': 'w-100 responsemessage', 'rows': 4}}) }}
 			</div>
 		</div>
 		<div class="col-12 my-1 my-lg-2 text-center">
-			<button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Répondre</button>
+			{{ form_widget(form.save, { 'label': 'Répondre' }) }}
 		</div>
 
 		{{ form_end(form) }}

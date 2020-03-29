@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Contact;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ListmessageadminController extends AbstractController
 {
@@ -32,12 +32,12 @@ class ListmessageadminController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $message = $entityManager->getRepository(Contact::class)->find($id);
         if(!$message){
-            return new Response(false);
+            return new JsonResponse(false);
         }
         $message->setIsRead(!$message->getIsRead());
         $entityManager->persist($message);
         $entityManager->flush();
-        return new Response(true);
+        return new JsonResponse(true);
         // $message->setIsRead('New product name!');
     }
 
@@ -50,11 +50,11 @@ class ListmessageadminController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $message = $entityManager->getRepository(Contact::class)->find($id);
         if(!$message){
-            return new Response(false);
+            return new JsonResponse(false);
         }
         $message->setIsActive(!$message->getIsActive());
         $entityManager->persist($message);
         $entityManager->flush();
-        return new Response(true);
+        return new JsonResponse(true);
     }
 }

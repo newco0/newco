@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200328154648 extends AbstractMigration
+final class Version20200329095604 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20200328154648 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE contact CHANGE date_register date_register DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL');
+        $this->addSql('ALTER TABLE contact CHANGE is_active is_active TINYINT(1) DEFAULT \'1\' NOT NULL, CHANGE is_read is_read TINYINT(1) DEFAULT \'0\' NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200328154648 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE contact CHANGE date_register date_register DATE NOT NULL');
+        $this->addSql('ALTER TABLE contact CHANGE is_active is_active TINYINT(1) DEFAULT \'1\', CHANGE is_read is_read TINYINT(1) DEFAULT \'0\'');
     }
 }

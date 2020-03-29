@@ -6,6 +6,7 @@
 		<div class="my-2">
 			<h1>Contactez-nous</h1>
 		</div>
+		<p class="bg-success text-white p-2 text-center d-none successsend">Message Envoyé !</p>
 		<div class="w-75 mx-auto containform">
 			{% for message in app.flashes('success') %}
 				<div class="alert alert-success">
@@ -29,7 +30,7 @@
 				{{ form_widget(form.message, {'attr': {'class': 'bord-input-contact resize w-100 text-center shadow-none', 'rows':5, 'placeholder': 'Message'}}) }}
 			</div>
 			<div class="d-flex justify-content-center col-12">
-				<button class="btn bgcolor68c2e8 formtosend text-white">Envoyer</button>
+				{{ form_widget(form.save, { 'label': 'Envoyer' }) }}
 			</div>
 			{{ form_end(form) }}
 		</div>
