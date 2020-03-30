@@ -19,6 +19,18 @@ class DiscussionRepository extends ServiceEntityRepository
         parent::__construct($registry, Discussion::class);
     }
 
+    public function findAllDiscussionByUser($value)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->where('f.exp = :userId')
+            ->orWhere('f.dest = :userId')
+            ->setParameter('userId', $value);
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
     // /**
     //  * @return Discussion[] Returns an array of Discussion objects
     //  */

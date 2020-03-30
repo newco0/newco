@@ -34,19 +34,19 @@ class Discussion
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="discussions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="discussions", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $exp;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="discussions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="discussions", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $dest;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DiscussionHistory", mappedBy="discussion", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\DiscussionHistory", mappedBy="discussion", orphanRemoval=true, fetch="EAGER")
      */
     private $discussionHistories;
 
@@ -98,27 +98,25 @@ class Discussion
         return $this;
     }
 
-    public function getIdExp(): ?users
+    public function getIdExp(): ?Users
     {
         return $this->exp;
     }
 
-    public function setIdExp(?users $exp): self
+    public function setIdExp(?Users $exp): self
     {
         $this->id_exp = $exp;
-
         return $this;
     }
 
-    public function getDest(): ?users
+    public function getDest(): ?Users
     {
         return $this->dest;
     }
 
-    public function setDest(?users $dest): self
+    public function setDest(?Users $dest): self
     {
         $this->dest = $dest;
-
         return $this;
     }
 
