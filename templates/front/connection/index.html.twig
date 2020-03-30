@@ -34,13 +34,14 @@
 					<form method="post" action="" class="formconnect">
 						<div class="row form-group d-flex justify-content-center mt-4">
 							<div class="col-8 col-xl-4 m-2 p-0">
-								<input class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
+								<input type="email" value="{{ last_username }}"class="form-control mx-xl-2 text-center" name="email" id="inputEmail" required autofocus>
 							</div>
 							<div class="col-8 col-xl-3 m-2 p-0">
-								<input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+								<input type="password" name="password" id="inputPassword" class="form-control mx-xl-2 text-center" required>
 								<small id="pwdhelp" class="form-text text-center">
 									<a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a>
 								</small>
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							</div>
 							<div class="col-8 col-xl-2 my-2 text-center">
 								<button type="submit" class="btn btnconnection bgcolor68c2e8 text-white mx-xl-2">Connexion</button>
@@ -49,8 +50,7 @@
 					</form>
 				</div>
 				<div class="col-12 col-sm-8 mt-lg-5 mx-auto text-center">
-					<h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social
-					</h1>
+					<h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social</h1>
 				</div>
 				<div class="col-12 mt-5 mx-auto text-center d-none d-lg-block">
 					{{ form_start(form, {'attr': {'method': 'post'}}) }}

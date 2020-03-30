@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -44,7 +45,7 @@ class Users
     private $password;
 
     /**
-     * @ORM\Column(type="boolean", options={"default":true})
+     * @ORM\Column(type="boolean")
      */
     private $isActive;
 
@@ -108,6 +109,13 @@ class Users
      */
     private $pseudo;
 
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": "ROLE_USER"})
+     */
+    private $roles;
+
+    
+
     public function __construct()
     {
         $this->friends = new ArrayCollection();
@@ -118,6 +126,9 @@ class Users
         $this->discussionHistories = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->setIsActive(true);
+        $this->setDateRegister(new \DateTime('now'));
+        $this->setRoles('ROLE_USER');
     }
 
     public function getId(): ?int
@@ -486,4 +497,64 @@ class Users
 
         return $this;
     }
+    /**
+     * @inheritDoc
+     */
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function getSalt()
+    {
+        // you may need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+
+
+    public function getRoles()
+    {
+        return array('ROLE_USER', 'ROLE_ADMIN');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
 }

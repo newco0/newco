@@ -6,11 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Publication;
 use App\Entity\Image;
+
 use App\Form\PublicationType;
 
 class IndexController extends AbstractController
 {
-  /**
+    /**
      * @Route("/index", name="index")
      */
 
