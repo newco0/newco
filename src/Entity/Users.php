@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -119,6 +120,13 @@ class Users
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->adminResponses = new ArrayCollection();
+    }
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     public function getId(): ?int
