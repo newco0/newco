@@ -89,7 +89,7 @@ $(document).ready(function() {
       e.preventDefault();
       if ($(".textmessage").val().length > 0) {
         $(".listmessage")
-          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
+          .append(`<div class="d-flex justify-content-start w-75 p-3"><div class="w-75 d-flex"><img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
           ".textmessage"
         ).val()} <span class="datemessage d-block text-right">Envoyé le ${new Date(
           Date.now()
@@ -220,14 +220,15 @@ $(document).ready(function() {
       url: `/contact`,
       data: data
     }).done(function(resp) {
-      if (resp === true) { // strict equal to true
-        $('.successsend').removeClass('d-none')
+      if (resp === true) {
+        // strict equal to true
+        $(".successsend").removeClass("d-none");
         setTimeout(function() {
-          $('.formcontact')[0].reset();
-        $('.successsend').addClass('d-none')
+          $(".formcontact")[0].reset();
+          $(".successsend").addClass("d-none");
         }, 1500);
-      }else{
-        $('body').html(resp);
+      } else {
+        $("body").html(resp);
       }
     });
   });
@@ -237,4 +238,21 @@ $(document).ready(function() {
       $(".alert-success").remove();
     }, 2000);
   }
+
+  $(".renderdiscussion").click(function(e) {
+    const iddisc = $(this).attr("iddisc");
+    const idowner = $(this).attr("idowner");
+    $.ajax({
+      type: "POST",
+      url: `/messagedisc/${idowner}/${iddisc}`
+    }).done(function(resp) {
+      if ($(window).width() < 576) {
+        $(".listmessage").html(resp);
+        $(".listconversation").addClass("d-none");
+        $(".conversation").removeClass("d-none");
+      } else {
+        $(".listmessage").html(resp);
+      }
+    });
+  });
 });
