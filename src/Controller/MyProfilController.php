@@ -12,6 +12,7 @@ class MyProfilController extends AbstractController
      */
     public function index()
     {
+
         return $this->render('front/my_profil/index.html.twig', [
             'controller_name' => 'MyProfilController',
         ]);

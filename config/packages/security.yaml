@@ -4,24 +4,29 @@ security:
         users:
             entity:
                 class: App\Entity\Users
+                property: email
+    encoders: 
+        App\Entity\Users: 
+            algorithm: 'bcrypt'
+    
     firewalls:
         dev:
             pattern: ^/((profiler|wdt)|css|images|js)/
             security: false
         main:
-
             anonymous: lazy
             form_login:
-                login_path: app_login
-                check_path: app_login
-
+                login_path: app_default
+                check_path: app_default
+                default_target_path: index
+                failure_path: app_default
             guard:
                 authenticators:
                     - App\Security\ConnectionAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_default
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -32,6 +37,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the first access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/default$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: '^/admin', roles: ROLE_SUPER_ADMIN }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ADMIN]
+        ROLE_ADMIN: ROLE_ADMIN

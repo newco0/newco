@@ -1,6 +1,7 @@
 {% extends '/admin/base.html.twig' %}
 {% block title %}Edit administrateur{% endblock %}
 {% block content %}
+
 	<div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">
 		<h5 class="text-center titlepage">Profil administrateur</h5>
 		<form method="post" class="form-group my-5" action="">
@@ -39,9 +40,11 @@
 				<div class="col-12 col-sm-6 col-md-4 my-2">
 					<input class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
 				</div>
+				{% if app.user.roles == 'ROLE_SUPER_ADMIN' %}
 				<div class="col-12 my-2 text-center">
 					<button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Confirmation</button>
 				</div>
+				{% endif %}
 			</div>
 		</form>
 	</div>

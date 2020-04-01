@@ -19,7 +19,6 @@ class ConnectionController extends AbstractController
         $form = $this->createForm(InscriptionType::class, $users);
 
         $form->handleRequest($request);
-        
 
         if ($form->isSubmitted() && $form->isValid()) {
             //var_dump($form->getdata());

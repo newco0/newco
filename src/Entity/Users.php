@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -38,6 +39,11 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+    /**
+     * @Assert\EqualTo("password")
+     */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -114,7 +120,7 @@ class Users implements UserInterface, \Serializable
      */
     private $roles;
 
-    
+
 
     public function __construct()
     {
@@ -182,6 +188,16 @@ class Users implements UserInterface, \Serializable
         $this->email = $email;
 
         return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     public function getPassword(): ?string
@@ -513,11 +529,13 @@ class Users implements UserInterface, \Serializable
         return null;
     }
 
-
-
-    public function getRoles()
+    public function getRoles(): array
     {
-        return array('ROLE_USER', 'ROLE_ADMIN');
+        $roles[] = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     public function eraseCredentials()
@@ -541,7 +559,7 @@ class Users implements UserInterface, \Serializable
 
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->email,
             $this->password,
@@ -556,5 +574,4 @@ class Users implements UserInterface, \Serializable
 
         return $this;
     }
-
 }

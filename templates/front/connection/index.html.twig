@@ -31,13 +31,13 @@
 			</div>
 			<div class="col-12 col-lg-6 bgcolor68c2e8 heightconnect d-flex align-items-center d-lg-block">
 				<div class="d-none d-lg-block">
-					<form method="post" action="" class="formconnect">
+					<form method="post" action="" class="formconnect empty">
 						<div class="row form-group d-flex justify-content-center mt-4">
 							<div class="col-8 col-xl-4 m-2 p-0">
-								<input type="email" value="{{ last_username }}"class="form-control mx-xl-2 text-center" name="email" id="inputEmail" required autofocus>
+								<input type="email" {% if last_username is defined %}value="{{ last_username }}"{% endif %} class="form-control mx-xl-2 text-center" name="_username" id="inputEmail" required autofocus>
 							</div>
 							<div class="col-8 col-xl-3 m-2 p-0">
-								<input type="password" name="password" id="inputPassword" class="form-control mx-xl-2 text-center" required>
+								<input type="password" name="_password" id="inputPassword" class="form-control mx-xl-2 text-center" required>
 								<small id="pwdhelp" class="form-text text-center">
 									<a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a>
 								</small>
@@ -53,7 +53,7 @@
 					<h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social</h1>
 				</div>
 				<div class="col-12 mt-5 mx-auto text-center d-none d-lg-block">
-					{{ form_start(form, {'attr': {'method': 'post'}}) }}
+					{{ form_start(form, {'attr': {'method': 'post', 'action': 'inscription', 'class':'empty'}}) }}
 						<div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
 								{{ form_widget(form.lastname, {'attr': {'class': 'form-control mx-xl-2 text-center', 'placeholder': 'Nom'}}) }}
@@ -68,10 +68,10 @@
 								{{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'email', 'placeholder': 'Email'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								{{ form_widget(form.password, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
+								{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
+								{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Confirmation'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
 								{{ form_widget(form.pseudo, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'text', 'placeholder': 'Pseudo'}}) }}
@@ -83,8 +83,6 @@
 					{{ form_end(form) }}
 				</div>
 			</div>
-
-
 		</div>
 	</body>
 

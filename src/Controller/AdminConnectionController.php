@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminConnectionController extends AbstractController
 {
     /**
-     * @Route("/adminconnection", name="admin_connection")
+     * @Route("/coucoupouette", name="admin_connection")
      */
     public function index()
     {

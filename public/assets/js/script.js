@@ -208,4 +208,7 @@ $(document).ready(function() {
       });
     }
   });
+
+  $('.empty')[0].reset()
+  $('.empty')[1].reset()
 });
