@@ -26,6 +26,10 @@ h1 {
   width: 70%;
 }
 
+.w100 {
+  width: 100%;
+}
+
 .h10 {
   height: 10%;
 }
@@ -209,8 +213,9 @@ h1 {
 }
 
 .listmessage {
+  position: relative;
   overflow-y: auto;
-  height: 100%;
+  min-height: 23rem;
 }
 
 .renderdiscussion {
@@ -230,8 +235,9 @@ h1 {
 }
 
 .sendmessagemobile {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 0;
 }
 
 .arround-search {
@@ -295,19 +301,26 @@ input[type="file"]::-webkit-file-upload-button {
     height: 75%;
   }
 
+  .w75 {
+    width: 75% !important;
+  }
+
   .heightform {
     height: 10%;
   }
 
+  .sendmessagemobile {
+    position: sticky;
+    top: 40rem;
+    height: 6rem;
+  }
+
   .listmessage {
-    height: 500px;
+    height: 500px !important;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .sendmessagemobile {
-    position: relative;
-  }
 
   .imgprofil {
     width: 90px;

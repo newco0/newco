@@ -9,44 +9,20 @@
 			<i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
 			<h1 class="titlemessage">Mes messages</h1>
 		</div>
-		<div class="d-flex row content-conversation content-mobile h-100">
+		<div class="d-flex row content-conversation content-mobile h-100 ">
 			<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
 				<ul class="p-0">
-					{% for userlist in discussion %}
-						<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion">
-							<h6 class="font-weight-bold">{{ userlist.idexp.firstname }}</h6>
-							<p class="font-weight-bold">{{userlist.discussionHistories|last.message}}</p>
-						</li>
-					{% endfor %}
+					{% if discussion is defined %}
+						{% for userlist in discussion %}
+							<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion">
+								<h6 class="font-weight-bold">{{ userlist.idexp.firstname }}</h6>
+								<p class="font-weight-bold">{{ userlist.discussionHistories|last.message }}</p>
+							</li>
+						{% endfor %}
+					{% endif %}
 				</ul>
 			</div>
-			<div class="conversation col-12 col-sm-8 d-none d-sm-block">
-				<div class="listmessage border d-flex align-items-center flex-column w-100">
-					{% for listmessage in discussion[0].discussionHistories %}
-						{% if listmessage.user.id == iduserrequest %}
-							<div class="d-flex justify-content-start w-75 p-3">
-									<img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle">
-									<p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">{{listmessage.message}}
-										<span class="datemessage my-1 d-block text-right">Envoyé le {{listmessage.DateRegister|date('d/m/Y H:i:s')}}</span>
-									</p>
-							</div>
-						{% else %}
-							<div class="d-flex justify-content-end w-75 p-3">
-									<p class="mx-2 p-2 rounded bg-secondary text-white">{{listmessage.message}}
-										<span class="datemessage my-1 d-block text-right">Envoyé le {{listmessage.DateRegister|date('d/m/Y H:i:s')}}</span>
-									</p>
-									<img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv rounded-circle">
-							</div>
-						{% endif %}
-					{% endfor %}
-				</div>
-				<form class="heightform w-100 border bg-white mx-auto d-flex flex-row justify-content-center align-items-center sendmessagemobile" action="">
-					<textarea name="" id="" class="textmessage rounded w-50"></textarea>
-					<button class="my-auto mr-3 sendbtn bg-white" type="submit">
-						<i class="icofont-paper-plane icofont-2x"></i>
-					</button>
-				</form>
-			</div>
+			<div class="conversation col-12 col-sm-8 d-none d-sm-block p-0"></div>
 		</div>
 	</div>
 {% endblock %}
