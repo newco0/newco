@@ -76,7 +76,7 @@ class Users implements UserInterface, \Serializable
     private $contacts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Discussion", mappedBy="dest", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Discussion", mappedBy="dest", orphanRemoval=true, fetch="EAGER")
      */
     private $discussions;
 

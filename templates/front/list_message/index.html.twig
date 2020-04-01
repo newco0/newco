@@ -14,9 +14,23 @@
 				<ul class="p-0">
 					{% if discussion is defined %}
 						{% for userlist in discussion %}
-							<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion">
-								<h6 class="font-weight-bold">{{ userlist.idexp.firstname }}</h6>
-								<p class="font-weight-bold">{{ userlist.discussionHistories|last.message }}</p>
+							<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
+								<h6 class="font-weight-bold">
+									{% if userlist.idexp.id == iduserrequest %}
+										{{ userlist.dest.firstname }}
+									{% else %}
+										{{ userlist.idexp.firstname }}
+									{% endif %}
+								</h6>
+
+								{% if userlist.discussionHistories|last.message is defined %}
+									{% if userlist.discussionHistories|last.user.id != iduserrequest and not userlist.discussionHistories|last.isSeen %}
+										<p class="font-weight-bold lastmessage">{{ userlist.discussionHistories|last.message }}</p>
+									{% else %}
+										<p class="lastmessage">{{ userlist.discussionHistories|last.message }}</p>
+									{% endif %}
+								{% endif %}
+
 							</li>
 						{% endfor %}
 					{% endif %}

@@ -19,11 +19,6 @@ class DiscussionHistory
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $text;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $message;
 
     /**
@@ -74,18 +69,6 @@ class DiscussionHistory
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
     }
 
     public function getMessage(): ?string

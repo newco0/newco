@@ -105,7 +105,7 @@ class Discussion
 
     public function setIdExp(?Users $exp): self
     {
-        $this->id_exp = $exp;
+        $this->exp = $exp;
         return $this;
     }
 

@@ -222,6 +222,14 @@ h1 {
   cursor: pointer;
 }
 
+.backgray {
+  background-color: rgba(223, 223, 223, 0.856) !important;
+}
+
+.backwhite {
+  background-color: white;
+}
+
 .sendbtn {
   border: none;
 }

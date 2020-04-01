@@ -9,31 +9,55 @@ use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Form\MessageType;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ListMessageController extends AbstractController
 {
     /**
-     * @Route("/message", name="list_message")
+     * @Route("/message/{id}", name="list_message")
      */
-    public function index()
+    public function index(int $id = null)
     {
-
-        $iduserrequest = $this->getUser();
-        //$this->get('security.token_storage')->getToken()->getUser();
         $entityManager = $this->getDoctrine()->getManager();
+        $iduserrequest = $this->getUser();
+        if ($id) {
+            $checkifexitexptodest = $entityManager
+                ->getRepository(Discussion::class)
+                ->findBy([
+                    'exp' => $this->getUser(),
+                    'dest' => $id
+                ]);
+            if (!$checkifexitexptodest) {
+                $checkifexitdesttoexp = $entityManager
+                    ->getRepository(Discussion::class)
+                    ->findBy([
+                        'exp' => $id,
+                        'dest' => $iduserrequest
+                    ]);
+                if (!$checkifexitdesttoexp) {
+                    $userexp = $entityManager
+                        ->getRepository(Users::class)
+                        ->find($this->getUser());
+                    $userdest = $entityManager
+                        ->getRepository(Users::class)
+                        ->find($id);
+                    $newdisc = new Discussion();
+                    $newdisc->setDest($userdest)->setIdExp($userexp);
+                    $entityManager->persist($newdisc);
+                    $entityManager->flush();
+                }
+            }
+        }
         $discussion = $entityManager->getRepository(Discussion::class);
-        $user = $entityManager
-            ->getRepository(Users::class)
-            ->find($iduserrequest);
-        $discussion->findAllDiscussionByUser($iduserrequest);
+        $result = $discussion->findAllDiscussionByUser($iduserrequest);
         if (!$discussion) {
             return $this->render('front/list_message/index.html.twig');
         };
 
         return $this->render('front/list_message/index.html.twig', [
-            'discussion' => $discussion,
-            'iduserrequest' => $iduserrequest
+            'discussion' => $result,
+            'iduserrequest' => $iduserrequest->getId()
         ]);
     }
 
@@ -59,7 +83,6 @@ class ListMessageController extends AbstractController
         $message = new DiscussionHistory();
         $message->setUser($user);
         $message->setDiscussion($discussion);
-        $message->setText("coucou");
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,5 +97,24 @@ class ListMessageController extends AbstractController
             'iduserrequest' => $userId,
             'formmessage' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/updateseen/{userId}/{id}", name="update_seen_msg")
+     */
+    public function updateseenmessage($userId, $id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $discussionhist = $entityManager
+            ->getRepository(DiscussionHistory::class)
+            ->findAllDiscussionWhereNotUser($userId, $id);
+
+        foreach ($discussionhist as $key) {
+            $key->setIsSeen(true);
+            $entityManager->persist($key);
+            $entityManager->flush();
+        }
+    
+        return new JsonResponse(true);
     }
 }

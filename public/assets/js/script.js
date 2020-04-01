@@ -180,34 +180,34 @@ $(document).ready(function() {
   }
 
   $(".renderdiscussion").click(function(e) {
-    $(".renderdiscussion").each(function(elt){
-      $(".renderdiscussion").css('background-color', "white")
-    })
-    $(this).css('background-color', 'rgba(223, 223, 223, 0.856)')
+    $(".renderdiscussion").each(function(elt) {
+      $(".renderdiscussion").removeClass("backgray");
+    });
+    $(this).addClass("backgray");
     ajaxConversation($(this).attr("iddisc"), $(this).attr("idowner"));
   });
 
   if ($(window).width() > 576) {
-    $(".renderdiscussion")
-        .first().css('background-color', 'rgba(223, 223, 223, 0.856)')
-    ajaxConversation(
+    if (window.location.pathname == "/message") {
       $(".renderdiscussion")
         .first()
-        .attr("iddisc"),
-      $(".renderdiscussion")
-        .first()
-        .attr("idowner")
-    );
+        .addClass("backgray");
+        console.log('hey')
+        ajaxConversation(
+          $(".renderdiscussion")
+            .first()
+            .attr("iddisc"),
+          $(".renderdiscussion")
+            .first()
+            .attr("idowner")
+        );
+    }
   }
 
   let prevlistmessage = $(".prevlistmessage");
 
   prevlistmessage.click(function() {
-    $(".listconversation").removeClass("d-none");
-    $(".footmobile").removeClass("d-none");
-    $(".footmobile").addClass("d-flex");
-    $(".conversation").addClass("d-none");
-    prevlistmessage.addClass("d-none");
+    location.reload('message')
   });
 
   function ajaxConversation(arg1, arg2) {
@@ -230,6 +230,9 @@ $(document).ready(function() {
         $(window).scrollTop($(document).height());
         prevlistmessage.removeClass("d-none");
       }
+      setTimeout(function() {
+        updateisSeenMessage(idowner, iddisc);
+      }, 2000);
       sendmessage(arg1, arg2);
       $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
     });
@@ -258,6 +261,14 @@ $(document).ready(function() {
             ajaxConversation(iddisc, idowner);
           }
         });
+        $(".renderdiscussion").each(function() {
+          if ($(this).hasClass("backgray")) {
+            $(this)
+              .children()
+              .last()
+              .text($(".textmessage").val());
+          }
+        });
         $(".textmessage").val("");
         setTimeout(function() {
           if ($(window).width() < 576) {
@@ -267,6 +278,14 @@ $(document).ready(function() {
           }
         }, 200);
       }
+    });
+  }
+
+  function updateisSeenMessage(userId, id) {
+    $.ajax({
+      type: "POST",
+      url: `/updateseen/${userId}/${id}`
+    }).done(function(res) {
     });
   }
 });

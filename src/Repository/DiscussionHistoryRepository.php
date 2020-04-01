@@ -19,6 +19,18 @@ class DiscussionHistoryRepository extends ServiceEntityRepository
         parent::__construct($registry, DiscussionHistory::class);
     }
 
+    public function findAllDiscussionWhereNotUser($iduser, $iddiscussion)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->where('f.discussion = :idDiscussion')
+            ->andWhere('f.user != :userId')
+            ->setParameter('idDiscussion', $iddiscussion)
+            ->setParameter('userId', $iduser);
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
     // /**
     //  * @return DiscussionHistory[] Returns an array of DiscussionHistory objects
     //  */
