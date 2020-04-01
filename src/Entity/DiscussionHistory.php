@@ -52,13 +52,13 @@ class DiscussionHistory
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\discussion", inversedBy="discussionHistories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Discussion", inversedBy="discussionHistories")
      * @ORM\JoinColumn(nullable=false)
      */
     private $discussion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="discussionHistories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="discussionHistories")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -160,12 +160,12 @@ class DiscussionHistory
         return $this;
     }
 
-    public function getDiscussion(): ?discussion
+    public function getDiscussion(): ?Discussion
     {
         return $this->discussion;
     }
 
-    public function setDiscussion(?discussion $discussion): self
+    public function setDiscussion(?Discussion $discussion): self
     {
         $this->discussion = $discussion;
 

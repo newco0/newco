@@ -54,61 +54,6 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
-  if (window.location.pathname == "/message") {
-    $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
-  }
-
-  let clonelistmessage = $(".listmessage").clone();
-  let sendmessagemobile = $(".sendmessagemobile").clone();
-  let prevlistmessage = $(".prevlistmessage");
-
-  if ($(window).width() < 576) {
-    $(".conversationuser").click(function() {
-      $(".content-mobile").html(clonelistmessage);
-      $(".footmobile").removeClass("h-25");
-      $(".widthscreen").removeClass("h-100");
-      sendmessagemobile.removeClass("h-25");
-      sendmessagemobile.removeClass("border");
-      prevlistmessage.removeClass("d-none");
-      prevlistmessage.addClass("d-block");
-      $(".footmobile").html(sendmessagemobile);
-      $(".textmessage").removeClass("w-50");
-      $(".textmessage").addClass("w-75");
-      $(".titlemessage").text("Conversation");
-      sendmessage(sendmessagemobile);
-      setTimeout(function() {
-        $(window).scrollTop($(document).height());
-      }, 300);
-    });
-  } else {
-    sendmessage($(".sendmessagemobile"));
-  }
-
-  function sendmessage(arg) {
-    arg.submit(function(e) {
-      e.preventDefault();
-      if ($(".textmessage").val().length > 0) {
-        $(".listmessage")
-          .append(`<div class="d-flex justify-content-start w-100 p-3"><div class="w-75 d-flex"><img src="/assets/img/profil.jpg" class="d-sm-none d-md-block imgconv d-sm rounded-circle"><p class="mx-2 p-2 rounded bgcolor68c2e8 text-white">${$(
-          ".textmessage"
-        ).val()} <span class="datemessage d-block text-right">Envoyé le ${new Date(
-          Date.now()
-        ).toLocaleString("en-GB")}</span>
-                                </p>
-                            </div>
-                        </div>`);
-        $(".textmessage").val("");
-        setTimeout(function() {
-          if ($(window).width() < 576) {
-            $(window).scrollTop($(document).height());
-          } else {
-            $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
-          }
-        }, 200);
-      }
-    });
-  }
-
   $(".imgprofil").mouseenter(function() {
     $(".editimgprofil").css("opacity", 1);
   });
@@ -127,10 +72,6 @@ $(document).ready(function() {
   });
   $(".imgprofil").mouseleave(function() {
     $(".editimgprofil").css("opacity", 0);
-  });
-
-  prevlistmessage.click(function() {
-    location.reload("listmessage.php");
   });
 
   $(".btnconnexion").click(function() {
@@ -158,7 +99,6 @@ $(document).ready(function() {
   });
 
   $(".link-com").on("click", function() {
-    console.log("coucou");
     $(".div-com").toggle(500);
   });
 
@@ -220,14 +160,15 @@ $(document).ready(function() {
       url: `/contact`,
       data: data
     }).done(function(resp) {
-      if (resp === true) { // strict equal to true
-        $('.successsend').removeClass('d-none')
+      if (resp === true) {
+        // strict equal to true because the controller have to return true and a string is also true.
+        $(".successsend").removeClass("d-none");
         setTimeout(function() {
-          $('.formcontact')[0].reset();
-        $('.successsend').addClass('d-none')
+          $(".formcontact")[0].reset();
+          $(".successsend").addClass("d-none");
         }, 1500);
-      }else{
-        $('body').html(resp);
+      } else {
+        $("body").html(resp);
       }
     });
   });
@@ -236,5 +177,96 @@ $(document).ready(function() {
     setTimeout(function() {
       $(".alert-success").remove();
     }, 2000);
+  }
+
+  $(".renderdiscussion").click(function(e) {
+    $(".renderdiscussion").each(function(elt){
+      $(".renderdiscussion").css('background-color', "white")
+    })
+    $(this).css('background-color', 'rgba(223, 223, 223, 0.856)')
+    ajaxConversation($(this).attr("iddisc"), $(this).attr("idowner"));
+  });
+
+  if ($(window).width() > 576) {
+    $(".renderdiscussion")
+        .first().css('background-color', 'rgba(223, 223, 223, 0.856)')
+    ajaxConversation(
+      $(".renderdiscussion")
+        .first()
+        .attr("iddisc"),
+      $(".renderdiscussion")
+        .first()
+        .attr("idowner")
+    );
+  }
+
+  let prevlistmessage = $(".prevlistmessage");
+
+  prevlistmessage.click(function() {
+    $(".listconversation").removeClass("d-none");
+    $(".footmobile").removeClass("d-none");
+    $(".footmobile").addClass("d-flex");
+    $(".conversation").addClass("d-none");
+    prevlistmessage.addClass("d-none");
+  });
+
+  function ajaxConversation(arg1, arg2) {
+    const iddisc = arg1;
+    const idowner = arg2;
+    $.ajax({
+      type: "POST",
+      url: `/messagedisc/${idowner}/${iddisc}`
+    }).done(function(resp) {
+      $(".conversation").html(resp);
+      if ($(window).width() < 576) {
+        $(".sendmessagemobile").removeClass("heightform");
+        $(".listconversation").addClass("d-none");
+        $(".footmobile").addClass("d-none");
+        $(".footmobile").removeClass("d-flex");
+        $(".conversation").removeClass("d-none");
+        $(".listmessage").removeClass("border");
+        $(".textmessage").css("height", "2.2rem");
+        $(".sendmessagemobile").css("height", "4rem");
+        $(window).scrollTop($(document).height());
+        prevlistmessage.removeClass("d-none");
+      }
+      sendmessage(arg1, arg2);
+      $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+    });
+  }
+
+  function sendmessage(iddisc, idowner) {
+    $(".sendmessagemobile").submit(function(e) {
+      e.preventDefault();
+      if ($(".textmessage").val().length > 0) {
+        let data = {};
+        $(this)
+          .serializeArray()
+          .forEach(object => {
+            data[object.name] = object.value;
+          });
+        $.ajax({
+          type: "POST",
+          url: `/messagedisc/${idowner}/${iddisc}`,
+          data: data
+        }).done(function() {
+          if ($(window).width() < 576) {
+            $(".listconversation").addClass("d-none");
+            $(".conversation").removeClass("d-none");
+            ajaxConversation(iddisc, idowner);
+          } else {
+            ajaxConversation(iddisc, idowner);
+          }
+        });
+        $(".textmessage").val("");
+        setTimeout(function() {
+          if ($(window).width() < 576) {
+            $(window).scrollTop($(document).height());
+          } else {
+            $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+          }
+        }, 200);
+      }
+    });
   }
 });

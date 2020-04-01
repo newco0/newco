@@ -77,12 +77,12 @@ class Users implements UserInterface, \Serializable
     private $contacts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Discussion", mappedBy="id_exp", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Discussion", mappedBy="dest", orphanRemoval=true)
      */
     private $discussions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DiscussionHistory", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\DiscussionHistory", mappedBy="discussion", orphanRemoval=true)
      */
     private $discussionHistories;
 
