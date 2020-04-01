@@ -99,7 +99,6 @@ $(document).ready(function() {
   });
 
   $(".link-com").on("click", function() {
-    console.log("coucou");
     $(".div-com").toggle(500);
   });
 
@@ -156,14 +155,13 @@ $(document).ready(function() {
       .forEach(object => {
         data[object.name] = object.value;
       });
-    console.log(data);
     $.ajax({
       type: "POST",
       url: `/contact`,
       data: data
     }).done(function(resp) {
       if (resp === true) {
-        // strict equal to true
+        // strict equal to true because the controller have to return true and a string is also true.
         $(".successsend").removeClass("d-none");
         setTimeout(function() {
           $(".formcontact")[0].reset();
@@ -182,10 +180,16 @@ $(document).ready(function() {
   }
 
   $(".renderdiscussion").click(function(e) {
+    $(".renderdiscussion").each(function(elt){
+      $(".renderdiscussion").css('background-color', "white")
+    })
+    $(this).css('background-color', 'rgba(223, 223, 223, 0.856)')
     ajaxConversation($(this).attr("iddisc"), $(this).attr("idowner"));
   });
 
   if ($(window).width() > 576) {
+    $(".renderdiscussion")
+        .first().css('background-color', 'rgba(223, 223, 223, 0.856)')
     ajaxConversation(
       $(".renderdiscussion")
         .first()
@@ -196,8 +200,6 @@ $(document).ready(function() {
     );
   }
 
-  // let clonelistmessage = $(".listmessage").clone();
-  // let sendmessagemobile = $(".sendmessagemobile").clone();
   let prevlistmessage = $(".prevlistmessage");
 
   prevlistmessage.click(function() {
