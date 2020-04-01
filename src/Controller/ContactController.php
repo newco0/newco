@@ -21,9 +21,10 @@ class ContactController extends AbstractController
         unset($form);
         $entityManager = $this->getDoctrine()->getManager();
         $contact = new Contact();
+        $iduser = $this->getUser();
         $user = $entityManager
             ->getRepository(Users::class)
-            ->find(2);
+            ->find($iduser);
         $contact->setIdUser($user);
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);

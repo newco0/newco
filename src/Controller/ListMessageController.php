@@ -18,13 +18,15 @@ class ListMessageController extends AbstractController
      */
     public function index()
     {
-        $iduserrequest = 2;
+
+        $iduserrequest = $this->getUser();
+        //$this->get('security.token_storage')->getToken()->getUser();
         $entityManager = $this->getDoctrine()->getManager();
+        $discussion = $entityManager->getRepository(Discussion::class);
         $user = $entityManager
             ->getRepository(Users::class)
             ->find($iduserrequest);
-
-        $discussion = $entityManager->getRepository(Discussion::class)->findAllDiscussionByUser($user);
+        $discussion->findAllDiscussionByUser($iduserrequest);
         if (!$discussion) {
             return $this->render('front/list_message/index.html.twig');
         };

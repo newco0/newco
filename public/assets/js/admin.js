@@ -35,7 +35,6 @@ $(document).ready(function() {
   });
 
   $(".editimgprofil").mouseenter(function() {
-    console.log("coucou");
     $(this).css("opacity", 1);
   });
 
@@ -69,7 +68,7 @@ $(document).ready(function() {
     const id = location[location.length - 1];
     $.ajax({
       type: "POST",
-      url: `/messageadmin/${id}`,
+      url: `/admin/messageadmin/${id}`,
       data: data
     }).done(function(resp) {
       if (resp === true) {
@@ -127,7 +126,7 @@ $(document).ready(function() {
   $(".isreadmessage").on("change", function() {
     const id = $(this).attr("messageid");
     $.ajax({
-      url: `/listmessageadmin/updateisread/${id}`
+      url: `/admin/listmessageadmin/updateisread/${id}`
     }).done(function(resp) {
       if (resp == 1) {
         $(".successupdate").removeClass("d-none");
@@ -141,7 +140,7 @@ $(document).ready(function() {
   $(".isactivemessage").on("change", function() {
     const id = $(this).attr("messageid");
     $.ajax({
-      url: `/listmessageadmin/updateisactive/${id}`
+      url: `/admin/listmessageadmin/updateisactive/${id}`
     }).done(function(resp) {
       if (resp == 1) {
         $(".successupdate").removeClass("d-none");

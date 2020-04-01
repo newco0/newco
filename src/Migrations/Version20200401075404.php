@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200331063733 extends AbstractMigration
+final class Version20200401075404 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20200331063733 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE users ADD plain_password VARCHAR(255) NOT NULL, CHANGE roles roles VARCHAR(255) DEFAULT \'ROLE_USER\' NOT NULL');
+        $this->addSql('ALTER TABLE users ADD pseudo VARCHAR(255) NOT NULL, ADD roles VARCHAR(255) DEFAULT \'ROLE_USER\' NOT NULL, CHANGE date_update date_update DATETIME DEFAULT NULL, CHANGE date_delete date_delete DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200331063733 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE users DROP plain_password, CHANGE roles roles VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('ALTER TABLE users DROP pseudo, DROP roles, CHANGE date_update date_update DATE DEFAULT NULL, CHANGE date_delete date_delete DATE DEFAULT NULL');
     }
 }

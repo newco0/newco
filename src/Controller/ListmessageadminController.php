@@ -24,7 +24,7 @@ class ListmessageadminController extends AbstractController
     }
 
     /**
-     * @Route("/listmessageadmin/updateisread/{id}", name="updateisread")
+     * @Route("/admin/listmessageadmin/updateisread/{id}", name="updateisread")
      */
 
     public function updateIsRead($id)
@@ -42,7 +42,7 @@ class ListmessageadminController extends AbstractController
     }
 
     /**
-     * @Route("/listmessageadmin/updateisactive/{id}", name="updateisactive")
+     * @Route("/admin/listmessageadmin/updateisactive/{id}", name="updateisactive")
      */
 
     public function updateIsActive($id)
