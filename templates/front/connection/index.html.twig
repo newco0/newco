@@ -14,7 +14,6 @@
 		{% endblock %}
 		<title>Accueil NewCo</title>
 	</head>
-
 	<body class="container-fluid p-0 h-100">
 		<div class="row h-100 m-0">
 			<div class="col-12 col-lg-6 text-center logoside heightconnect d-flex flex-column align-items-center justify-content-center">
@@ -32,16 +31,17 @@
 			</div>
 			<div class="col-12 col-lg-6 bgcolor68c2e8 heightconnect d-flex align-items-center d-lg-block">
 				<div class="d-none d-lg-block">
-					<form method="post" action="" class="formconnect">
+					<form method="post" action="" class="formconnect empty">
 						<div class="row form-group d-flex justify-content-center mt-4">
 							<div class="col-8 col-xl-4 m-2 p-0">
-								<input class="form-control mx-xl-2  text-center" type="text" name="login" placeholder="Identifiant">
+								<input type="email" {% if last_username is defined %}value="{{ last_username }}"{% endif %} class="form-control mx-xl-2 text-center" name="_username" id="inputEmail" required autofocus>
 							</div>
 							<div class="col-8 col-xl-3 m-2 p-0">
-								<input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+								<input type="password" name="_password" id="inputPassword" class="form-control mx-xl-2 text-center" required>
 								<small id="pwdhelp" class="form-text text-center">
 									<a class="text-white text-decoration-none" href="">Mot de passe oublié ?</a>
 								</small>
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							</div>
 							<div class="col-8 col-xl-2 my-2 text-center">
 								<button type="submit" class="btn btnconnection bgcolor68c2e8 text-white mx-xl-2">Connexion</button>
@@ -50,42 +50,39 @@
 					</form>
 				</div>
 				<div class="col-12 col-sm-8 mt-lg-5 mx-auto text-center">
-					<h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social
-					</h1>
+					<h1 class="titleconnect text-white">Rejoignez NewCo, le nouveau réseau social</h1>
 				</div>
 				<div class="col-12 mt-5 mx-auto text-center d-none d-lg-block">
-					<form method="post" action="" class="formsubscribe">
+					{{ form_start(form, {'attr': {'method': 'post', 'action': 'inscription', 'class':'empty'}}) }}
 						<div class="row w-75 inscriptionform mx-auto form-group d-flex justify-content-center mt-4">
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2  text-center" type="text" name="name" placeholder="Nom">
+								{{ form_widget(form.lastname, {'attr': {'class': 'form-control mx-xl-2 text-center', 'placeholder': 'Nom'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
+								{{ form_widget(form.firstname, {'attr': {'class': 'form-control mx-xl-2 text-center', 'placeholder': 'Prénom'}}) }}
+							</div>
+							<div class="col-12 col-sm-6 col-xl-5 my-2 d-flex justify-content-center">
+								{{ form_widget(form.date_birth, {'attr': {'class': 'mx-xl-2 text-center'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2  text-center" type="date" name="datebirth">
+								{{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'email', 'placeholder': 'Email'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
+								{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+								{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Confirmation'}}) }}
 							</div>
 							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
-							</div>
-							<div class="col-12 col-sm-6 col-xl-5 my-2">
-								<input class="form-control mx-xl-2  text-center" type="text" name="pseudo" placeholder="Pseudo">
+								{{ form_widget(form.pseudo, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'text', 'placeholder': 'Pseudo'}}) }}
 							</div>
 							<div class="col-6 col-xl-5 my-2 p-0">
 								<button type="submit" class="btn btninscription bgcolor68c2e8 text-white mx-xl-2">S'inscrire</button>
 							</div>
 						</div>
-					</form>
+					{{ form_end(form) }}
 				</div>
 			</div>
-
-
 		</div>
 	</body>
 

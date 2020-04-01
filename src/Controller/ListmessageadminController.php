@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ListmessageadminController extends AbstractController
 {
     /**
-     * @Route("/listmessageadmin", name="listmessageadmin")
+     * @Route("/admin/listmessageadmin", name="listmessageadmin")
      */
     public function index()
     {

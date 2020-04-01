@@ -5,10 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class EditAdminController extends AbstractController
 {
     /**
-     * @Route("/editadmin", name="edit_admin")
+     * @Route("/admin/editadmin", name="edit_admin")
      */
     public function index()
     {

@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Users;
 
 class EditUserController extends AbstractController
 {
     /**
-     * @Route("/edituser", name="edit_user")
+     * @Route("/admin/edituser", name="edit_user")
      */
     public function index()
     {

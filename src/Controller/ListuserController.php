@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListuserController extends AbstractController
 {
     /**
-     * @Route("/listuser", name="listuser")
+     * @Route("/admin/listuser", name="listuser")
      */
     public function index()
     {

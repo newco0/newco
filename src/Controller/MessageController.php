@@ -17,7 +17,7 @@ use Symfony\Component\Mime\Email;
 class MessageController extends AbstractController
 {
     /**
-     * @Route("/messageadmin/{id}", name="messageadmin")
+     * @Route("/admin/messageadmin/{id}", name="messageadmin")
      */
     public function index(MailerInterface $mailer, Request $request, $id)
     {

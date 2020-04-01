@@ -6,11 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -40,6 +42,11 @@ class Users
     private $email;
 
     /**
+     * @Assert\EqualTo("password")
+     */
+    private $plainPassword;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -55,12 +62,12 @@ class Users
     private $date_register;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_update;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_delete;
 
@@ -105,9 +112,16 @@ class Users
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\AdminResponse", mappedBy="admin")
+     * @ORM\Column(type="string", length=255)
      */
-    private $adminResponses;
+    private $pseudo;
+
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": "ROLE_USER"})
+     */
+    private $roles;
+
+
 
     public function __construct()
     {
@@ -119,14 +133,9 @@ class Users
         $this->discussionHistories = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->adminResponses = new ArrayCollection();
-    }
-    /**
-     * @inheritDoc
-     */
-    public function getUsername()
-    {
-        return $this->username;
+        $this->setIsActive(true);
+        $this->setDateRegister(new \DateTime('now'));
+        $this->setRoles('ROLE_USER');
     }
 
     public function getId(): ?int
@@ -187,6 +196,16 @@ class Users
         $this->email = $email;
 
         return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     public function getPassword(): ?string
@@ -491,33 +510,75 @@ class Users
         return $this;
     }
 
-    /**
-     * @return Collection|AdminResponse[]
-     */
-    public function getAdminResponses(): Collection
+    public function getPseudo(): ?string
     {
-        return $this->adminResponses;
+        return $this->pseudo;
     }
 
-    public function addAdminResponse(AdminResponse $adminResponse): self
+    public function setPseudo(string $pseudo): self
     {
-        if (!$this->adminResponses->contains($adminResponse)) {
-            $this->adminResponses[] = $adminResponse;
-            $adminResponse->setAdmin($this);
-        }
+        $this->pseudo = $pseudo;
 
         return $this;
     }
+    /**
+     * @inheritDoc
+     */
 
-    public function removeAdminResponse(AdminResponse $adminResponse): self
+    public function getUsername()
     {
-        if ($this->adminResponses->contains($adminResponse)) {
-            $this->adminResponses->removeElement($adminResponse);
-            // set the owning side to null (unless already changed)
-            if ($adminResponse->getAdmin() === $this) {
-                $adminResponse->setAdmin(null);
-            }
-        }
+        return $this->email;
+    }
+
+    public function getSalt()
+    {
+        // you may need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getRoles(): array
+    {
+        $roles[] = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->email,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
