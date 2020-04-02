@@ -40,9 +40,11 @@
 					{{ form_widget(form.password.second, {'attr': {'class': 'form-control mx-xl-2 text-center mdp1', 'type':'password', 'placeholder': 'Confirmation'}}) }}
 				</div>
 			
-		
-				{{ form_widget(form.rol) }} 
-			
+				
+				{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+				{{ form_widget(form.rol, { 'disabled':'disabled' }) }} 
+				{% endif %}
+
 				<div class="col-12 my-2 text-center">
 					<button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Confirmation</button>
 				</div>
