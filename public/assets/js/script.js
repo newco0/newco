@@ -192,22 +192,21 @@ $(document).ready(function() {
       $(".renderdiscussion")
         .first()
         .addClass("backgray");
-        console.log('hey')
-        ajaxConversation(
-          $(".renderdiscussion")
-            .first()
-            .attr("iddisc"),
-          $(".renderdiscussion")
-            .first()
-            .attr("idowner")
-        );
+      ajaxConversation(
+        $(".renderdiscussion")
+          .first()
+          .attr("iddisc"),
+        $(".renderdiscussion")
+          .first()
+          .attr("idowner")
+      );
     }
   }
 
   let prevlistmessage = $(".prevlistmessage");
 
   prevlistmessage.click(function() {
-    location.reload('message')
+    location.reload("message");
   });
 
   function ajaxConversation(arg1, arg2) {
@@ -231,7 +230,7 @@ $(document).ready(function() {
         prevlistmessage.removeClass("d-none");
       }
       setTimeout(function() {
-        updateisSeenMessage(idowner, iddisc);
+        updateisSeenMessage(idowner, iddisc, $(".backgray"));
       }, 2000);
       sendmessage(arg1, arg2);
       $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
@@ -281,11 +280,14 @@ $(document).ready(function() {
     });
   }
 
-  function updateisSeenMessage(userId, id) {
+  function updateisSeenMessage(userId, id, arg3) {
+    arg3
+      .children()
+      .last()
+      .removeClass("font-weight-bold");
     $.ajax({
       type: "POST",
       url: `/updateseen/${userId}/${id}`
-    }).done(function(res) {
-    });
+    }).done(function(res) {});
   }
 });
