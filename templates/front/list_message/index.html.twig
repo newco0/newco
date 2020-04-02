@@ -11,13 +11,12 @@
 		</div>
 		{% if discussion|length <= 1 %}
 			{% if discussion|length == 0 or discussion[0].discussionHistories|length == 0 and discussion[0].idexp.id != iduserrequest %}
-				<p class="bg-success text-white text-center">Oups ! vous n'avez pas encore de message</p>
+				<p class="bg-success text-white text-center rounded p-2">Oups ! vous n'avez pas encore de message, vous êtes sans amis ??? 😥</p>
 			{% endif %}
 		{% endif %}
 		<div class="d-flex row content-conversation content-mobile h-100 ">
 			<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
 				<ul class="p-0">
-
 					{% if discussion is defined %}
 						{% for userlist in discussion %}
 							{% if not userlist.discussionHistories|last.message is defined %}

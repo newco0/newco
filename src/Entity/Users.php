@@ -120,8 +120,6 @@ class Users implements UserInterface, \Serializable
      */
     private $roles;
 
-
-
     public function __construct()
     {
         $this->friends = new ArrayCollection();
@@ -135,6 +133,7 @@ class Users implements UserInterface, \Serializable
         $this->setIsActive(true);
         $this->setDateRegister(new \DateTime('now'));
         $this->setRoles('ROLE_USER');
+        $this->coucous = new ArrayCollection();
     }
 
     public function getId(): ?int

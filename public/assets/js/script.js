@@ -1,3 +1,20 @@
+if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
+  let idcontact = window.location.pathname.split("/")[
+    window.location.pathname.split("/").length - 1
+  ];
+  // charge before the page to ensure the execution if the user exit from the page before his load
+  const idtodelete = $(`.renderdiscussion[iddest=${idcontact}]`).attr("iddisc");
+
+  window.onbeforeunload = function() {
+    $.ajax({
+      type: "POST",
+      url: `/deletedisc/${idtodelete}`
+    });
+
+    return "Deleted";
+  };
+}
+
 $(document).ready(function() {
   $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
   let formconnect = $(".formconnect").clone();
@@ -192,19 +209,21 @@ $(document).ready(function() {
       $(".renderdiscussion")
         .first()
         .addClass("backgray");
-      ajaxConversation(
-        $(".renderdiscussion")
-          .first()
-          .attr("iddisc"),
-        $(".renderdiscussion")
-          .first()
-          .attr("idowner")
-      );
+      if ($(".renderdiscussion").length > 0) {
+        ajaxConversation(
+          $(".renderdiscussion")
+            .first()
+            .attr("iddisc"),
+          $(".renderdiscussion")
+            .first()
+            .attr("idowner")
+        );
+      }
     } else if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
-      const idcontact = window.location.pathname.split("/")[
+      let idtocontact;
+      let idcontact = window.location.pathname.split("/")[
         window.location.pathname.split("/").length - 1
       ];
-      let idtocontact;
       if ($(`.renderdiscussion[iddest=${idcontact}]`).length > 0) {
         idtocontact = $(`.renderdiscussion[iddest=${idcontact}]`);
       } else if ($(`.renderdiscussion[idexp=${idcontact}]`).length > 0) {

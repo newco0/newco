@@ -19,7 +19,8 @@ class Friend
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isFriend;
+    private $isAccepted;
+
 
      /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
@@ -53,14 +54,14 @@ class Friend
         return $this->id;
     }
 
-    public function getIsFriend(): ?bool
+    public function getIsAccepted(): ?bool
     {
-        return $this->isFriend;
+        return $this->isAccepted;
     }
 
-    public function setIsFriend(bool $isFriend): self
+    public function setIsAccepted(bool $isAccepted): self
     {
-        $this->isFriend = $isFriend;
+        $this->isAccepted = $isAccepted;
 
         return $this;
     }

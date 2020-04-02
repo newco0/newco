@@ -30,6 +30,7 @@ class FriendController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $allusers = $entityManager->getRepository(Users::class)->findAll();
+        // $allusers->getFr
         $iduserrequest = $this->getUser();
         
         return $this->render('front/searchfriends/index.html.twig', [
