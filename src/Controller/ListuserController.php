@@ -12,6 +12,7 @@ class ListuserController extends AbstractController
      */
     public function index()
     {
+        
         return $this->render('admin/listuser/index.html.twig', [
             'controller_name' => 'ListuserController',
         ]);

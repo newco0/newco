@@ -26,17 +26,17 @@ class ListMessageController extends AbstractController
             $checkifexitexptodest = $entityManager
                 ->getRepository(Discussion::class)
                 ->findBy([
-                    'exp' => $this->getUser(),
+                    'exp' => $iduserrequest,
                     'dest' => $id
                 ]);
             if (!$checkifexitexptodest) {
-                $checkifexitdesttoexp = $entityManager
+                $checkifexitexptodest = $entityManager
                     ->getRepository(Discussion::class)
                     ->findBy([
                         'exp' => $id,
                         'dest' => $iduserrequest
                     ]);
-                if (!$checkifexitdesttoexp) {
+                if (!$checkifexitexptodest) {
                     $userexp = $entityManager
                         ->getRepository(Users::class)
                         ->find($this->getUser());
@@ -50,6 +50,7 @@ class ListMessageController extends AbstractController
                 }
             }
         }
+
         $discussion = $entityManager->getRepository(Discussion::class);
         $result = $discussion->findAllDiscussionByUser($iduserrequest);
         if (!$discussion) {

@@ -188,7 +188,7 @@ $(document).ready(function() {
   });
 
   if ($(window).width() > 576) {
-    if (window.location.pathname == "/message") {
+    if (window.location.pathname.match(/^\/message$/)) {
       $(".renderdiscussion")
         .first()
         .addClass("backgray");
@@ -200,6 +200,18 @@ $(document).ready(function() {
           .first()
           .attr("idowner")
       );
+    } else if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
+      const idcontact = window.location.pathname.split("/")[
+        window.location.pathname.split("/").length - 1
+      ];
+      let idtocontact;
+      if ($(`.renderdiscussion[iddest=${idcontact}]`).length > 0) {
+        idtocontact = $(`.renderdiscussion[iddest=${idcontact}]`);
+      } else if ($(`.renderdiscussion[idexp=${idcontact}]`).length > 0) {
+        idtocontact = $(`.renderdiscussion[idexp=${idcontact}]`);
+      }
+      ajaxConversation(idtocontact.attr("iddisc"), idtocontact.attr("idowner"));
+      idtocontact.addClass("backgray");
     }
   }
 
@@ -265,7 +277,13 @@ $(document).ready(function() {
             $(this)
               .children()
               .last()
-              .text($(".textmessage").val());
+              .replaceWith(
+                "<p>" +
+                  $(".textmessage")
+                    .val()
+                    .slice(0, 20) +
+                  "...</p>"
+              );
           }
         });
         $(".textmessage").val("");

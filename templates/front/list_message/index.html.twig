@@ -17,11 +17,12 @@
 		<div class="d-flex row content-conversation content-mobile h-100 ">
 			<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
 				<ul class="p-0">
+
 					{% if discussion is defined %}
 						{% for userlist in discussion %}
 							{% if not userlist.discussionHistories|last.message is defined %}
 								{% if userlist.idexp.id == iduserrequest %}
-									<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
+									<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 										<h6 class="font-weight-bold">
 											{% if userlist.idexp.id == iduserrequest %}
 												{{ userlist.dest.firstname }}
@@ -33,7 +34,7 @@
 									</li>
 								{% endif %}
 							{% else %}
-								<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
+								<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 									<h6 class="font-weight-bold">
 										{% if userlist.idexp.id == iduserrequest %}
 											{{ userlist.dest.firstname }}
@@ -43,9 +44,9 @@
 									</h6>
 									{% if userlist.discussionHistories|last.message is defined %}
 										{% if userlist.discussionHistories|last.user.id != iduserrequest and not userlist.discussionHistories|last.isSeen %}
-											<p class="font-weight-bold lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 10) }}...</p>
+											<p class="font-weight-bold lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
 										{% else %}
-											<p class="lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 10) }}...</p>
+											<p class="lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
 										{% endif %}
 									{% else %}
 										<pre> </pre>
