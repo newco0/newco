@@ -121,7 +121,6 @@ class Users implements UserInterface, \Serializable
     private $roles;
 
 
-
     public function __construct()
     {
         $this->friends = new ArrayCollection();
@@ -536,15 +535,21 @@ class Users implements UserInterface, \Serializable
         return null;
     }
 
+    // public function getRoles(): array
+    // {
+    //     $roles[] = $this->roles;
+    //     // guarantee every user at least has ROLE_USER
+    //     $roles[] = 'ROLE_USER';
+
+    //     return array_unique($roles);
+    // }
     public function getRoles(): array
     {
+        $roles = [];
         $roles[] = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
-
     public function eraseCredentials()
     {
     }

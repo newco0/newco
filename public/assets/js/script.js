@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
   let formconnect = $(".formconnect").clone();
   let formsubscribe = $(".formsubscribe").clone();
-  $(window).resize(function() {
+  $(window).resize(function () {
     if (
       window.location.pathname == "/newco/html/front/suggestionpage.php" ||
       window.location.pathname == "/newco/html/front/notificationpage.php" ||
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $(".btninscription").addClass("bgcolor0d1d3d");
   }
 
-  $(".showmore").on("click", function() {
+  $(".showmore").on("click", function () {
     if ($(this).html() == "Voir plus") {
       $(this).text("Voir moins");
     } else {
@@ -54,65 +54,65 @@ $(document).ready(function() {
       .toggleClass("d-none");
   });
 
-  $(".imgprofil").mouseenter(function() {
+  $(".imgprofil").mouseenter(function () {
     $(".editimgprofil").css("opacity", 1);
   });
 
-  $(".editimgprofil").mouseenter(function() {
+  $(".editimgprofil").mouseenter(function () {
     $(".editimgprofil").css("opacity", 1);
     console.log("coucou");
   });
 
-  $(".fileprofil").mouseenter(function() {
+  $(".fileprofil").mouseenter(function () {
     $(".editimgprofil").css("opacity", 1);
   });
 
-  $(".fileprofil").mouseleave(function() {
+  $(".fileprofil").mouseleave(function () {
     $(".editimgprofil").css("opacity", 0);
   });
-  $(".imgprofil").mouseleave(function() {
+  $(".imgprofil").mouseleave(function () {
     $(".editimgprofil").css("opacity", 0);
   });
 
-  $(".btnconnexion").click(function() {
+  $(".btnconnexion").click(function () {
     $(".formmobileconnect").append(formconnect);
     $(".formmobilesubscribe").html("");
     $(".closesubscribe").css("opacity", 0);
     $(".closeconnect").css("opacity", 1);
   });
 
-  $(".closeconnect").click(function() {
+  $(".closeconnect").click(function () {
     $(".closeconnect").css("opacity", 0);
     $(".formmobileconnect").html("");
   });
 
-  $(".btnsubscribe").click(function() {
+  $(".btnsubscribe").click(function () {
     $(".formmobilesubscribe").append(formsubscribe);
     $(".formmobileconnect").html("");
     $(".closeconnect").css("opacity", 0);
     $(".closesubscribe").css("opacity", 1);
   });
 
-  $(".closesubscribe").click(function() {
+  $(".closesubscribe").click(function () {
     $(".closesubscribe").css("opacity", 0);
     $(".formmobilesubscribe").html("");
   });
 
-  $(".link-com").on("click", function() {
+  $(".link-com").on("click", function () {
     $(".div-com").toggle(500);
   });
 
-  $(".block-menu").click(function() {
+  $(".block-menu").click(function () {
     $(".menu").toggle(3000, "slow");
   });
 
-  $(".clearcomment").click(function() {
+  $(".clearcomment").click(function () {
     $(this)
       .parent()
       .remove();
   });
 
-  $(".zoom").click(function(e) {
+  $(".zoom").click(function (e) {
     $(".zoomer").html("");
     let imgtozoom = $(this).clone();
     imgtozoom.removeClass("arround-newspaper rounded-circle mr-2");
@@ -126,7 +126,7 @@ $(document).ready(function() {
     window.location.pathname == "/newco/html/front/journal.php" ||
     window.location.pathname == "/newco/html/front/journal"
   ) {
-    $(document).click(function(e) {
+    $(document).click(function (e) {
       if (!$(e.target).hasClass("imgen")) {
         $(".zoomer").html("");
         $(".zoomer").css("display", "none");
@@ -134,20 +134,20 @@ $(document).ready(function() {
     });
   }
 
-  $(".comment").click(function() {
+  $(".comment").click(function () {
     if ($(".addcomment").hasClass("d-none")) {
       $(".addcomment").fadeIn("slow");
       $(".addcomment").addClass("d-flex");
       $(".addcomment").removeClass("d-none");
     } else {
-      $(".addcomment").fadeOut("slow", function() {
+      $(".addcomment").fadeOut("slow", function () {
         $(this).addClass("d-none");
         $(this).removeClass("d-flex");
       });
     }
   });
 
-  $(".formcontact").submit(function(e) {
+  $(".formcontact").submit(function (e) {
     e.preventDefault();
     let data = {};
     $(this)
@@ -159,11 +159,11 @@ $(document).ready(function() {
       type: "POST",
       url: `/contact`,
       data: data
-    }).done(function(resp) {
+    }).done(function (resp) {
       if (resp === true) {
         // strict equal to true because the controller have to return true and a string is also true.
         $(".successsend").removeClass("d-none");
-        setTimeout(function() {
+        setTimeout(function () {
           $(".formcontact")[0].reset();
           $(".successsend").addClass("d-none");
         }, 1500);
@@ -174,13 +174,13 @@ $(document).ready(function() {
   });
 
   if ($(".containform").children(".alert-success").length == 1) {
-    setTimeout(function() {
+    setTimeout(function () {
       $(".alert-success").remove();
     }, 2000);
   }
 
-  $(".renderdiscussion").click(function(e) {
-    $(".renderdiscussion").each(function(elt){
+  $(".renderdiscussion").click(function (e) {
+    $(".renderdiscussion").each(function (elt) {
       $(".renderdiscussion").css('background-color', "white")
     })
     $(this).css('background-color', 'rgba(223, 223, 223, 0.856)')
@@ -189,7 +189,7 @@ $(document).ready(function() {
 
   if ($(window).width() > 576) {
     $(".renderdiscussion")
-        .first().css('background-color', 'rgba(223, 223, 223, 0.856)')
+      .first().css('background-color', 'rgba(223, 223, 223, 0.856)')
     ajaxConversation(
       $(".renderdiscussion")
         .first()
@@ -202,7 +202,7 @@ $(document).ready(function() {
 
   let prevlistmessage = $(".prevlistmessage");
 
-  prevlistmessage.click(function() {
+  prevlistmessage.click(function () {
     $(".listconversation").removeClass("d-none");
     $(".footmobile").removeClass("d-none");
     $(".footmobile").addClass("d-flex");
@@ -216,7 +216,7 @@ $(document).ready(function() {
     $.ajax({
       type: "POST",
       url: `/messagedisc/${idowner}/${iddisc}`
-    }).done(function(resp) {
+    }).done(function (resp) {
       $(".conversation").html(resp);
       if ($(window).width() < 576) {
         $(".sendmessagemobile").removeClass("heightform");
@@ -236,7 +236,7 @@ $(document).ready(function() {
   }
 
   function sendmessage(iddisc, idowner) {
-    $(".sendmessagemobile").submit(function(e) {
+    $(".sendmessagemobile").submit(function (e) {
       e.preventDefault();
       if ($(".textmessage").val().length > 0) {
         let data = {};
@@ -249,7 +249,7 @@ $(document).ready(function() {
           type: "POST",
           url: `/messagedisc/${idowner}/${iddisc}`,
           data: data
-        }).done(function() {
+        }).done(function () {
           if ($(window).width() < 576) {
             $(".listconversation").addClass("d-none");
             $(".conversation").removeClass("d-none");
@@ -259,7 +259,7 @@ $(document).ready(function() {
           }
         });
         $(".textmessage").val("");
-        setTimeout(function() {
+        setTimeout(function () {
           if ($(window).width() < 576) {
             $(window).scrollTop($(document).height());
           } else {
@@ -269,4 +269,28 @@ $(document).ready(function() {
       }
     });
   }
+
+  $(".formupdate").submit(function (e) {
+    e.preventDefault();
+    let data = {};
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    $.ajax({
+      type: "POST",
+      url: `/admin/edituser`,
+      data: data
+    }).done(function (resp) {
+      if (resp === true) {
+        $('.mdp').val('');
+        $('.mdp1').val('');
+        $(".successsend").removeClass("d-none");
+        setTimeout(function () {
+          $(".successsend").addClass("d-none");
+        }, 1500);
+      }
+    });
+  });
 });

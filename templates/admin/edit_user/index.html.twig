@@ -3,7 +3,10 @@
 {% block content %}
 	<div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">
 		<h5 class="text-center titlepage">Profil utilisateur</h5>
-		<form method="post" class="form-group my-5" action="">
+		<div class="col-12 bg text-white successsend d-none bg-success">
+            <p>Modifications effectuées</p>
+        </div>
+		{{ form_start(form, {'attr': {'method': 'post', 'class': 'form-group my-5 formupdate', 'userid': users.id}}) }}
 			<div class="row d-md-flex mx-auto align-items-center">
 				<div class="col-12 col-md-4 my-2 d-flex justify-content-center position-relative">
 					<img class="imgprofil rounded-circle" src="/assets/img/profil.jpg" alt="">
@@ -16,31 +19,31 @@
 					<i class="w-25 icofont-edit editimgprofil position-absolute"></i>
 				</div>
 				<div class="col-12 col-md-4 my-2 mx-auto">
-					<input class="mx-xl-2 form-control pseudoprofil mx-auto text-center" type="text" name="pseudo" placeholder="Pseudo">
+					{{ form_widget(form.pseudo, {'attr': {'class': 'form-control pseudoprofil mx-auto text-center updateuseradmin', 'type':'text', 'placeholder': 'Pseudo'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2 text-center" type="text" name="name" placeholder="Nom">
+					{{ form_widget(form.lastname, {'attr': {'class': 'form-control mx-xl-2 text-center', 'placeholder': 'Nom'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2 text-center" type="text" name="firstname" placeholder="Prénom">
+					{{ form_widget(form.firstname, {'attr': {'class': 'form-control mx-xl-2 text-center', 'placeholder': 'Prénom'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2  text-center" type="date" name="datebirth">
+					{{ form_widget(form.date_birth, {'attr': {'class': 'mx-xl-2 text-center'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2 text-center" type="email" name="email" placeholder="Adresse mail">
+					{{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'email', 'placeholder': 'Email'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2 text-center" type="password" name="password" placeholder="Mot de passe">
+					{{ form_widget(form.password.first, {'attr': {'class': 'form-control mx-xl-2 text-center mdp', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 my-2">
-					<input class="form-control mx-xl-2  text-center" type="password" name="confirmpwd" placeholder="Confirmation">
+					{{ form_widget(form.password.second, {'attr': {'class': 'form-control mx-xl-2 text-center mdp1', 'type':'password', 'placeholder': 'Confirmation'}}) }}
 				</div>
 				<div class="col-12 my-2 text-center">
 					<button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Confirmation</button>
 				</div>
 			</div>
-		</form>
+		{{ form_end(form) }}
 	</div>
 	<div class="col-10 col-sm-8 mx-auto my-3">
 		<h5 class="text-center tittlepage">Publications de l'utilisateur</h5>
