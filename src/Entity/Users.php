@@ -536,13 +536,10 @@ class Users implements UserInterface, \Serializable
         return null;
     }
 
-    public function getRoles(): array
+    public function getRoles()
     {
-        $roles[] = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function eraseCredentials()

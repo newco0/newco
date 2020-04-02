@@ -9,12 +9,29 @@
 			<i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
 			<h1 class="titlemessage">Mes messages</h1>
 		</div>
+		{% if discussion|length <= 1 %}
+			{% if discussion|length == 0 or discussion[0].discussionHistories|length == 0 and discussion[0].idexp.id != iduserrequest %}
+				<p class="bg-success text-white text-center">Oups ! vous n'avez pas encore de message</p>
+			{% endif %}
+		{% endif %}
 		<div class="d-flex row content-conversation content-mobile h-100 ">
 			<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
 				<ul class="p-0">
 					{% if discussion is defined %}
 						{% for userlist in discussion %}
-							{% if not userlist.discussionHistories|last.message is defined and userlist.discussionHistories.owner.id != iduserrequest %}
+							{% if not userlist.discussionHistories|last.message is defined %}
+								{% if userlist.idexp.id == iduserrequest %}
+									<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
+										<h6 class="font-weight-bold">
+											{% if userlist.idexp.id == iduserrequest %}
+												{{ userlist.dest.firstname }}
+											{% else %}
+												{{ userlist.idexp.firstname }}
+											{% endif %}
+										</h6>
+										<pre></pre>
+									</li>
+								{% endif %}
 							{% else %}
 								<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 									<h6 class="font-weight-bold">
@@ -34,7 +51,6 @@
 										<pre> </pre>
 									{% endif %}
 								</li>
-
 							{% endif %}
 						{% endfor %}
 					{% endif %}

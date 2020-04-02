@@ -56,9 +56,6 @@ class ListMessageController extends AbstractController
             return $this->render('front/list_message/index.html.twig');
         };
 
-        // dd($result);
-
-
         return $this->render('front/list_message/index.html.twig', [
             'discussion' => $result,
             'iduserrequest' => $iduserrequest->getId()
