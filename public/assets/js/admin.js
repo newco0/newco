@@ -190,4 +190,30 @@ $(document).ready(function() {
       }
     });
   });
+
+  $(".formupdate").submit(function (e) {
+    e.preventDefault();
+    let data = {};
+    const id = $(this).attr("userid");
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    $.ajax({
+      type: "POST",
+      url: `/admin/editadmin/${id}`,
+      data: data
+    }).done(function (resp) {
+      console.log(resp)
+      if (resp === true) {
+        $('.mdp').val('');
+        $('.mdp1').val('');
+        $(".successsend").removeClass("d-none");
+        setTimeout(function () {
+          $(".successsend").addClass("d-none");
+        }, 1500);
+      }
+    });
+  });
 });

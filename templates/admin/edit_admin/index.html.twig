@@ -4,7 +4,10 @@
 
 	<div class="col-12 col-sm-10 col-xl-8 mx-auto my-3">
 		<h5 class="text-center titlepage">Profil administrateur</h5>
-		{{ form_start(form, {'attr': {'method': 'post', 'class': 'form-group my-5'}}) }}
+		<div class="col-12 bg text-white successsend d-none bg-success">
+            <p>Modifications effectuées</p>
+        </div>
+		{{ form_start(form, {'attr': {'method': 'post', 'class': 'form-group my-5 formupdate', 'userid': users.id}}) }}
 			<div class="row d-md-flex mx-auto align-items-center">
 				<div class="col-12 col-md-4 my-2 d-flex justify-content-center position-relative">
 					<img class="imgprofil rounded-circle" src="/assets/img/profil.jpg" alt="">
@@ -16,7 +19,7 @@
 					{{ form_widget(form.pseudo, {'attr': {'class': 'mx-xl-2 form-control pseudoprofil mx-auto text-center', 'type':'text', 'placeholder': 'Pseudo'}}) }}
 				</div>
 				<div class="col-12 col-md-4 my-2 d-flex justify-content-center position-relative">
-				 {{ form_widget(form.rol) }} 
+				{{ form_widget(form.rol) }} 
 					{# <select name="adminLevel" id="adminlevel-select">
 						<option value="">--Admin Level--</option>
 						<option value="admin">Admin</option>

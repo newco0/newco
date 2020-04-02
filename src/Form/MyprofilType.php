@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class MyprofilType extends AbstractType
 {
@@ -33,6 +33,7 @@ class MyprofilType extends AbstractType
             ->add('pseudo')
             ->add('rol', ChoiceType::class, [
                 'choices' => [
+                        'Utilisateur' => 'ROLE_USER',
                         'Admin' => 'ROLE_ADMIN',
                         'Super Admin' => 'ROLE_SUPER_ADMIN'
             ],
@@ -46,4 +47,5 @@ class MyprofilType extends AbstractType
             'data_class' => Users::class,
         ]);
     }
+
 }

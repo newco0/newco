@@ -39,9 +39,14 @@
 				<div class="col-12 col-sm-6 col-md-4 my-2">
 					{{ form_widget(form.password.second, {'attr': {'class': 'form-control mx-xl-2 text-center mdp1', 'type':'password', 'placeholder': 'Confirmation'}}) }}
 				</div>
+			
+		
+				{{ form_widget(form.rol) }} 
+			
 				<div class="col-12 my-2 text-center">
 					<button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Confirmation</button>
 				</div>
+				
 			</div>
 		{{ form_end(form) }}
 	</div>

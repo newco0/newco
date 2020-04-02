@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
-use App\Form\InscriptionType;
+use App\Form\MyprofilType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,7 +21,7 @@ class EditUserController extends AbstractController
         $users = $entityManager
                 ->getRepository(Users::class)
                 ->find($id);
-        $form = $this->createForm(InscriptionType::class, $users);
+        $form = $this->createForm(MyprofilType::class, $users);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($users, $users->getPassword());

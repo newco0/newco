@@ -34,8 +34,8 @@ class EditAdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($users);
             $entityManager->flush();
-            // return new JsonResponse(true);
+            return new JsonResponse(true);
         }
-        return $this->render('/admin/edit_admin/index.html.twig', ['form' => $form->createView()]);
+        return $this->render('/admin/edit_admin/index.html.twig', ['form' => $form->createView(),'users' => $users]);
     }
 }
