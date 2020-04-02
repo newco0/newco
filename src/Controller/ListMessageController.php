@@ -9,6 +9,7 @@ use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Form\MessageType;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -55,6 +56,9 @@ class ListMessageController extends AbstractController
             return $this->render('front/list_message/index.html.twig');
         };
 
+        // dd($result);
+
+
         return $this->render('front/list_message/index.html.twig', [
             'discussion' => $result,
             'iduserrequest' => $iduserrequest->getId()
@@ -83,6 +87,7 @@ class ListMessageController extends AbstractController
         $message = new DiscussionHistory();
         $message->setUser($user);
         $message->setDiscussion($discussion);
+        $discussion->setDateUpdate(new DateTime());
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -91,7 +96,6 @@ class ListMessageController extends AbstractController
             $entityManager->flush();
             return new JsonResponse(true);
         }
-
         return $this->render('front/list_message/discussion.html.twig', [
             'discussion' => $discussionhist,
             'iduserrequest' => $userId,

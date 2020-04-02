@@ -30,9 +30,9 @@ class InscriptionType extends AbstractType
                 'second_options' => array('label' => 'Repeat Password'),
             ))
             ->add('pseudo');
-        }
+    }
 
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

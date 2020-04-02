@@ -24,10 +24,12 @@ class DiscussionRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('f')
             ->where('f.exp = :userId')
             ->orWhere('f.dest = :userId')
+            ->orderBy('f.date_update', 'DESC')
             ->setParameter('userId', $value);
+        
 
         $query = $qb->getQuery();
-
+// dd($query);
         return $query->execute();
     }
 
