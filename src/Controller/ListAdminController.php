@@ -15,7 +15,7 @@ class ListAdminController extends AbstractController
     {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $allAdmin = $entityManager->getRepository(Users::class)->findBy(['roles' => ['ROLE_ADMIN','ROLE_SUPER_ADMIN']]);
+        $allAdmin = $entityManager->getRepository(Users::class)->findBy(['rol' => ['ROLE_ADMIN','ROLE_SUPER_ADMIN']]);
 
         return $this->render('/admin/list_admin/index.html.twig', [
             'allAdmin' => $allAdmin,

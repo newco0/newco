@@ -31,7 +31,7 @@ class MyprofilType extends AbstractType
                 'second_options' => array('label' => 'Repeat Password'),
             ))
             ->add('pseudo')
-            ->add('roles', ChoiceType::class, [ 'multiple' => true,
+            ->add('rol', ChoiceType::class, [
                 'choices' => [
                         'Admin' => 'ROLE_ADMIN',
                         'Super Admin' => 'ROLE_SUPER_ADMIN'

@@ -118,7 +118,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255, options={"default": "ROLE_USER"})
      */
-    private $roles;
+    private $rol;
 
 
     public function __construct()
@@ -546,7 +546,7 @@ class Users implements UserInterface, \Serializable
     public function getRoles(): array
     {
         $roles = [];
-        $roles[] = $this->roles;
+        $roles[] = $this->rol;
         $roles[] = 'ROLE_USER';
         return array_unique($roles);
     }
@@ -583,6 +583,26 @@ class Users implements UserInterface, \Serializable
     public function setRoles(string $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rol
+     */ 
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set the value of rol
+     *
+     * @return  self
+     */ 
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
 
         return $this;
     }
