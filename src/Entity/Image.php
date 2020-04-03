@@ -32,7 +32,7 @@ class Image
     private $path;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     private $isActive;
 
@@ -63,7 +63,6 @@ class Image
 
     public function __construct()
     {
-        $this->setIsActive(true);
         $this->setDateRegister(new \DateTime());
         $this->setDateUpdate(new \DateTime());
     }
