@@ -86,7 +86,7 @@ class Users implements UserInterface, \Serializable
     private $discussionHistories;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Friend", mappedBy="id_user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Friend", mappedBy="user", orphanRemoval=true, fetch="EAGER")
      */
     private $friends;
 

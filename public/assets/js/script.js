@@ -1,4 +1,5 @@
 if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
+  console.log("charge");
   let idcontact = window.location.pathname.split("/")[
     window.location.pathname.split("/").length - 1
   ];
@@ -177,7 +178,7 @@ $(document).ready(function() {
       url: `/contact`,
       data: data
     }).done(function(resp) {
-      if (resp === true) {
+      if (!resp.error) {
         // strict equal to true because the controller have to return true and a string is also true.
         $(".successsend").removeClass("d-none");
         setTimeout(function() {
@@ -327,4 +328,17 @@ $(document).ready(function() {
       url: `/updateseen/${userId}/${id}`
     }).done(function(res) {});
   }
+
+  $(".addfriend").click(function(e) {
+    const id = $(this).attr("idadded");
+    const parent = $(this).parent();
+    $.ajax({
+      type: "POST",
+      url: `/addfriends/${id}`
+    }).done(function(resp) {
+      if (!resp.error) {
+        parent.html("<p>Envoyée</p>");
+      }
+    });
+  });
 });

@@ -465,6 +465,14 @@ input[type="file"]::-webkit-file-upload-button {
   height: 78px !important;
 }
 
+.addfriend{
+  cursor: pointer;
+}
+
+.addfriend:hover{
+  color: #68c2e8;
+}
+
 @media screen and (max-width: 1024px) {
   .w75 {
     width: 75%;

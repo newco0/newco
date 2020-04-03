@@ -19,6 +19,22 @@ class UsersRepository extends ServiceEntityRepository
         parent::__construct($registry, Users::class);
     }
 
+    // public function selectSearchFriend($id)
+    // {
+    //     $conn = $this->getEntityManager()->getConnection();
+       
+    //     $sql = '
+    //     SELECT p.id, p.pseudo FROM users p
+    //     INNER JOIN friend x
+    //     ON p.id != :id
+    //     WHERE p.id != x.user_id 
+    //     AND p.id != x.friend_id';
+
+    //     $stmt = $conn->prepare($sql);
+    //     $stmt->execute(['id' => $id]);
+    //     return $stmt->fetchAll();
+    // }
+
     // /**
     //  * @return Users[] Returns an array of Users objects
     //  */

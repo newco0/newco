@@ -17,7 +17,7 @@ class Friend
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean",  nullable=true, options={"default": null})
      */
     private $isAccepted;
 
@@ -38,10 +38,16 @@ class Friend
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="friends")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $friend;
 
     public function __construct()
     {
@@ -110,6 +116,18 @@ class Friend
     public function setIdUser(?users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIdFriend(): ?users
+    {
+        return $this->friend;
+    }
+
+    public function setIdFriend(?users $friend): self
+    {
+        $this->friend = $friend;
 
         return $this;
     }

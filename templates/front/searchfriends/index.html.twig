@@ -2,12 +2,12 @@
 {% block title %}Recherche d'amis
 {% endblock %}
 {% block content %}
+
 	<div class="col-12 col-sm-10 col-lg-6">
 		<div class="mb-5 mt-5">
 			<h1>Recherche d'amis</h1>
 		</div>
 		{% for user in alluser %}
-			{% if user.id != iduserrequest.id %}
 			<div class="border d-lg-flex w-100 mx-auto w75">
 				<div class="row w-100 d-flex align-items-start justify-content-around align-items-center p-2">
 					<div class="d-flex col-12 col-sm-9 col-md-7 align-items-center">
@@ -23,12 +23,19 @@
 							<i class="icofont-facebook-messenger icofont-2x"></i>
 						</a>
 					</div>
-					<div class="col-6 col-md-3 d-flex d-lg-flex col-lg-2 h-100 align-items-center justify-content-center justify-content-md-end">
-						<a href="#" class="color0d1d3d text-decoration-none"><i class="icofont-owl icofont-2x"></i></a>
+					<div class="contentowl col-6 col-md-3 d-flex d-lg-flex col-lg-2 h-100 align-items-center justify-content-center justify-content-md-end justify-content-lg-center">
+						{% if user.id in idfriendpending %}
+							<p>Envoyée</p>
+						{% elseif user.id in idfriendreceived %}
+							<p>Reçu</p>
+						{% else %}
+							<i idadded="{{user.id}}" class="icofont-owl icofont-2x color0d1d3d addfriend"></i>
+						{% endif %}
+
 					</div>
 				</div>
 			</div>
-			{% endif  %}
+
 			<div class="sep w75 w-100 mx-auto"></div>
 		{% endfor %}
 	</div>

@@ -32,7 +32,7 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             $entityManager->persist($contact);
             $entityManager->flush();
-            return new JsonResponse(true);
+            return new JsonResponse(["error" => false]);
         }else if ($form->isSubmitted() && !$form->isValid()) {
             return $this->render('front/contact/index.html.twig', [
                 'form' => $form->createView()
