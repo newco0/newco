@@ -243,4 +243,16 @@ class Publication
 
         return $this;
     }
+    
+    /**
+     * Set the value of images
+     *
+     * @return  self
+     */ 
+    public function setImages($images)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
 }

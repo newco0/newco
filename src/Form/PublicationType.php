@@ -4,14 +4,14 @@ namespace App\Form;
 
 use App\Entity\Image;
 use App\Entity\Publication;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\File;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class PublicationType extends AbstractType
 {
@@ -19,7 +19,7 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('text', TextareaType::class)
-            ->add('image', FileType::class, ['mapped' => Publication::class, 'required' => false, 'constraints' => [
+            ->add('images', ImageType::class, ['mapped' => 'publi', 'required' => false, 'constraints' => [
                 new File([
                     'mimeTypes' => [
                         'image/jpeg',
@@ -38,8 +38,9 @@ class PublicationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Image::class
-        ], ['data_class' => Publication::class]);
+
+            'data_class' => Publication::class,
+        ]);
     }
 
 }
