@@ -38,13 +38,13 @@ class Friend
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="friends", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $friend;

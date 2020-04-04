@@ -10,15 +10,6 @@ use App\Entity\Users;
 
 class FriendController extends AbstractController
 {
-    /**
-     * @Route("/listfriends", name="listfriend")
-     */
-    public function list()
-    {
-        return $this->render('front/listfriends/index.html.twig', [
-            'controller_name' => 'ListfriendsController',
-        ]);
-    }
 
     /**
      * @Route("/searchfriends", name="searchfriend")
@@ -28,7 +19,7 @@ class FriendController extends AbstractController
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
         $allusers = $entityManager->getRepository(Users::class)->findAll();
-        $allfriend = $entityManager->getRepository(Friend::class)->findFriendById($iduserrequest);
+        $allfriend = $entityManager->getRepository(Friend::class)->findFriendByIdUser($iduserrequest);
         $sortUser = [];
         $resultfriendpending = [];
         $resultfriendrejected = [];
@@ -60,7 +51,7 @@ class FriendController extends AbstractController
             }
         }
 
-        return $this->render('front/searchfriends/index.html.twig', [
+        return $this->render('front/friend/index.html.twig', [
             'alluser' => $sortUser,
             'idfriendpending' => $resultfriendpending,
             'idfriendreceived' => $resultfriendreceived,
@@ -69,12 +60,38 @@ class FriendController extends AbstractController
     }
 
     /**
-     * @Route("/addfriends/{idtoadd}", name="addfriends")
+     * @Route("/listfriends", name="listfriendrelation")
+     */
+    public function list()
+    {
+        $iduserrequest = $this->getUser()->getId();
+        $entityManager = $this->getDoctrine()->getManager();
+        $allfriend = $entityManager->getRepository(Friend::class)->findFriendByIdUserAccepted($iduserrequest);
+
+        return $this->render('front/friend/list.html.twig', [
+            'alluser' => $allfriend,
+            'iduserrequest' => $iduserrequest
+        ]);
+    }
+
+    /**
+     * @Route("/addfriends/{idtoadd}", name="addfriendrelation")
      */
     public function add($idtoadd)
     {
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
+
+        $isExistIdtoaddtouser = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($idtoadd, $iduserrequest);
+        $isExistIdusertoadd = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($iduserrequest, $idtoadd);
+        if (count($isExistIdtoaddtouser) > 0 || count($isExistIdusertoadd) > 0) {
+            return new JsonResponse(
+                [
+                    "error" => true,
+                    "message" => "This relation is already existing"
+                ]
+            );
+        }
 
         if ($iduserrequest == $idtoadd) {
             return new JsonResponse([
@@ -85,7 +102,7 @@ class FriendController extends AbstractController
 
         $userrequest = $entityManager->getRepository(Users::class)->find($iduserrequest);
         $usertoadd = $entityManager->getRepository(Users::class)->find($idtoadd);
-        if (!$usertoadd) {
+        if (!$usertoadd || !$userrequest) {
             return new JsonResponse(["error" => true]);
         };
 
@@ -98,17 +115,122 @@ class FriendController extends AbstractController
     }
 
     /**
-     * @Route("/deletefriendrelation/{id}", name="deletefriendrelation")
+     * @Route("/accept/{id}", name="acceptfriendrelation")
+     */
+    public function acceptRequestedRelation($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $iduserrequest = $this->getUser();
+        $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+        if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
+            return new JsonResponse(
+                [
+                    "error" => true,
+                    "message" => "This relation is not existing"
+                ]
+            );
+        } else {
+            $isExistIdtoaccept[0]->setIsAccepted(1);
+            $entityManager->persist($isExistIdtoaccept[0]);
+            $entityManager->flush();
+            return new JsonResponse(["error" => false]);
+        }
+    }
+
+    /**
+     * @Route("/reject/{id}", name="rejectfriendrelation")
+     */
+    public function rejectRequestedRelation($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $iduserrequest = $this->getUser();
+        $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+        if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
+            return new JsonResponse(
+                [
+                    "error" => true,
+                    "message" => "This relation is not existing"
+                ]
+            );
+        } else {
+            $isExistIdtoaccept[0]->setIsAccepted(0);
+            $entityManager->persist($isExistIdtoaccept[0]);
+            $entityManager->flush();
+            return new JsonResponse(["error" => false]);
+        }
+    }
+
+    /**
+     * @Route("/delete/{id}", name="deletefriendrelation")
      */
     public function deleterelation($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $allusers = $entityManager->getRepository(Users::class)->findAll();
         $iduserrequest = $this->getUser();
+        $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+        if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
+            $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($iduserrequest, $id);
+            if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
+                return new JsonResponse(
+                    [
+                        "error" => true,
+                        "message" => "This relation is not existing"
+                    ]
+                );
+            }
+        }
 
-        return $this->render('front/searchfriends/index.html.twig', [
-            'alluser' => $allusers,
-            'iduserrequest' => $iduserrequest
+        if ($isExistIdtoaccept[0]->getIsAccepted() || is_null($isExistIdtoaccept[0]->getIsAccepted())) {
+            $entityManager->remove($isExistIdtoaccept[0]);
+            $entityManager->flush();
+            return new JsonResponse(["error" => false]);
+        } else {
+            return new JsonResponse(
+                [
+                    "error" => true,
+                    "message" => "You can not delete this relation"
+                ]
+            );
+        }
+    }
+
+    /**
+     * @Route("/friendrequest", name="listfriendrequest")
+     */
+    public function requestfriend()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $iduserrequest = $this->getUser()->getId();
+        $friendrequest = $entityManager->getRepository(Friend::class)->findBy(['user' => $iduserrequest]);
+
+        $result = [];
+        foreach ($friendrequest as $key) {
+            if (is_null($key->getIsAccepted())) {
+                $result[$key->getIdFriend()->getId()] = $key->getIdFriend();
+            }
+        }
+        return $this->render('front/friend/friendrequest.html.twig', [
+            'alluser' => $result 
+        ]);
+    }
+    
+    /**
+     * @Route("/friendreceive", name="listfriendreceive")
+     */
+    public function receivedfriend()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $iduserrequest = $this->getUser()->getId();
+        $friendrequest = $entityManager->getRepository(Friend::class)->findBy(['friend' => $iduserrequest]);
+
+        $result = [];
+        foreach ($friendrequest as $key) {
+            if (is_null($key->getIsAccepted())) {
+                $result[$key->getIdUser()->getId()] = $key->getIdUser();
+            }
+        }
+        return $this->render('front/friend/requestreceived.html.twig', [
+            'alluser' => $result 
         ]);
     }
 }

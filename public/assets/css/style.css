@@ -465,13 +465,21 @@ input[type="file"]::-webkit-file-upload-button {
   height: 78px !important;
 }
 
-.addfriend{
+.addfriend,
+.accepted,
+.rejected,
+.deleted {
   cursor: pointer;
 }
 
-.addfriend:hover{
+.addfriend:hover,
+.accepted:hover,
+.rejected:hover,
+.deleted:hover {
   color: #68c2e8;
 }
+
+
 
 @media screen and (max-width: 1024px) {
   .w75 {

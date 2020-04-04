@@ -329,7 +329,7 @@ $(document).ready(function() {
     }).done(function(res) {});
   }
 
-  $(".addfriend").click(function(e) {
+  $(".addfriend").click(function() {
     const id = $(this).attr("idadded");
     const parent = $(this).parent();
     $.ajax({
@@ -338,6 +338,50 @@ $(document).ready(function() {
     }).done(function(resp) {
       if (!resp.error) {
         parent.html("<p>Envoyée</p>");
+      }
+    });
+  });
+
+  $(".accepted").click(function() {
+    const id = $(this).attr("idaccept");
+    const parent = $(this).parent();
+    $.ajax({
+      type: "POST",
+      url: `/accept/${id}`
+    }).done(function(resp) {
+      if (!resp.error) {
+        parent.html("<p>Accepté</p>");
+      }
+    });
+  });
+
+  $(".rejected").click(function() {
+    const id = $(this).attr("idreject");
+    const parent = $(this).parent();
+    $.ajax({
+      type: "POST",
+      url: `/reject/${id}`
+    }).done(function(resp) {
+      if (!resp.error) {
+        parent.html("<p class='text-danger'>Refusé</p>");
+      }
+    });
+  });
+
+  $(".deleted").click(function() {
+    const id = $(this).attr("iddelete");
+    const parent = $(this).parent();
+    console.log("coucou");
+    $.ajax({
+      type: "POST",
+      url: `/delete/${id}`
+    }).done(function(resp) {
+      if (!resp.error) {
+        if ($(".cancel").length > 0) {
+          parent.html("<p class='text-danger'>Demande annulé</p>");
+        } else if ($(".unfollow").length > 0) {
+          parent.html("<p class='text-danger'>Supprimé</p>");
+        }
       }
     });
   });

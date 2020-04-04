@@ -19,16 +19,34 @@ class FriendRepository extends ServiceEntityRepository
         parent::__construct($registry, Friend::class);
     }
 
-    /**
-     * @return Friend[] Returns an array of Friend objects
-     */
-
-    public function findFriendById($value)
+    public function findFriendByIdUser($value)
     {
         return $this->createQueryBuilder('f')
             ->where('f.user = :value')
             ->orWhere('f.friend = :value')
             ->setParameter('value', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFriendByIdUserAccepted($value)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.user = :value')
+            ->orWhere('f.friend = :value')
+            ->andWhere('f.isAccepted = true')
+            ->setParameter('value', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFriendByIdRequest($iduser, $idsearch)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.user = :iduser')
+            ->andWhere('f.friend = :idsearch')
+            ->setParameter('idsearch', $idsearch)
+            ->setParameter('iduser', $iduser)
             ->getQuery()
             ->getResult();
     }

@@ -23,11 +23,12 @@
 							<i class="icofont-facebook-messenger icofont-2x"></i>
 						</a>
 					</div>
-					<div class="contentowl col-6 col-md-3 d-flex d-lg-flex col-lg-2 h-100 align-items-center justify-content-center justify-content-md-end justify-content-lg-center">
+					<div class="contentowl col-6 text-center col-md-3 d-flex d-lg-flex col-lg-3 h-100 align-items-center justify-content-center justify-content-md-end flex-column justify-content-lg-center">
 						{% if user.id in idfriendpending %}
-							<p>Envoyée</p>
+							<p class="w-100 p-2 m-0">Envoyée</p>
 						{% elseif user.id in idfriendreceived %}
-							<p>Reçu</p>
+							<p class="w-100 p-2 m-0 accepted" idaccept="{{user.id}}">Accepté</p>
+							<p class="w-100 p-2 m-0 rejected" idreject="{{user.id}}">Refusé</p>
 						{% else %}
 							<i idadded="{{user.id}}" class="icofont-owl icofont-2x color0d1d3d addfriend"></i>
 						{% endif %}
