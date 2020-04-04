@@ -10,6 +10,13 @@ use App\Entity\Users;
 
 class FriendController extends AbstractController
 {
+    /**
+     * @Route("/friendaction", name="friendaction")
+     */
+    public function index()
+    {
+        return $this->render('front/friend/index.html.twig');
+    }
 
     /**
      * @Route("/searchfriends", name="searchfriend")
@@ -51,7 +58,7 @@ class FriendController extends AbstractController
             }
         }
 
-        return $this->render('front/friend/index.html.twig', [
+        return $this->render('front/friend/search.html.twig', [
             'alluser' => $sortUser,
             'idfriendpending' => $resultfriendpending,
             'idfriendreceived' => $resultfriendreceived,
@@ -210,10 +217,10 @@ class FriendController extends AbstractController
             }
         }
         return $this->render('front/friend/friendrequest.html.twig', [
-            'alluser' => $result 
+            'alluser' => $result
         ]);
     }
-    
+
     /**
      * @Route("/friendreceive", name="listfriendreceive")
      */
@@ -230,17 +237,7 @@ class FriendController extends AbstractController
             }
         }
         return $this->render('front/friend/requestreceived.html.twig', [
-            'alluser' => $result 
+            'alluser' => $result
         ]);
     }
 }
-
-
-// foreach ($allfriend as $val1) { 
-                //      //getIdUser getIdFriend
-                //     if ($val1->getIdUser()->getId() == $iduserrequest || $val1->getIdFriend()->getId() == $iduserrequest) {
-                //         if (is_null($val1->getIsAccepted())) {
-                //             $result[$key->getId()] = $key;
-                //         }
-                //     }
-                // }

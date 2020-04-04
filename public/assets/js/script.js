@@ -329,60 +329,116 @@ $(document).ready(function() {
     }).done(function(res) {});
   }
 
-  $(".addfriend").click(function() {
-    const id = $(this).attr("idadded");
-    const parent = $(this).parent();
-    $.ajax({
-      type: "POST",
-      url: `/addfriends/${id}`
-    }).done(function(resp) {
-      if (!resp.error) {
-        parent.html("<p>Envoyée</p>");
-      }
-    });
-  });
+  function addFriendEvent() {
+    return {
+      addfriend: function() {
+        return $(".addfriend").click(function() {
+          console.log("coucou");
+          const id = $(this).attr("idadded");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/addfriends/${id}`
+          }).done(function(resp) {
+            if (!resp.error) {
+              parent.html("<p>Envoyée</p>");
+            }
+          });
+        });
+      },
 
-  $(".accepted").click(function() {
-    const id = $(this).attr("idaccept");
-    const parent = $(this).parent();
-    $.ajax({
-      type: "POST",
-      url: `/accept/${id}`
-    }).done(function(resp) {
-      if (!resp.error) {
-        parent.html("<p>Accepté</p>");
-      }
-    });
-  });
+      accept: function() {
+        return $(".accepted").click(function() {
+          const id = $(this).attr("idaccept");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/accept/${id}`
+          }).done(function(resp) {
+            if (!resp.error) {
+              parent.html("<p>Accepté</p>");
+            }
+          });
+        });
+      },
 
-  $(".rejected").click(function() {
-    const id = $(this).attr("idreject");
-    const parent = $(this).parent();
-    $.ajax({
-      type: "POST",
-      url: `/reject/${id}`
-    }).done(function(resp) {
-      if (!resp.error) {
-        parent.html("<p class='text-danger'>Refusé</p>");
-      }
-    });
-  });
+      reject: function() {
+        return $(".rejected").click(function() {
+          const id = $(this).attr("idreject");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/reject/${id}`
+          }).done(function(resp) {
+            if (!resp.error) {
+              parent.html("<p class='text-danger'>Refusé</p>");
+            }
+          });
+        });
+      },
 
-  $(".deleted").click(function() {
-    const id = $(this).attr("iddelete");
-    const parent = $(this).parent();
-    console.log("coucou");
-    $.ajax({
-      type: "POST",
-      url: `/delete/${id}`
-    }).done(function(resp) {
-      if (!resp.error) {
-        if ($(".cancel").length > 0) {
-          parent.html("<p class='text-danger'>Demande annulé</p>");
-        } else if ($(".unfollow").length > 0) {
-          parent.html("<p class='text-danger'>Supprimé</p>");
-        }
+      delete: function() {
+        return $(".deleted").click(function() {
+          const id = $(this).attr("iddelete");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/delete/${id}`
+          }).done(function(resp) {
+            if (!resp.error) {
+              if ($(".cancel").length > 0) {
+                parent.html("<p class='text-danger'>Demande annulé</p>");
+              } else if ($(".unfollow").length > 0) {
+                parent.html("<p class='text-danger'>Supprimé</p>");
+              }
+            }
+          });
+        });
       }
+    };
+  }
+
+  const friendEvent = addFriendEvent();
+
+  if (window.location.pathname == "/friendaction") {
+    $.ajax({
+      url: `/listfriends`
+    }).done(function(resp) {
+      $(".contentfriend").html(resp);
+      friendEvent.delete();
     });
+  }
+
+  $(".selectlistfriendaction").change(function() {
+    if ($(this).val() == 1) {
+      $.ajax({
+        url: `/listfriends`
+      }).done(function(resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.delete();
+      });
+    } else if ($(this).val() == 2) {
+      $.ajax({
+        url: `/searchfriends`
+      }).done(function(resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.addfriend();
+      });
+    } else if ($(this).val() == 3) {
+      $.ajax({
+        url: `/friendrequest`
+      }).done(function(resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.delete();
+      });
+    } else if ($(this).val() == 4) {
+      $.ajax({
+        url: `/friendreceive`
+      }).done(function(resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.accept();
+        friendEvent.reject();
+      });
+    }
   });
 });

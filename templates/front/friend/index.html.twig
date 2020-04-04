@@ -1,44 +1,20 @@
 {% extends '/front/base.html.twig' %}
-{% block title %}Recherche d'amis
+{% block title %}Mes amis
 {% endblock %}
 {% block content %}
-
 	<div class="col-12 col-sm-10 col-lg-6">
 		<div class="mb-5 mt-5">
-			<h1>Recherche d'amis</h1>
+			<h1>Mes amis</h1>
 		</div>
-		{% for user in alluser %}
-			<div class="border d-lg-flex w-100 mx-auto w75">
-				<div class="row w-100 d-flex align-items-start justify-content-around align-items-center p-2">
-					<div class="d-flex col-12 col-sm-9 col-md-7 align-items-center">
-						<div class="col-6 text-center">
-							<img class="arround-search rounded-circle" src="/assets/img/orang.jpg" alt="photo de profil">
-						</div>
-						<div class="col-6">
-							<a href="#">{{user.pseudo}}</a>
-						</div>
-					</div>
-					<div class="d-flex col-6 col-sm-3 col-md-2 justify-content-center align-items-center">
-						<a href="/message/{{user.id}}" class="color0d1d3d text-decoration-none">
-							<i class="icofont-facebook-messenger icofont-2x"></i>
-						</a>
-					</div>
-					<div class="contentowl col-6 text-center col-md-3 d-flex d-lg-flex col-lg-3 h-100 align-items-center justify-content-center justify-content-md-end flex-column justify-content-lg-center">
-						{% if user.id in idfriendpending %}
-							<p class="w-100 p-2 m-0">Envoyée</p>
-						{% elseif user.id in idfriendreceived %}
-							<p class="w-100 p-2 m-0 accepted" idaccept="{{user.id}}">Accepté</p>
-							<p class="w-100 p-2 m-0 rejected" idreject="{{user.id}}">Refusé</p>
-						{% else %}
-							<i idadded="{{user.id}}" class="icofont-owl icofont-2x color0d1d3d addfriend"></i>
-						{% endif %}
-
-					</div>
-				</div>
-			</div>
-
-			<div class="sep w75 w-100 mx-auto"></div>
-		{% endfor %}
+		<div class="w-100 mx-auto w75">
+			<select class="browser-default custom-select selectlistfriendaction bgcolor68c2e8 text-white mb-5">
+				<option selected value="1">Mes amis</option>
+				<option value="2">Rechercher des amis</option>
+				<option value="3">Demandes d'amis envoyées</option>
+                <option value="4">Demandes d'amis reçues</option>
+			</select>
+		</div>
+		<div class="contentfriend"></div>
 	</div>
 {% endblock %}
 {% block rightside %}
