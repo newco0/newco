@@ -1,0 +1,42 @@
+{% if alluser|length == 0 %}
+	<p class="bg-success text-white text-center rounded p-2 w-75 mx-auto mt-5">Oups ! Aucun ami trouvé, êtes vous sans amis ??? 😥</p>
+{% else %}
+	{% for user in alluser %}
+		<div class="border d-lg-flex w-100 mx-auto w75 mt-5">
+			<div class="row w-100 d-flex align-items-start justify-content-around align-items-center p-2">
+				<div class="d-flex col-12 col-sm-9 col-md-7 align-items-center">
+					<div class="col-6 text-center">
+						<img class="arround-search rounded-circle" src="/assets/img/orang.jpg" alt="photo de profil">
+					</div>
+					<div class="col-6">
+						{% if user.IdUser.id != iduserrequest %}
+							<a href="#">{{user.IdUser.pseudo}}</a>
+						{% else %}
+							<a href="#">{{user.IdFriend.pseudo}}</a>
+						{% endif %}
+					</div>
+				</div>
+				<div class="d-flex col-6 col-sm-3 col-md-2 justify-content-center align-items-center">
+					{% if user.IdUser.id != iduserrequest %}
+						<a href="/message/{{user.IdUser.id}}" class="color0d1d3d text-decoration-none">
+							<i class="icofont-facebook-messenger icofont-2x"></i>
+						</a>
+					{% else %}
+						<a href="/message/{{user.IdFriend.id}}" class="color0d1d3d text-decoration-none">
+							<i class="icofont-facebook-messenger icofont-2x"></i>
+						</a>
+					{% endif %}
+
+				</div>
+				<div class="contentowl col-6 text-center col-md-3 d-flex d-lg-flex col-lg-3 h-100 align-items-center justify-content-center justify-content-md-end flex-column justify-content-lg-center">
+					{% if user.IdUser.id != iduserrequest %}
+						<p class="w-100 p-2 m-0 deleted unfollow" iddelete="{{user.IdUser.id}}">Ne plus suivre</p>
+					{% else %}
+						<p class="w-100 p-2 m-0 deleted unfollow" iddelete="{{user.IdFriend.id}}">Ne plus suivre</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="sep w75 w-100 mx-auto"></div>
+	{% endfor %}
+{% endif %}

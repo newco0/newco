@@ -1,0 +1,22 @@
+{% extends '/front/base.html.twig' %}
+{% block title %}Mes amis
+{% endblock %}
+{% block content %}
+	<div class="col-12 col-sm-10 col-lg-6">
+		<div class="mb-5 mt-5">
+			<h1>Mes amis</h1>
+		</div>
+		<div class="w-100 mx-auto w75">
+			<select class="browser-default custom-select selectlistfriendaction bgcolor68c2e8 text-white mb-5">
+				<option selected value="1">Mes amis</option>
+				<option value="2">Rechercher des amis</option>
+				<option value="3">Demandes d'amis envoyées</option>
+                <option value="4">Demandes d'amis reçues</option>
+			</select>
+		</div>
+		<div class="contentfriend"></div>
+	</div>
+{% endblock %}
+{% block rightside %}
+	{% include './front/partial/rightside.html.twig' %}
+{% endblock %}

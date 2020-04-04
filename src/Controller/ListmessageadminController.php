@@ -37,7 +37,7 @@ class ListmessageadminController extends AbstractController
         $message->setIsRead(!$message->getIsRead());
         $entityManager->persist($message);
         $entityManager->flush();
-        return new JsonResponse(true);
+        return new JsonResponse(["error" => false]);
         // $message->setIsRead('New product name!');
     }
 
@@ -55,6 +55,6 @@ class ListmessageadminController extends AbstractController
         $message->setIsActive(!$message->getIsActive());
         $entityManager->persist($message);
         $entityManager->flush();
-        return new JsonResponse(true);
+        return new JsonResponse(["error" => false]);
     }
 }

@@ -21,16 +21,13 @@ class DiscussionRepository extends ServiceEntityRepository
 
     public function findAllDiscussionByUser($value)
     {
-        $qb = $this->createQueryBuilder('f')
+        return $this->createQueryBuilder('f')
             ->where('f.exp = :userId')
             ->orWhere('f.dest = :userId')
             ->orderBy('f.date_update', 'DESC')
-            ->setParameter('userId', $value);
-        
-
-        $query = $qb->getQuery();
-// dd($query);
-        return $query->execute();
+            ->setParameter('userId', $value)
+            ->getQuery()
+            ->execute();
     }
 
     // /**

@@ -23,28 +23,29 @@ class ListMessageController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser();
         if ($id) {
-            $checkifexitexptodest = $entityManager
+            $checkifexistexptodest = $entityManager
                 ->getRepository(Discussion::class)
                 ->findBy([
                     'exp' => $iduserrequest,
                     'dest' => $id
                 ]);
-            if (!$checkifexitexptodest) {
-                $checkifexitexptodest = $entityManager
+            if (!$checkifexistexptodest) {
+                $checkifexistexptodest = $entityManager
                     ->getRepository(Discussion::class)
                     ->findBy([
                         'exp' => $id,
                         'dest' => $iduserrequest
                     ]);
-                if (!$checkifexitexptodest) {
+                if (!$checkifexistexptodest) {
                     $userexp = $entityManager
                         ->getRepository(Users::class)
-                        ->find($this->getUser());
+                        ->find($iduserrequest);
                     $userdest = $entityManager
                         ->getRepository(Users::class)
                         ->find($id);
                     $newdisc = new Discussion();
-                    $newdisc->setDest($userdest)->setIdExp($userexp);
+                    $newdisc->setDest($userdest);
+                    $userexp->addDiscussion($newdisc);
                     $entityManager->persist($newdisc);
                     $entityManager->flush();
                 }
@@ -61,6 +62,24 @@ class ListMessageController extends AbstractController
             'discussion' => $result,
             'iduserrequest' => $iduserrequest->getId()
         ]);
+    }
+
+    /**
+     * @Route("/deletedisc/{id}", name="delete_disc")
+     */
+    public function deleteemptydisc($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $discussion = $entityManager
+            ->getRepository(Discussion::class)
+            ->find(
+                $id
+            );
+        if (count($discussion->getDiscussionHistories()) == 0) {
+            $entityManager->remove($discussion);
+            $entityManager->flush();
+            return new JsonResponse(["isdeleted" => "true"]);
+        };
     }
 
     /**
@@ -116,7 +135,7 @@ class ListMessageController extends AbstractController
             $entityManager->persist($key);
             $entityManager->flush();
         }
-    
+
         return new JsonResponse(true);
     }
 }

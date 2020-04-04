@@ -1,3 +1,20 @@
+if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
+  let idcontact = window.location.pathname.split("/")[
+    window.location.pathname.split("/").length - 1
+  ];
+  // charge before the page to ensure the execution if the user exit from the page before his load
+  const idtodelete = $(`.renderdiscussion[iddest=${idcontact}]`).attr("iddisc");
+
+  window.onbeforeunload = function () {
+    $.ajax({
+      type: "POST",
+      url: `/deletedisc/${idtodelete}`,
+    });
+
+    return "Deleted";
+  };
+}
+
 $(document).ready(function () {
   $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
   let formconnect = $(".formconnect").clone();
@@ -47,11 +64,7 @@ $(document).ready(function () {
     } else {
       $(this).text("Voir plus");
     }
-    $(this)
-      .prev()
-      .children()
-      .last()
-      .toggleClass("d-none");
+    $(this).prev().children().last().toggleClass("d-none");
   });
 
   $(".imgprofil").mouseenter(function () {
@@ -107,9 +120,7 @@ $(document).ready(function () {
   });
 
   $(".clearcomment").click(function () {
-    $(this)
-      .parent()
-      .remove();
+    $(this).parent().remove();
   });
 
   $(".zoom").click(function (e) {
@@ -152,15 +163,15 @@ $(document).ready(function () {
     let data = {};
     $(this)
       .serializeArray()
-      .forEach(object => {
+      .forEach((object) => {
         data[object.name] = object.value;
       });
     $.ajax({
       type: "POST",
       url: `/contact`,
-      data: data
+      data: data,
     }).done(function (resp) {
-      if (resp === true) {
+      if (!resp.error) {
         // strict equal to true because the controller have to return true and a string is also true.
         $(".successsend").removeClass("d-none");
         setTimeout(function () {
@@ -179,8 +190,8 @@ $(document).ready(function () {
     }, 2000);
   }
 
-  $(".renderdiscussion").click(function(e) {
-    $(".renderdiscussion").each(function(elt) {
+  $(".renderdiscussion").click(function (e) {
+    $(".renderdiscussion").each(function (elt) {
       $(".renderdiscussion").removeClass("backgray");
     });
     $(this).addClass("backgray");
@@ -189,22 +200,18 @@ $(document).ready(function () {
 
   if ($(window).width() > 576) {
     if (window.location.pathname.match(/^\/message$/)) {
-      $(".renderdiscussion")
-        .first()
-        .addClass("backgray");
-      ajaxConversation(
-        $(".renderdiscussion")
-          .first()
-          .attr("iddisc"),
-        $(".renderdiscussion")
-          .first()
-          .attr("idowner")
-      );
+      $(".renderdiscussion").first().addClass("backgray");
+      if ($(".renderdiscussion").length > 0) {
+        ajaxConversation(
+          $(".renderdiscussion").first().attr("iddisc"),
+          $(".renderdiscussion").first().attr("idowner")
+        );
+      }
     } else if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
-      const idcontact = window.location.pathname.split("/")[
+      let idtocontact;
+      let idcontact = window.location.pathname.split("/")[
         window.location.pathname.split("/").length - 1
       ];
-      let idtocontact;
       if ($(`.renderdiscussion[iddest=${idcontact}]`).length > 0) {
         idtocontact = $(`.renderdiscussion[iddest=${idcontact}]`);
       } else if ($(`.renderdiscussion[idexp=${idcontact}]`).length > 0) {
@@ -217,7 +224,7 @@ $(document).ready(function () {
 
   let prevlistmessage = $(".prevlistmessage");
 
-  prevlistmessage.click(function() {
+  prevlistmessage.click(function () {
     location.reload("message");
   });
 
@@ -226,7 +233,7 @@ $(document).ready(function () {
     const idowner = arg2;
     $.ajax({
       type: "POST",
-      url: `/messagedisc/${idowner}/${iddisc}`
+      url: `/messagedisc/${idowner}/${iddisc}`,
     }).done(function (resp) {
       $(".conversation").html(resp);
       if ($(window).width() < 576) {
@@ -241,7 +248,7 @@ $(document).ready(function () {
         $(window).scrollTop($(document).height());
         prevlistmessage.removeClass("d-none");
       }
-      setTimeout(function() {
+      setTimeout(function () {
         updateisSeenMessage(idowner, iddisc, $(".backgray"));
       }, 2000);
       sendmessage(arg1, arg2);
@@ -256,13 +263,13 @@ $(document).ready(function () {
         let data = {};
         $(this)
           .serializeArray()
-          .forEach(object => {
+          .forEach((object) => {
             data[object.name] = object.value;
           });
         $.ajax({
           type: "POST",
           url: `/messagedisc/${idowner}/${iddisc}`,
-          data: data
+          data: data,
         }).done(function () {
           if ($(window).width() < 576) {
             $(".listconversation").addClass("d-none");
@@ -272,17 +279,13 @@ $(document).ready(function () {
             ajaxConversation(iddisc, idowner);
           }
         });
-        $(".renderdiscussion").each(function() {
+        $(".renderdiscussion").each(function () {
           if ($(this).hasClass("backgray")) {
             $(this)
               .children()
               .last()
               .replaceWith(
-                "<p>" +
-                  $(".textmessage")
-                    .val()
-                    .slice(0, 20) +
-                  "...</p>"
+                "<p>" + $(".textmessage").val().slice(0, 20) + "...</p>"
               );
           }
         });
@@ -299,36 +302,147 @@ $(document).ready(function () {
   }
 
   function updateisSeenMessage(userId, id, arg3) {
-    arg3
-      .children()
-      .last()
-      .removeClass("font-weight-bold");
+    arg3.children().last().removeClass("font-weight-bold");
     $.ajax({
       type: "POST",
-      url: `/updateseen/${userId}/${id}`
-    }).done(function(res) {});
+      url: `/updateseen/${userId}/${id}`,
+    }).done(function (res) {});
   }
+
   $(".formupdate").submit(function (e) {
     e.preventDefault();
     let data = {};
     $(this)
       .serializeArray()
-      .forEach(object => {
+      .forEach((object) => {
         data[object.name] = object.value;
       });
     $.ajax({
       type: "POST",
       url: `/admin/edituser`,
-      data: data
+      data: data,
     }).done(function (resp) {
       if (resp === true) {
-        $('.mdp').val('');
-        $('.mdp1').val('');
+        $(".mdp").val("");
+        $(".mdp1").val("");
         $(".successsend").removeClass("d-none");
         setTimeout(function () {
           $(".successsend").addClass("d-none");
         }, 1500);
       }
     });
+  });
+
+  function addFriendEvent() {
+    return {
+      addfriend: function () {
+        return $(".addfriend").click(function () {
+          console.log("coucou");
+          const id = $(this).attr("idadded");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/addfriends/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              parent.html("<p>Envoyée</p>");
+            }
+          });
+        });
+      },
+
+      accept: function () {
+        return $(".accepted").click(function () {
+          const id = $(this).attr("idaccept");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/accept/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              parent.html("<p>Accepté</p>");
+            }
+          });
+        });
+      },
+
+      reject: function () {
+        return $(".rejected").click(function () {
+          const id = $(this).attr("idreject");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/reject/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              parent.html("<p class='text-danger'>Refusé</p>");
+            }
+          });
+        });
+      },
+
+      delete: function () {
+        return $(".deleted").click(function () {
+          const id = $(this).attr("iddelete");
+          const parent = $(this).parent();
+          $.ajax({
+            type: "POST",
+            url: `/delete/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              if ($(".cancel").length > 0) {
+                parent.html("<p class='text-danger'>Demande annulé</p>");
+              } else if ($(".unfollow").length > 0) {
+                parent.html("<p class='text-danger'>Supprimé</p>");
+              }
+            }
+          });
+        });
+      },
+    };
+  }
+
+  const friendEvent = addFriendEvent();
+
+  if (window.location.pathname == "/friendaction") {
+    $.ajax({
+      url: `/listfriends`,
+    }).done(function (resp) {
+      $(".contentfriend").html(resp);
+      friendEvent.delete();
+    });
+  }
+
+  $(".selectlistfriendaction").change(function () {
+    if ($(this).val() == 1) {
+      $.ajax({
+        url: `/listfriends`,
+      }).done(function (resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.delete();
+      });
+    } else if ($(this).val() == 2) {
+      $.ajax({
+        url: `/searchfriends`,
+      }).done(function (resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.addfriend();
+      });
+    } else if ($(this).val() == 3) {
+      $.ajax({
+        url: `/friendrequest`,
+      }).done(function (resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.delete();
+      });
+    } else if ($(this).val() == 4) {
+      $.ajax({
+        url: `/friendreceive`,
+      }).done(function (resp) {
+        $(".contentfriend").html(resp);
+        friendEvent.accept();
+        friendEvent.reject();
+      });
+    }
   });
 });

@@ -458,11 +458,29 @@ input[type="file"]::-webkit-file-upload-button {
   border-bottom: solid black 1px;
 }
 
-/* search-friend*/
+/* friend*/
 
 .arround-search {
   width: 80px !important;
   height: 78px !important;
+}
+
+.addfriend,
+.accepted,
+.rejected,
+.deleted {
+  cursor: pointer;
+}
+
+.addfriend:hover,
+.accepted:hover,
+.rejected:hover,
+.deleted:hover {
+  color: #68c2e8;
+}
+
+.listfriendaction:hover{
+  color: #0d1d3d !important;
 }
 
 @media screen and (max-width: 1024px) {

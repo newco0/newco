@@ -26,7 +26,7 @@ class MessageController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager
             ->getRepository(Users::class)
-            ->find(1);
+            ->find($this->getUser()->getId());
         $message =  $entityManager
             ->getRepository(Contact::class)
             ->find($id);

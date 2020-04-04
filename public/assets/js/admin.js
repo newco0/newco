@@ -84,12 +84,11 @@ $(document).ready(function() {
           $("main").removeClass("position-relative");
           $(".containmessage").addClass("d-none");
         }, 1500);
-      }else{
-        $('body').html(resp);
+      } else {
+        $("body").html(resp);
       }
     });
   });
-
 
   $(".fileprofil").mouseleave(function() {
     $(this)
@@ -128,7 +127,7 @@ $(document).ready(function() {
     $.ajax({
       url: `/admin/listmessageadmin/updateisread/${id}`
     }).done(function(resp) {
-      if (resp == 1) {
+      if (!resp.error) {
         $(".successupdate").removeClass("d-none");
         setTimeout(function() {
           $(".successupdate").addClass("d-none");
@@ -142,7 +141,7 @@ $(document).ready(function() {
     $.ajax({
       url: `/admin/listmessageadmin/updateisactive/${id}`
     }).done(function(resp) {
-      if (resp == 1) {
+      if (!resp.error) {
         $(".successupdate").removeClass("d-none");
         setTimeout(function() {
           $(".successupdate").addClass("d-none");
