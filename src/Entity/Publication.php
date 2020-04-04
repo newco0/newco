@@ -24,7 +24,7 @@ class Publication
     private $isActive;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1000)
      */
     private $text;
 

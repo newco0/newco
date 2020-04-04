@@ -3,6 +3,7 @@
 {% endblock %}
 {% block content %}
 <div class="col-12 col-xl-8 mx-auto my-3">
+<p class="bg-success p-1 text-white text-center successupdate d-none">Mise à jour avec succés</p>
                 <h5 class="text-center titlepage">Liste des utilisateurs</h5>
                 <div class="table-responsive">
                     <table class="table">
@@ -16,30 +17,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {% for user in allusers %}
                             <tr>
-                                <th>1</th>
-                                <td class="text-center">Laslaa</td>
-                                <td class="text-center">Mohammed</td>
-                                <td class="text-center"><i class="icofont-arrow-right"></td>
+                                <th>{{user.id}}</th>
+                                <td class="text-center">{{user.lastname}}</td>
+                                <td class="text-center">{{user.firstname}}</td>
+                                <td class="text-center"><a href="/admin/edituser/{{user.id}}" class="text-dark"><i class="icofont-arrow-right"></a></td>
                                 <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-                                        <label class="custom-control-label" for="customSwitchesTop1"></label>
-                                    </div>
-                                </td>
+								<div class="custom-control custom-switch">
+									<input userid={{ user.id }} type="checkbox" class="custom-control-input isactiveuser" {% if user.isactive %} checked {% endif %} id="{{ user.id }}delete">
+									<label class="custom-control-label" for="{{ user.id }}delete"></label>
+								</div>
+							</td>
                             </tr>
-                            <tr>
-                                <th>1</th>
-                                <td class="text-center">Dufour</td>
-                                <td class="text-center">Olivier</td>
-                                <td class="text-center"><i class="icofont-arrow-right"></td>
-                                <td class="text-center">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchesTop2">
-                                        <label class="custom-control-label" for="customSwitchesTop2"></label>
-                                    </div>
-                                </td>
-                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

@@ -150,4 +150,70 @@ $(document).ready(function() {
       }
     });
   });
+
+  $(".isactiveuser").on("change", function() {
+    const id = $(this).attr("userid");
+    $.ajax({
+      url: `/admin/listuser/updateisactive/${id}`
+    }).done(function(resp) {
+      if (resp == 1) {
+        $(".successupdate").removeClass("d-none");
+        setTimeout(function() {
+          $(".successupdate").addClass("d-none");
+        }, 1500);
+      }
+    });
+  });
+
+  $(".formupdate").submit(function (e) {
+    e.preventDefault();
+    let data = {};
+    const id = $(this).attr("userid");
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    $.ajax({
+      type: "POST",
+      url: `/admin/edituser/${id}`,
+      data: data
+    }).done(function (resp) {
+      console.log(resp)
+      if (resp === true) {
+        $('.mdp').val('');
+        $('.mdp1').val('');
+        $(".successsend").removeClass("d-none");
+        setTimeout(function () {
+          $(".successsend").addClass("d-none");
+        }, 1500);
+      }
+    });
+  });
+
+  $(".formupdate").submit(function (e) {
+    e.preventDefault();
+    let data = {};
+    const id = $(this).attr("userid");
+    $(this)
+      .serializeArray()
+      .forEach(object => {
+        data[object.name] = object.value;
+      });
+    $.ajax({
+      type: "POST",
+      url: `/admin/editadmin/${id}`,
+      data: data
+    }).done(function (resp) {
+      console.log(resp)
+      if (resp === true) {
+        $('.mdp').val('');
+        $('.mdp1').val('');
+        $(".successsend").removeClass("d-none");
+        setTimeout(function () {
+          $(".successsend").addClass("d-none");
+        }, 1500);
+      }
+    });
+  });
 });

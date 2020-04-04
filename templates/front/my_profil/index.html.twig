@@ -4,7 +4,10 @@
 {% block content %}
 <div class="col-12 col-sm-10 col-xl-8 mx-auto">
             <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Mon profil</h5>
-            {{ form_start(form, {'attr': {'method': 'post', 'class': 'formupdate row form-group my-5'}}) }}
+            <div class="col-12 bg text-white successsend d-none bg-success">
+                <p>Modifications effectuées</p>
+            </div>
+            {{ form_start(form, {'attr': {'method': 'post', 'class': 'row form-group my-5 formupdate'}}) }}
                 <div class="row d-md-flex col-12 align-items-center m-0 p-0">
                     <div class="col-12 col-md-5 d-flex justify-content-center position-relative">
                         <img class="imgprofil rounded-circle" src="/assets/img/profil.jpg" alt="">
@@ -38,10 +41,10 @@
                         {{ form_widget(form.email, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'email', 'placeholder': 'Email'}}) }}
                     </div>
                     <div class="col-12 col-sm-6 col-md-5 my-2">
-                        {{ form_widget(form.password.first, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
+                        {{ form_widget(form.password.first, {'attr': {'class': 'form-control mx-xl-2 text-center mdp', 'type':'password', 'placeholder': 'Mot de passe'}}) }}
                     </div>
                     <div class="col-12 col-sm-6 col-md-5 my-2">
-                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control mx-xl-2 text-center', 'type':'password', 'placeholder': 'Confirmation'}}) }}
+                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control mx-xl-2 text-center mdp1', 'type':'password', 'placeholder': 'Confirmation'}}) }}
                     </div>
                     <div class="col-12 my-2 text-center">
                         <button type="submit" class="btn btninscription bgcolor68c2e8 text-white">Confirmation</button>

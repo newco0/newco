@@ -2,16 +2,17 @@
 
 namespace App\Form;
 
-
+use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use App\Entity\Users;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class InscriptionType extends AbstractType
+class MyprofilType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,9 +30,16 @@ class InscriptionType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
-            ->add('pseudo');
+            ->add('pseudo')
+            ->add('rol', ChoiceType::class, [
+                'choices' => [
+                        'Utilisateur' => 'ROLE_USER',
+                        'Admin' => 'ROLE_ADMIN',
+                        'Super Admin' => 'ROLE_SUPER_ADMIN'
+            ],
+            ])
+        ;
     }
-
 
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -39,4 +47,5 @@ class InscriptionType extends AbstractType
             'data_class' => Users::class,
         ]);
     }
+
 }

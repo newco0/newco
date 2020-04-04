@@ -1,5 +1,6 @@
 {% extends '/admin/base.html.twig' %}
-{% block title %}Liste des administrateurs{% endblock %}
+{% block title %}Liste des administrateurs
+{% endblock %}
 {% block content %}
 	<div class="col-12 col-xl-8 mx-auto my-3">
 		<h5 class="text-center titlepage">Liste des administrateurs</h5>
@@ -10,49 +11,34 @@
 						<th>Id</th>
 						<th class="text-center">Nom</th>
 						<th class="text-center">Prénom</th>
-						<th class="text-center">Level</th>
+						<th class="text-center">Roles</th>
 						<th class="text-center">Activer</th>
 						<th class="text-center">Voir</th>
 						<th class="text-center">Supprimer</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th>1</th>
-						<td class="text-center">Laslaa</td>
-						<td class="text-center">Mohammed</td>
-						<td class="text-center">SuperAdmin</td>
-						<td class="text-center">
-							<div class="custom-control custom-switch">
-								<input type="checkbox" class="custom-control-input" id="customSwitchesTop1">
-								<label class="custom-control-label" for="customSwitchesTop1"></label>
-							</div>
-						</td>
-						<td class="text-center">
-							<i class="icofont-arrow-right"></td>
-						</td>
-						<td class="text-center">
-							<i class="icofont-ui-delete"></i>
-						</td>
-					</tr>
-					<tr>
-						<th>1</th>
-						<td class="text-center">Dufour</td>
-						<td class="text-center">Olivier</td>
-						<td class="text-center">SuperAdmin</td>
-						<td class="text-center">
-							<div class="custom-control custom-switch">
-								<input type="checkbox" class="custom-control-input" id="customSwitchesTop2">
-								<label class="custom-control-label" for="customSwitchesTop2"></label>
-							</div>
-						</td>
-						<td class="text-center">
-							<i class="icofont-arrow-right"></td>
-						</td>
-						<td class="text-center">
-							<i class="icofont-ui-delete"></i>
-						</td>
-					</tr>
+					{% for admin in allAdmin %}
+						<tr>
+							<th>{{admin.id}}</th>
+							<td class="text-center">{{admin.lastname}}</td>
+							<td class="text-center">{{admin.firstname}}</td>
+							<td class="text-center">{{admin.roles[0]}}</td>
+							<td class="text-center">
+								<div class="custom-control custom-switch">
+									<input adminid={{ admin.id }} type="checkbox" class="custom-control-input isactiveadmin" {% if admin.isactive %} checked {% endif %} id="{{ admin.id }}delete">
+									<label class="custom-control-label" for="{{ admin.id }}delete"></label>
+								</div>
+							</td>
+							<td class="text-center">
+								<a href="/admin/editadmin/{{admin.id}}" class="text-dark">
+									<i class="icofont-arrow-right"></a>
+							</td>
+							<td class="text-center">
+								<i class="icofont-ui-delete"></i>
+							</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>
