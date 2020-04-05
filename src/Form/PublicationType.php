@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Image;
+
 use App\Entity\Publication;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -19,19 +19,22 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('text', TextareaType::class)
-            ->add('images', ImageType::class, ['mapped' => 'publi', 'required' => false, 'constraints' => [
-                new File([
-                    'mimeTypes' => [
-                        'image/jpeg',
-                        'image/png',
-                        'image/gif',
-                        'image/webp'
-                    ],
-                    'mimeTypesMessage' => 'Type invalide',
-                ])
-            ],
-            ])
-            ->add('poster', SubmitType::class)
+            
+            ->add('poster', SubmitType::class);
+
+        //$builder
+            // ->add('images', ImageType::class, ['mapped' => 'publi', 'required' => false, 'constraints' => [
+            //     new File([
+            //         'mimeTypes' => [
+            //             'image/jpeg',
+            //             'image/png',
+            //             'image/gif',
+            //             'image/webp'
+            //         ],
+            //         'mimeTypesMessage' => 'Type invalide',
+            //     ])
+            // ],
+            // ])
         ;
     }
 

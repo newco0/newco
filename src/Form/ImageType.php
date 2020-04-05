@@ -16,12 +16,6 @@ class ImageType extends AbstractType
             ->add('type')
             ->add('name')
             ->add('path')
-            ->add('isActive')
-            ->add('date_register')
-            ->add('date_update')
-            ->add('date_delete')
-            ->add('publi')
-            ->add('user')
         ;
     }
 

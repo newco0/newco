@@ -9,9 +9,6 @@ use App\Entity\Image;
 use App\Entity\Users;
 use App\Form\PublicationType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class IndexController extends AbstractController
@@ -25,12 +22,7 @@ class IndexController extends AbstractController
     {
         $publication = new Publication();
         $image = new Image();
-        $image->setType(0);
-        $publication->getImages()->add($image);
-        $image2 = new Image();
-        $image2->setName('coucou');
-        $publication->getImages()->add($image2);
-
+        
         $entityManager = $this->getDoctrine()->getManager();
         $idusers = $this->getUser();
         
@@ -38,17 +30,18 @@ class IndexController extends AbstractController
                 ->getRepository(Users::class)
                 ->find($idusers);
         $publication->setUser($users);
-        $form = $this->createForm(PublicationType::class, [$publication, $image]);
+        $form = $this->createForm(PublicationType::class, $publication);
         $form->handleRequest($request);
-        //dd($form->getData());
+        // dd($form->getData());
         if ($form->isSubmitted() && $form->isValid()) {
-            ///** @var UploadedFile $image */
+            /** @var UploadedFile $image */
             // $image = $form->get('image')->getData();
             // if ($image) {
             //     $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
             //     // this is needed to safely include the file name as part of the URL
             //     $safeFilename = $slugger->slug($originalFilename);
             //     $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
             //     // Move the file to the directory where brochures are stored
             //     try {
             //         $image->move(
@@ -58,6 +51,7 @@ class IndexController extends AbstractController
             //     } catch (FileException $e) {
             //         // ... handle exception if something happens during file upload
             //     }
+
             //     // updates the 'brochureFilename' property to store the PDF file name
             //     // instead of its contents
             //     $image->setPath($newFilename)
