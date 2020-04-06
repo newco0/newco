@@ -18,7 +18,7 @@ class Contact
      * @ORM\Column(type="integer")
      */
     private $id;
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
@@ -59,13 +59,13 @@ class Contact
      */
     private $isRead;
 
-     /**
+    /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_update;
 
@@ -85,7 +85,7 @@ class Contact
      */
     private $adminResponses;
 
-    
+
     public function __construct()
     {
         $this->setIsActive(true);
@@ -224,7 +224,7 @@ class Contact
     {
         return $this->user;
     }
-    
+
     public function setIdUser(?users $user): self
     {
         $this->user = $user;

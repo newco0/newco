@@ -24,7 +24,7 @@ class Discussion
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime",options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_update;
 
