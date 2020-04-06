@@ -117,12 +117,23 @@ class FriendController extends AbstractController
         $friend->setIdFriend($usertoadd);
         $userrequest->addFriend($friend);
         $entityManager->persist($friend);
-        
-        $notification = new Notification();
-        $notification->setUser($usertoadd);
-        $notification->setSender($userrequest);
-        $notification->setType(1);
-        $entityManager->persist($notification);
+
+        $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
+            'user' => $usertoadd,
+            'sender' =>  $userrequest,
+            'type' => 1,
+            'isActive' => true,
+            'isSeen' => false
+        ]);
+
+
+        if (!$isNotifExist) {
+            $notification = new Notification();
+            $notification->setUser($usertoadd);
+            $notification->setSender($userrequest);
+            $notification->setType(1);
+            $entityManager->persist($notification);
+        }
         $entityManager->flush();
         return new JsonResponse(["error" => false]);
     }
@@ -195,6 +206,20 @@ class FriendController extends AbstractController
 
         if ($isExistIdtoaccept[0]->getIsAccepted() || is_null($isExistIdtoaccept[0]->getIsAccepted())) {
             $entityManager->remove($isExistIdtoaccept[0]);
+
+            $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
+                'user' => $id,
+                'sender' =>  $iduserrequest,
+                'type' => 1,
+                'isActive' => true,
+                'isSeen' => false
+            ]);
+    
+            if ($isNotifExist) {
+                $entityManager->remove($isNotifExist[0]);
+            }
+
+
             $entityManager->flush();
             return new JsonResponse(["error" => false]);
         } else {

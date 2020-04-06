@@ -51,11 +51,6 @@ class ListMessageController extends AbstractController
                 }
             }
         }
-        // $notification = $entityManager->getRepository(Notification::class)->findBy(['user' => $id]);
-
-        // if ($notification) {
-        //     dd($notification);
-        // }
 
         $discussion = $entityManager->getRepository(Discussion::class);
         $result = $discussion->findAllDiscussionByUser($iduserrequest);
@@ -115,18 +110,22 @@ class ListMessageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $addmessage = $form->getData();
             $entityManager->persist($addmessage);
+            $idsendernotif = $this->getUser();
+            $idusernotif = $discussion->getDest()->getId() == $this->getUser()->getId() ?  $discussion->getIdExp() : $discussion->getDest();
+
             $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
-                'user' => $discussion->getDest(),
-                'sender' => $this->getUser(),
+                'user' => $idusernotif,
+                'sender' =>  $idsendernotif,
                 'type' => 0,
                 'isActive' => true,
                 'isSeen' => false
             ]);
 
+
             if (!$isNotifExist) {
                 $notification = new Notification();
-                $notification->setUser($discussion->getDest());
-                $notification->setSender($this->getUser());
+                $notification->setUser($idusernotif);
+                $notification->setSender($idsendernotif);
                 $notification->setType(0);
                 $entityManager->persist($notification);
             }
@@ -142,35 +141,45 @@ class ListMessageController extends AbstractController
     }
 
     /**
-     * @Route("/updateseen/{userId}/{id}", name="update_seen_msg")
+     * @Route("/updateseen/{userId}/{iddisc}/{expId}", name="update_seen_msg")
      */
-    public function updateseenmessage($userId, $id)
+    public function updateseenmessage($userId, $iddisc, $expId)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $discussionhist = $entityManager
             ->getRepository(DiscussionHistory::class)
-            ->findAllDiscussionWhereNotUser($userId, $id);
+            ->findAllDiscussionWhereNotUser($userId, $iddisc);
+        $discussion = $entityManager
+            ->getRepository(Discussion::class)
+            ->find($iddisc);
 
         foreach ($discussionhist as $key) {
             $key->setIsSeen(true);
             $entityManager->persist($key);
         }
 
+        if ($userId == $expId) {
+            $idsendernotif = $discussion->getDest()->getId() == $expId ? $discussion->getIdExp() :  $discussion->getDest();
+        } else {
+            $idsendernotif = $expId;
+        }
+
         $isMessNotifNotSeen = $entityManager->getRepository(Notification::class)->findBy([
-            'user' => $userId,
-            'sender' => $this->getUser(),
+            'user' => $this->getUser(),
+            'sender' => $idsendernotif,
             'type' => 0,
             'isActive' => true,
             'isSeen' => false
         ]);
 
         if ($isMessNotifNotSeen) {
-            $isMessNotifNotSeen->setIsSeen(1);
-            $entityManager->persist($isMessNotifNotSeen);
+            foreach ($isMessNotifNotSeen as $notification) {
+                $notification->setIsSeen(1);
+                $entityManager->persist($notification);
+            }
         }
 
         $entityManager->flush();
         return new JsonResponse(true);
     }
 }
-

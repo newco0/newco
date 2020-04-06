@@ -204,7 +204,8 @@ $(document).ready(function () {
       if ($(".renderdiscussion").length > 0) {
         ajaxConversation(
           $(".renderdiscussion").first().attr("iddisc"),
-          $(".renderdiscussion").first().attr("idowner")
+          $(".renderdiscussion").first().attr("idowner"),
+          $(".renderdiscussion").first().attr("idexp")
         );
       }
     } else if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
@@ -217,7 +218,7 @@ $(document).ready(function () {
       } else if ($(`.renderdiscussion[idexp=${idcontact}]`).length > 0) {
         idtocontact = $(`.renderdiscussion[idexp=${idcontact}]`);
       }
-      ajaxConversation(idtocontact.attr("iddisc"), idtocontact.attr("idowner"));
+      ajaxConversation(idtocontact.attr("iddisc"), idtocontact.attr("idowner"), idtocontact.attr("idexp"));
       idtocontact.addClass("backgray");
     }
   }
@@ -228,9 +229,10 @@ $(document).ready(function () {
     location.reload("message");
   });
 
-  function ajaxConversation(arg1, arg2) {
+  function ajaxConversation(arg1, arg2,arg3) {
     const iddisc = arg1;
     const idowner = arg2;
+    const idexp = arg3;
     $.ajax({
       type: "POST",
       url: `/messagedisc/${idowner}/${iddisc}`,
@@ -249,14 +251,14 @@ $(document).ready(function () {
         prevlistmessage.removeClass("d-none");
       }
       setTimeout(function () {
-        updateisSeenMessage(idowner, iddisc, $(".backgray"));
+        updateisSeenMessage(idowner, iddisc, idexp, $(".backgray"));
       }, 2000);
-      sendmessage(arg1, arg2);
+      sendmessage(arg1, arg2, arg3);
       $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
     });
   }
 
-  function sendmessage(iddisc, idowner) {
+  function sendmessage(iddisc, idowner, idexp) {
     $(".sendmessagemobile").submit(function (e) {
       e.preventDefault();
       if ($(".textmessage").val().length > 0) {
@@ -274,9 +276,9 @@ $(document).ready(function () {
           if ($(window).width() < 576) {
             $(".listconversation").addClass("d-none");
             $(".conversation").removeClass("d-none");
-            ajaxConversation(iddisc, idowner);
+            ajaxConversation(iddisc, idowner, idexp);
           } else {
-            ajaxConversation(iddisc, idowner);
+            ajaxConversation(iddisc, idowner, idexp);
           }
         });
         $(".renderdiscussion").each(function () {
@@ -301,11 +303,12 @@ $(document).ready(function () {
     });
   }
 
-  function updateisSeenMessage(userId, id, arg3) {
+  function updateisSeenMessage(userId, id, idexp, arg3) {
     arg3.children().last().removeClass("font-weight-bold");
+    console.log(`/updateseen/${userId}/${id}/${idexp}`);
     $.ajax({
       type: "POST",
-      url: `/updateseen/${userId}/${id}`,
+      url: `/updateseen/${userId}/${id}/${idexp}`,
     }).done(function (res) {});
   }
 
