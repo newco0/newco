@@ -4,13 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Discussion;
+use App\Entity\Notification;
 use App\Entity\DiscussionHistory;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Form\MessageType;
 use DateTime;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ListMessageController extends AbstractController
@@ -51,6 +51,11 @@ class ListMessageController extends AbstractController
                 }
             }
         }
+        // $notification = $entityManager->getRepository(Notification::class)->findBy(['user' => $id]);
+
+        // if ($notification) {
+        //     dd($notification);
+        // }
 
         $discussion = $entityManager->getRepository(Discussion::class);
         $result = $discussion->findAllDiscussionByUser($iduserrequest);
@@ -110,6 +115,22 @@ class ListMessageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $addmessage = $form->getData();
             $entityManager->persist($addmessage);
+            $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
+                'user' => $discussion->getDest(),
+                'sender' => $this->getUser(),
+                'type' => 0,
+                'isActive' => true,
+                'isSeen' => false
+            ]);
+
+            if (!$isNotifExist) {
+                $notification = new Notification();
+                $notification->setUser($discussion->getDest());
+                $notification->setSender($this->getUser());
+                $notification->setType(0);
+                $entityManager->persist($notification);
+            }
+
             $entityManager->flush();
             return new JsonResponse(true);
         }
@@ -133,9 +154,23 @@ class ListMessageController extends AbstractController
         foreach ($discussionhist as $key) {
             $key->setIsSeen(true);
             $entityManager->persist($key);
-            $entityManager->flush();
         }
 
+        $isMessNotifNotSeen = $entityManager->getRepository(Notification::class)->findBy([
+            'user' => $userId,
+            'sender' => $this->getUser(),
+            'type' => 0,
+            'isActive' => true,
+            'isSeen' => false
+        ]);
+
+        if ($isMessNotifNotSeen) {
+            $isMessNotifNotSeen->setIsSeen(1);
+            $entityManager->persist($isMessNotifNotSeen);
+        }
+
+        $entityManager->flush();
         return new JsonResponse(true);
     }
 }
+

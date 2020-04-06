@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Friend;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Users;
+use App\Entity\Notification;
 
 class FriendController extends AbstractController
 {
@@ -88,7 +89,6 @@ class FriendController extends AbstractController
     {
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
-
         $isExistIdtoaddtouser = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($idtoadd, $iduserrequest);
         $isExistIdusertoadd = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($iduserrequest, $idtoadd);
         if (count($isExistIdtoaddtouser) > 0 || count($isExistIdusertoadd) > 0) {
@@ -117,6 +117,12 @@ class FriendController extends AbstractController
         $friend->setIdFriend($usertoadd);
         $userrequest->addFriend($friend);
         $entityManager->persist($friend);
+        
+        $notification = new Notification();
+        $notification->setUser($usertoadd);
+        $notification->setSender($userrequest);
+        $notification->setType(1);
+        $entityManager->persist($notification);
         $entityManager->flush();
         return new JsonResponse(["error" => false]);
     }

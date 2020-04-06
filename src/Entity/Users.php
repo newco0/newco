@@ -120,6 +120,11 @@ class Users implements UserInterface, \Serializable
      */
     private $rol;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="user")
+     */
+    private $notifications;
+
 
     public function __construct()
     {
@@ -135,6 +140,7 @@ class Users implements UserInterface, \Serializable
         $this->setDateRegister(new \DateTime('now'));
         $this->setRoles('ROLE_USER');
         $this->coucous = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -604,6 +610,37 @@ class Users implements UserInterface, \Serializable
     public function setRol($rol)
     {
         $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Notification[]
+     */
+    public function getNotifications(): Collection
+    {
+        return $this->notifications;
+    }
+
+    public function addNotification(Notification $notification): self
+    {
+        if (!$this->notifications->contains($notification)) {
+            $this->notifications[] = $notification;
+            $notification->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotification(Notification $notification): self
+    {
+        if ($this->notifications->contains($notification)) {
+            $this->notifications->removeElement($notification);
+            // set the owning side to null (unless already changed)
+            if ($notification->getUser() === $this) {
+                $notification->setUser(null);
+            }
+        }
 
         return $this;
     }
