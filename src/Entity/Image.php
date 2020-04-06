@@ -32,17 +32,17 @@ class Image
     private $path;
 
     /**
-     * @ORM\Column(type="boolean", options={"default": true})
+     * @ORM\Column(type="boolean", nullable=true , options={"default": true})
      */
     private $isActive;
 
     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_update;
 
@@ -63,6 +63,7 @@ class Image
 
     public function __construct()
     {
+        $this->setIsActive(true);
         $this->setDateRegister(new \DateTime());
         $this->setDateUpdate(new \DateTime());
     }
@@ -84,24 +85,24 @@ class Image
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName($name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getPath()
     {
         return $this->path;
     }
 
-    public function setPath(string $path): self
+    public function setPath($path): self
     {
         $this->path = $path;
 

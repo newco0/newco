@@ -19,25 +19,24 @@ class Publication
     private $id;
 
     /**
-     * @ORM\Column(type="boolean",  options={"default": true})
+     * @ORM\Column(type="boolean", nullable=true , options={"default": true})
      */
     private $isActive;
-    
-    /**
-     * @ORM\Column(type="string", length=1000)
-     */
-    private $text;
 
-     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_update;
 
+/**
+     * @ORM\Column(type="string", length=1000)
+     */
+    private $text;
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -60,7 +59,7 @@ class Publication
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi")
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi",cascade={"persist"})
      */
     private $images;
 

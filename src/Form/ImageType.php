@@ -3,19 +3,31 @@
 namespace App\Form;
 
 use App\Entity\Image;
-use App\Entity\Publication;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
-            ->add('name')
-            ->add('path')
+        ->add('path', FileType::class, [
+            'required' => false,
+            'constraints' => [
+                new File([
+                    'mimeTypes' => [
+                        'image/jpeg',
+                        'image/png',
+                        'image/gif',
+                        'image/webp'
+                    ],
+                    'mimeTypesMessage' => 'Please upload a valid PDF document',
+                ])
+            ],
+        ])
         ;
     }
 

@@ -18,8 +18,9 @@
 				<div class="w-100 d-flex justify-content-around">
 					<div class="position-relative text-center">
 						<i class="icofont-image ico-size position-absolute w-100"></i>
-						{# <input class="opa" name="publi" type="file"> #}
-						{# {{ form_widget(form.images, {'attr': {'class': 'opa'}}) }} #}
+						{# <input class="opa" name="images" type="file"> #}
+						{# {{ form_label(form.path, { 'attr': {'class': 'd-none'}}) }} #}
+						{{ form_widget(form.images, { 'attr': {'class': 'opa'}})}}
 						<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
 					</div>
 					<div>
