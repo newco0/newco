@@ -18,13 +18,9 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('text', TextareaType::class)
-            
             ->add('poster', SubmitType::class);
-
         $builder
-            ->add('images', CollectionType::class, ['entry_type' => ImageType::class, 'required'=> false, 'entry_options'=> ['label' => false]
-                
-            
+            ->add('images', CollectionType::class, ['entry_type' => ImageType::class, 'required'=> false,'allow_extra_fields' => true,'entry_options'=> ['label' => false]
             ])
         ;
     }

@@ -11,95 +11,103 @@
 			<div>
 				<img class="arround rounded-circle mr-2" src="/assets/img/orang.jpg" alt="photo de profil">
 			</div>
-			{{ form_start(form, {'attr': {'method': 'post', 'class': '"w-100'}}) }}
-				<div class="w-100">
-					{{ form_widget(form.text, {'attr': {'class': 'bord shadow-none resize w-100', 'type':'text','rows':'5','cols':'60', 'placeholder': 'Post'}}) }}
-				</div>
-				<div class="w-100 d-flex justify-content-around">
-					<div class="position-relative text-center">
-						<i class="icofont-image ico-size position-absolute w-100"></i>
-						{# <input class="opa" name="images" type="file"> #}
-						{# {{ form_label(form.path, { 'attr': {'class': 'd-none'}}) }} #}
-						{{ form_widget(form.images, { 'attr': {'class': 'opa'}})}}
-						<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
-					</div>
-					<div>
-						{{ form_widget(form.poster, {'attr': {'class': 'btn bgcolor68c2e8 text-white', 'type':'submit'}}) }}
-					</div>
-				</div>
-				{{ form_end(form) }}
-
+			{{ form_start(form, {'attr': {'method': 'post', 'class': '" w-100'}}) }}
+			<div class="w-100">
+				{{ form_widget(form.text, {'attr': {'class': 'bord shadow-none resize w-100', 'type':'text','rows':'5','cols':'60', 'placeholder': 'Post'}}) }}
 			</div>
-			<div class="sep"></div>
-			<div class="w-100 border">
+			<div class="w-100 d-flex justify-content-around formpubli">
+				<div class="position-relative d-flex justify-content-center align-items-center text-center">
+					<i class="icofont-image ico-size w-100"></i>
+					{# <input class="opa" name="images" type="file"> #}
+					{# {{ form_label(form.path, { 'attr': {'class': 'd-none'}}) }} #}
+					{{ form_widget(form.images, { 'attr': {'class': 'opa h50px position-absolute'}})}}
+				</div>
+				<div class="position-relative text-center">
+					<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
+				</div>
+				<div>
+					{{ form_widget(form.poster, {'attr': {'class': 'btn bgcolor68c2e8 text-white', 'type':'submit'}}) }}
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+		<div class="sep"></div>
+		{# affichage des publications #}
+		{% for publi in publication %}
+		
+		<div class="w-100 border">
+			<div class="d-flex">
+				<div class="mt-2">
+					<img class="arround rounded-circle ml-2" src="/assets/img/orang.jpg" alt="photo de profil">
+				</div>
 				<div class="d-flex">
-					<div class="mt-2">
+					<a class="ml-2 mt-2" href="myprofil">Save the orang-utang</a>
+				</div>
+			</div>
+			<div class="mt-2 ml-5">
+				<p>{{publi.text}}</p>
+			</div>
+			<div class="row w-100 mx-auto">
+				<div class="col-12 p-0">
+					{# <img class="img-fluid rounded" src="/assets/img/centenario.jpg" alt=""> #}
+					{# <img class="img-fluid rounded" src={{ asset('uploads/img/' ~ publi.images.path) }}> #}
+				</div>
+			</div>
+			
+			<div class="row w-100 p-0 mx-auto mt-3 d-flex justify-content-center">
+				<div class="col-6 p-1">
+					{# <img class="img-fluid w-100 rounded" src={{ asset('uploads/img/' ~ publi.images.path) }} alt=""> #}
+				</div>
+				<div class="col-6 p-1">
+					{# <img class="img-fluid w-100 rounded" src={{ asset('uploads/img/' ~ publi.images.path) }} alt=""> #}
+				</div>
+			</div>
+			<div class="text-center d-flex justify-content-center">
+				<div class="col-3 mt-2">
+					<i class="far ico grab fa-thumbs-up"></i>
+				</div>
+				<div class="col-3 mt-2">
+					<i class="far comment grab ico fa-comment"></i>
+				</div>
+				<div class="col-3 mt-2">
+					<i class="fas ico grab fa-share"></i>
+				</div>
+			</div>
+			<div class="d-block d-lg-none">
+				<p class="link-com">Voir tout les commentaires</p>
+			</div>
+			<div class="row m-0 addcomment d-none">
+				<div class="col-2">
+					<img class="arround rounded-circle" src="/assets/img/orang.jpg" alt="photo de profil">
+				</div>
+				<form method="POST" action="" class="col-10">
+					<textarea class="border resize mt-2" name="" id="" cols="60" rows="3"></textarea>
+					<div class="d-flex justify-content-end">
+						<button class="btn bgcolor68c2e8 text-white">Commenter</button>
+					</div>
+				</form>
+			</div>
+			<div class="d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
+				<div class="row d-flex">
+					<div class="ml-4 mt-3">
 						<img class="arround rounded-circle ml-2" src="/assets/img/orang.jpg" alt="photo de profil">
 					</div>
 					<div class="d-flex">
-						<a class="ml-2 mt-2" href="myprofil">Save the orang-utang</a>
+						<a class="ml-2 mt-4" href="#">Save the orang-utang</a>
+					</div>
+					<div class="ml-2 mt-2 w-80 mx-auto">
+						<p class="ml-3">coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication</p>
 					</div>
 				</div>
-				<div class="mt-2 ml-5">
-					<p>Ceci est notre premier post :-)</p>
-				</div>
-				<div class="row w-100 mx-auto">
-					<div class="col-12 p-0">
-						<img class="img-fluid rounded" src="/assets/img/centenario.jpg" alt="">
-					</div>
-				</div>
-				<div class="row w-100 p-0 mx-auto mt-3 d-flex justify-content-center">
-					<div class="col-6 p-1">
-						<img class="img-fluid w-100 rounded" src="/assets/img/centenario.jpg" alt="">
-					</div>
-					<div class="col-6 p-1">
-						<img class="img-fluid w-100 rounded" src="/assets/img/centenario.jpg" alt="">
-					</div>
-				</div>
-				<div class="text-center d-flex justify-content-center">
-					<div class="col-3 mt-2">
-						<i class="far ico grab fa-thumbs-up"></i>
-					</div>
-					<div class="col-3 mt-2">
-						<i class="far comment grab ico fa-comment"></i>
-					</div>
-					<div class="col-3 mt-2">
-						<i class="fas ico grab fa-share"></i>
-					</div>
-				</div>
-				<div class="d-block d-lg-none">
-					<p class="link-com">Voir tout les commentaires</p>
-				</div>
-				<div class="row m-0 addcomment d-none">
-					<div class="col-2">
-						<img class="arround rounded-circle" src="/assets/img/orang.jpg" alt="photo de profil">
-					</div>
-					<form method="POST" action="" class="col-10">
-						<textarea class="border resize mt-2" name="" id="" cols="60" rows="3"></textarea>
-						<div class="d-flex justify-content-end">
-							<button class="btn bgcolor68c2e8 text-white">Commenter</button>
-						</div>
-					</form>
-				</div>
-				<div class="d-lg-block div-com mt-2 rounded-top rounded-bottom bgcolor68c2e8">
-					<div class="row d-flex">
-						<div class="ml-4 mt-3">
-							<img class="arround rounded-circle ml-2" src="/assets/img/orang.jpg" alt="photo de profil">
-						</div>
-						<div class="d-flex">
-							<a class="ml-2 mt-4" href="#">Save the orang-utang</a>
-						</div>
-						<div class="ml-2 mt-2 w-80 mx-auto">
-							<p class="ml-3">coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication, coucou voici le premier commentaire de cette publication</p>
-						</div>
-					</div>
-					<div class="mt-2 mx-5 text-center">
-						<i class="far ico fa-thumbs-up"></i>
-					</div>
+				<div class="mt-2 mx-5 text-center">
+					<i class="far ico fa-thumbs-up"></i>
 				</div>
 			</div>
 		</div>
-	{% endblock %}
-	{% block rightside %}
-		{% include './front/partial/rightside.html.twig' %}
-	{% endblock %}
+		<div class="sep"></div>
+		{% endfor %}
+	</div>
+{% endblock %}
+{% block rightside %}
+	{% include './front/partial/rightside.html.twig' %}
+{% endblock %}

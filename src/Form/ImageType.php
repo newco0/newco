@@ -15,6 +15,8 @@ class ImageType extends AbstractType
     {
         $builder
         ->add('path', FileType::class, [
+            // 'multiple' => true,
+            'attr'=>['multiple'=> 'multiple'],
             'required' => false,
             'constraints' => [
                 new File([

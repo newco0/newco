@@ -11,7 +11,6 @@ use App\Form\PublicationType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class IndexController extends AbstractController
 {
@@ -20,27 +19,30 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, SluggerInterface $slugger)
     {
+        unset($form);
         $entityManager = $this->getDoctrine()->getManager();
         $idusers = $this->getUser();
-
         $publication = new Publication();
         $image = new Image();
-        $image->setName(md5($image->getPath()));
-        $image->setType(0);
-        $image->setPubli($publication);
+        //$publication->getImages()->add($image);
         $users = $entityManager
             ->getRepository(Users::class)
             ->find($idusers);
         $publication->setUser($users);
-        $publication->getImages()->add($image);
+
         $form = $this->createForm(PublicationType::class, $publication);
         $form->handleRequest($request);
-        
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('images')->getData();
+            //dd($imageFile);
             if ($imageFile) {
                 foreach ($imageFile as $subForm) {
+                    $img = new Image();
+                    $img->setName(md5($subForm->getPath()));
+                    $img->setType(0);
+                    $img->setPubli($publication);
                     /** @var UploadedFile $subForm */
+                    //dd($subForm);
                     $originalFilename = pathinfo($subForm->getPath()->getClientOriginalName(), PATHINFO_FILENAME);
                     $safeFilename = $slugger->slug($originalFilename);
                     $newFilename = $safeFilename . '-' . uniqid() . '.' . $subForm->getPath()->guessExtension();
@@ -49,19 +51,22 @@ class IndexController extends AbstractController
                             $this->getParameter('image_directory'),
                             $newFilename
                         );
-                            $subForm->setPath($newFilename);
+                        $subForm->setPath($newFilename);
                     } catch (FileException $e) {
                     }
+                    $publication->addImage($img);
                 }
                 $publi = $form->getData();
                 $entityManager->persist($publi);
                 $entityManager->flush();
             }
         }
+        $publiaff = $entityManager
+            ->getRepository(Publication::class)
+            ->findAll();
         return $this->render('front/index/index.html.twig', [
+            'publication' => $publiaff,
             'form' => $form->createView()
         ]);
-        
-
     }
 }
