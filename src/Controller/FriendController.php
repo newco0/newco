@@ -126,7 +126,6 @@ class FriendController extends AbstractController
             'isSeen' => false
         ]);
 
-
         if (!$isNotifExist) {
             $notification = new Notification();
             $notification->setUser($usertoadd);
@@ -154,8 +153,14 @@ class FriendController extends AbstractController
                 ]
             );
         } else {
+            $idtoaccept = $entityManager->getRepository(Users::class)->find($isExistIdtoaccept[0]->getIdUser()->getId());
             $isExistIdtoaccept[0]->setIsAccepted(1);
             $entityManager->persist($isExistIdtoaccept[0]);
+            $notification = new Notification();
+            $notification->setUser($isExistIdtoaccept[0]->getIdUser());
+            $notification->setSender($iduserrequest);
+            $notification->setType(2);
+            $entityManager->persist($notification);
             $entityManager->flush();
             return new JsonResponse(["error" => false]);
         }
@@ -179,6 +184,18 @@ class FriendController extends AbstractController
         } else {
             $isExistIdtoaccept[0]->setIsAccepted(0);
             $entityManager->persist($isExistIdtoaccept[0]);
+
+            $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
+                'user' => $iduserrequest,
+                'sender' =>  $id,
+                'type' => 1,
+                'isActive' => true
+            ]);
+
+            if ($isNotifExist) {
+                $entityManager->remove($isNotifExist[0]);
+            }
+
             $entityManager->flush();
             return new JsonResponse(["error" => false]);
         }
@@ -214,7 +231,7 @@ class FriendController extends AbstractController
                 'isActive' => true,
                 'isSeen' => false
             ]);
-    
+
             if ($isNotifExist) {
                 $entityManager->remove($isNotifExist[0]);
             }
@@ -267,6 +284,23 @@ class FriendController extends AbstractController
                 $result[$key->getIdUser()->getId()] = $key->getIdUser();
             }
         }
+
+        $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
+            'user' => $iduserrequest,
+            'type' => 1,
+            'isActive' => true,
+            'isSeen' => false
+        ]);
+
+        if ($isNotifExist) {
+            foreach ($isNotifExist as $notif) {
+                $notif->setIsSeen(1);
+                $entityManager->persist($notif);
+            }
+            $entityManager->flush();
+        }
+
+
         return $this->render('front/friend/requestreceived.html.twig', [
             'alluser' => $result
         ]);

@@ -22,11 +22,6 @@ class Friend
     private $isAccepted;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true, options={"default": false})
-     */
-    private $isSeen;
-
-    /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date_register;
@@ -55,7 +50,6 @@ class Friend
 
     public function __construct()
     {
-        $this->setIsSeen(0);
         $this->setDateRegister(new \DateTime());
         $this->setDateUpdate(new \DateTime());
     }
@@ -76,20 +70,6 @@ class Friend
 
         return $this;
     }
-
-    public function getIsSeen(): ?bool
-    {
-        return $this->isSeen;
-    }
-
-    public function setIsSeen(bool $isSeen): self
-    {
-        $this->isSeen = $isSeen;
-
-        return $this;
-    }
-
-
 
     public function getDateRegister(): ?\DateTimeInterface
     {
