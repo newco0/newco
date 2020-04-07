@@ -14,8 +14,10 @@ class FriendController extends AbstractController
     /**
      * @Route("/friendaction/{page}", name="friendaction")
      */
-    public function index($page=null)
+    public function index($page = null)
     {
+        // set the page to null by default, this allow to retrieve a request number from the notification page and display the desired select according to
+
         return $this->render('front/friend/index.html.twig');
     }
 
@@ -26,18 +28,30 @@ class FriendController extends AbstractController
     {
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
+
+        // get all user
+
         $allusers = $entityManager->getRepository(Users::class)->findAll();
+
+        // get all friend of the user, by search friend where $iduserrequest is equal to userid or friendid
+
         $allfriend = $entityManager->getRepository(Friend::class)->findFriendByIdUser($iduserrequest);
+
+        // initializing array to sort the data in order to display only the friend that the request is pending or a request received
+
         $sortUser = [];
         $resultfriendpending = [];
-        $resultfriendrejected = [];
         $resultfriendreceived = [];
+
+        // fill the soruser with the key id and unset the current user
 
         foreach ($allusers as $nb => $key) {
             if ($iduserrequest != $key->getId() && $key->getIsActive()) {
                 $sortUser[$key->getId()] = $key;
             }
         }
+
+        // loop through the allfriend in order to send the right data to the arrays, then return them to the view
 
         foreach ($allfriend as $nb => $key2) {
             $iduser = $key2->getIdUser()->getId();
@@ -50,10 +64,8 @@ class FriendController extends AbstractController
                 };
             } elseif (!$key2->getIsAccepted() || $key2->getIsAccepted()) {
                 if (($iduser != $iduserrequest)) {
-                    $resultfriendrejected[$iduser] = $iduser;
                     unset($sortUser[$iduser]);
                 } else {
-                    $resultfriendrejected[$idfriend] = $idfriend;
                     unset($sortUser[$idfriend]);
                 };
             }
@@ -74,6 +86,9 @@ class FriendController extends AbstractController
     {
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
+
+        // all friend where the isaccepted field is equal to true, then send the result to the view
+
         $allfriend = $entityManager->getRepository(Friend::class)->findFriendByIdUserAccepted($iduserrequest);
 
         return $this->render('front/friend/list.html.twig', [
@@ -89,8 +104,13 @@ class FriendController extends AbstractController
     {
         $iduserrequest = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
+
+        // check if the relation friend between the userrequest and usertoad is already existing
+        // if this relation is already existing, send an error with a message
+
         $isExistIdtoaddtouser = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($idtoadd, $iduserrequest);
         $isExistIdusertoadd = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($iduserrequest, $idtoadd);
+
         if (count($isExistIdtoaddtouser) > 0 || count($isExistIdusertoadd) > 0) {
             return new JsonResponse(
                 [
@@ -100,6 +120,8 @@ class FriendController extends AbstractController
             );
         }
 
+        // make sure that the usertoadd is not equal to the userrequest, otherwise send an error
+
         if ($iduserrequest == $idtoadd) {
             return new JsonResponse([
                 "error" => true,
@@ -107,16 +129,25 @@ class FriendController extends AbstractController
             ]);
         }
 
+
         $userrequest = $entityManager->getRepository(Users::class)->find($iduserrequest);
         $usertoadd = $entityManager->getRepository(Users::class)->find($idtoadd);
+
+        // if the usertoadd or the userrequest is not existing, send an error
+
         if (!$usertoadd || !$userrequest) {
             return new JsonResponse(["error" => true]);
         };
+
+
+        // if all is right, create the friend relation,  
 
         $friend = new Friend();
         $friend->setIdFriend($usertoadd);
         $userrequest->addFriend($friend);
         $entityManager->persist($friend);
+
+        // In order to create a new notification, we make sure that is not an existing valid notification
 
         $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
             'user' => $usertoadd,
@@ -126,6 +157,8 @@ class FriendController extends AbstractController
             'isSeen' => false
         ]);
 
+        // If there is no notification, we create a new notification, then flush all the new entity and send a json response error to false
+
         if (!$isNotifExist) {
             $notification = new Notification();
             $notification->setUser($usertoadd);
@@ -133,7 +166,9 @@ class FriendController extends AbstractController
             $notification->setType(1);
             $entityManager->persist($notification);
         }
+
         $entityManager->flush();
+
         return new JsonResponse(["error" => false]);
     }
 
@@ -144,7 +179,14 @@ class FriendController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser();
+
+        // make sure that the requested relation is existing
+
         $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+
+        // if this relation is not existing or if the count is not equal to one, send an error, otherwise, update this requested relation by setting
+        // the isAccepted to true and create a new notification and send a new jsonresponse with error setting to false
+
         if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
             return new JsonResponse(
                 [
@@ -153,9 +195,8 @@ class FriendController extends AbstractController
                 ]
             );
         } else {
-            $idtoaccept = $entityManager->getRepository(Users::class)->find($isExistIdtoaccept[0]->getIdUser()->getId());
+            // $idtoaccept = $entityManager->getRepository(Users::class)->find($isExistIdtoaccept[0]->getIdUser()->getId());
             $isExistIdtoaccept[0]->setIsAccepted(1);
-            $entityManager->persist($isExistIdtoaccept[0]);
             $notification = new Notification();
             $notification->setUser($isExistIdtoaccept[0]->getIdUser());
             $notification->setSender($iduserrequest);
@@ -173,7 +214,14 @@ class FriendController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser();
+
+        // make sure that the requested relation is existing
+
         $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+
+        // if this relation is not existing or if the count is not equal to one, send an error, otherwise, update this requested relation by setting
+        // the isAccepted to false and create a new notification and send a new jsonresponse with error setting to false
+
         if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
             return new JsonResponse(
                 [
@@ -183,7 +231,8 @@ class FriendController extends AbstractController
             );
         } else {
             $isExistIdtoaccept[0]->setIsAccepted(0);
-            $entityManager->persist($isExistIdtoaccept[0]);
+
+            // remove the notification associated to this relation
 
             $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
                 'user' => $iduserrequest,
@@ -208,9 +257,18 @@ class FriendController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser();
+
+        // make sure that the requested relation is existing
+
         $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($id, $iduserrequest);
+
         if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
+
+            // if is not existing reverse the ids
+
             $isExistIdtoaccept = $entityManager->getRepository(Friend::class)->findFriendByIdRequest($iduserrequest, $id);
+
+            // if this relation is not existing or if the count is not equal to one, send an error
             if (!$isExistIdtoaccept || count($isExistIdtoaccept) != 1) {
                 return new JsonResponse(
                     [
@@ -221,7 +279,11 @@ class FriendController extends AbstractController
             }
         }
 
+        // check if this relation is accepted or null to avoid to delete a requested relation rejected, and remove. Then, if there an existing notification, deleted it also
+        // and send a jsonreponse error to false, otherwise send a jsonreponse error to true
+
         if ($isExistIdtoaccept[0]->getIsAccepted() || is_null($isExistIdtoaccept[0]->getIsAccepted())) {
+
             $entityManager->remove($isExistIdtoaccept[0]);
 
             $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
@@ -235,7 +297,6 @@ class FriendController extends AbstractController
             if ($isNotifExist) {
                 $entityManager->remove($isNotifExist[0]);
             }
-
 
             $entityManager->flush();
             return new JsonResponse(["error" => false]);
@@ -256,6 +317,9 @@ class FriendController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser()->getId();
+
+        // get all the friend relation of the user, and send only the friend request by the user
+
         $friendrequest = $entityManager->getRepository(Friend::class)->findBy(['user' => $iduserrequest]);
 
         $result = [];
@@ -278,6 +342,8 @@ class FriendController extends AbstractController
         $iduserrequest = $this->getUser()->getId();
         $friendrequest = $entityManager->getRepository(Friend::class)->findBy(['friend' => $iduserrequest]);
 
+        // get all the friend relation of the user, and send only the friend requests received and update the isseen field notification to true
+
         $result = [];
         foreach ($friendrequest as $key) {
             if (is_null($key->getIsAccepted())) {
@@ -295,7 +361,6 @@ class FriendController extends AbstractController
         if ($isNotifExist) {
             foreach ($isNotifExist as $notif) {
                 $notif->setIsSeen(1);
-                $entityManager->persist($notif);
             }
             $entityManager->flush();
         }

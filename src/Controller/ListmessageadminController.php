@@ -15,6 +15,9 @@ class ListmessageadminController extends AbstractController
     public function index()
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // return all the messages contact to the view
+
         $allmessage = $entityManager->getRepository(Contact::class)->findAll();
 
         return $this->render('admin/listmessageadmin/index.html.twig', [
@@ -30,13 +33,18 @@ class ListmessageadminController extends AbstractController
     public function updateIsRead($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // check if the message is existing, then set the isRead to the opposite. Otherwise send a jsonreponse error setting to true
+
         $message = $entityManager->getRepository(Contact::class)->find($id);
-        if(!$message){
-            return new JsonResponse(false);
+
+        if (!$message) {
+            return new JsonResponse(["error" => true]);
         }
+
         $message->setIsRead(!$message->getIsRead());
-        $entityManager->persist($message);
         $entityManager->flush();
+
         return new JsonResponse(["error" => false]);
         // $message->setIsRead('New product name!');
     }
@@ -48,13 +56,18 @@ class ListmessageadminController extends AbstractController
     public function updateIsActive($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // check if the message is existing, then set the isActive to the opposite. Otherwise send a jsonreponse error setting to true
+
         $message = $entityManager->getRepository(Contact::class)->find($id);
-        if(!$message){
-            return new JsonResponse(false);
+
+        if (!$message) {
+            return new JsonResponse(["error" => true]);
         }
+
         $message->setIsActive(!$message->getIsActive());
-        $entityManager->persist($message);
         $entityManager->flush();
+
         return new JsonResponse(["error" => false]);
     }
 }

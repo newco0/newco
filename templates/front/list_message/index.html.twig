@@ -7,20 +7,33 @@
 	<div class="col-12 col-sm-10 mx-auto">
 		<div class="my-2 d-flex">
 			<i class="icofont-arrow-left icofont-2x prevlistmessage d-none color68c2e8"></i>
-			<h1 class="titlemessage">Mes messages</h1>
+			<h5 class="d-none d-sm-block titlepage">Mes messages</h5>
 		</div>
-		{% if discussion|length <= 1 %}
-			{% if discussion|length == 0 or discussion[0].discussionHistories|length == 0 and discussion[0].idexp.id != iduserrequest %}
-				<p class="bg-success text-white text-center rounded p-2">Oups ! vous n'avez pas encore de message, êtes vous sans amis ??? 😥</p>
+		{% if discussion is defined %}
+			{% if discussion|length <= 1 %}
+				{% if discussion|length == 0 or discussion[0].discussionHistories|length == 0 and discussion[0].idexp.id != iduserrequest %}
+					<p class="bg-success text-white text-center rounded p-2">Oups ! vous n'avez pas encore de message, êtes vous sans amis ??? 😥</p>
+				{% endif %}
 			{% endif %}
-		{% endif %}
-		<div class="d-flex row content-conversation content-mobile h-100 ">
-			<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
-				<ul class="p-0">
-					{% if discussion is defined %}
-						{% for userlist in discussion %}
-							{% if not userlist.discussionHistories|last.message is defined %}
-								{% if userlist.idexp.id == iduserrequest %}
+			<div class="d-flex row content-conversation content-mobile h-100 ">
+				<div class="listconversation col-12 col-sm-4 mx-auto p-2 heightconv">
+					<ul class="p-0">
+						{% if discussion is defined %}
+							{% for userlist in discussion %}
+								{% if not userlist.discussionHistories|last.message is defined %}
+									{% if userlist.idexp.id == iduserrequest %}
+										<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
+											<h6 class="font-weight-bold">
+												{% if userlist.idexp.id == iduserrequest %}
+													{{ userlist.dest.pseudo }}
+												{% else %}
+													{{ userlist.idexp.pseudo }}
+												{% endif %}
+											</h6>
+											<pre></pre>
+										</li>
+									{% endif %}
+								{% else %}
 									<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 										<h6 class="font-weight-bold">
 											{% if userlist.idexp.id == iduserrequest %}
@@ -29,34 +42,25 @@
 												{{ userlist.idexp.pseudo }}
 											{% endif %}
 										</h6>
-										<pre></pre>
+										{% if userlist.discussionHistories|last.message is defined %}
+											{% if userlist.discussionHistories|last.user.id != iduserrequest and not userlist.discussionHistories|last.isSeen %}
+												<p class="font-weight-bold lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
+											{% else %}
+												<p class="lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
+											{% endif %}
+										{% else %}
+											<pre> </pre>
+										{% endif %}
 									</li>
 								{% endif %}
-							{% else %}
-								<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
-									<h6 class="font-weight-bold">
-										{% if userlist.idexp.id == iduserrequest %}
-											{{ userlist.dest.pseudo }}
-										{% else %}
-											{{ userlist.idexp.pseudo }}
-										{% endif %}
-									</h6>
-									{% if userlist.discussionHistories|last.message is defined %}
-										{% if userlist.discussionHistories|last.user.id != iduserrequest and not userlist.discussionHistories|last.isSeen %}
-											<p class="font-weight-bold lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
-										{% else %}
-											<p class="lastmessage">{{ userlist.discussionHistories|last.message|slice(0, 20) }}...</p>
-										{% endif %}
-									{% else %}
-										<pre> </pre>
-									{% endif %}
-								</li>
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				</ul>
+							{% endfor %}
+						{% endif %}
+					</ul>
+				</div>
+				<div class="conversation col-12 col-sm-8 d-none d-sm-block p-0"></div>
 			</div>
-			<div class="conversation col-12 col-sm-8 d-none d-sm-block p-0"></div>
-		</div>
+		{% else %}
+			<p class="bg-success text-white text-center rounded p-2">Oups ! vous n'avez pas encore de message, êtes vous sans amis ??? 😥</p>
+		{% endif %}
 	</div>
 {% endblock %}

@@ -1,13 +1,11 @@
+/* general */
+
 * {
     font-family: 'Montserrat', sans-serif;
 }
 
-html{
+html {
     height: 100%;
-}
-
-.titleconnect {
-    font-size: 1.8rem;
 }
 
 .arround {
@@ -25,15 +23,21 @@ html{
     background-color: #0d1d3d;
 }
 
-.nav-height {
-    height: 40px;
+.titleconnect {
+    font-size: 1.8rem;
 }
+
+/* header */
 
 .logo {
     min-width: 90px;
     min-height: 90px;
     max-width: 125px;
     max-height: 125px;
+}
+
+.nav-height {
+    height: 40px;
 }
 
 .hamb1 {
@@ -95,11 +99,12 @@ input[type=file]::-webkit-file-upload-button {
     resize: none;
 }
 
-.messageclient{
+.messageclient {
     overflow: auto;
     overflow-wrap: break-word;
 }
-.zoomer{
+
+.zoomer {
     display: none;
     position: absolute;
     width: 80%;
@@ -109,26 +114,29 @@ input[type=file]::-webkit-file-upload-button {
     z-index: 10;
 }
 
-.usermail{
-    overflow-wrap: break-word; 
+.usermail {
+    overflow-wrap: break-word;
 }
 
-.containmessage{
-    left: 50%;                        
-    z-index: 200;                       
-    transform: translateX(-50%); 
-    background-color: rgba(255,255,255,0.8);
+.containmessage {
+    left: 50%;
+    z-index: 200;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
-.popupmessagesend{
+.popupmessagesend {
     width: 50%;
     height: 10%;
     position: absolute;
-    display: inline-block;             
-    left: 50%;                        
-    top: 30%;                       
+    display: inline-block;
+    left: 50%;
+    top: 30%;
     transform: translateX(-50%);
 }
+
+
+/* media queries */
 
 @media screen and (min-width: 992px) {
     .textanch {
@@ -151,8 +159,8 @@ input[type=file]::-webkit-file-upload-button {
 @media screen and (min-width: 1200px) {
     .w75 {
         width: 75% !important;
-    }  
-    
+    }
+
     .titleconnect {
         margin-top: 10rem;
     }

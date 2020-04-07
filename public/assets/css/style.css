@@ -299,10 +299,89 @@ input[type="file"]::-webkit-file-upload-button {
 
 /* historical */
 
-.icofont-close:hover, .icofont-eye-blocked:hover,
+.icofont-close:hover,
+.icofont-eye-blocked:hover,
 .icofont-eye:hover {
   cursor: pointer;
 }
+
+/* friend*/
+
+.arround-search {
+  width: 80px !important;
+  height: 78px !important;
+}
+
+.addfriend,
+.accepted,
+.rejected,
+.deleted {
+  cursor: pointer;
+}
+
+.addfriend:hover,
+.accepted:hover,
+.rejected:hover,
+.deleted:hover {
+  color: #68c2e8;
+}
+
+.listfriendaction:hover {
+  color: #0d1d3d !important;
+}
+
+/* contact */
+
+.bord-input-contact {
+  border: none;
+  border-bottom: solid black 1px;
+}
+
+.div-com {
+  display: none;
+}
+
+.grab {
+  cursor: grab;
+}
+
+/* newspaper */
+
+.arround-newspaper {
+  width: 110px !important;
+  height: 108px !important;
+  border-radius: 50%;
+  border: solid white 5px;
+}
+
+.cover-newspaper {
+  background-position: bottom 50% right 50%;
+  background-size: cover;
+  width: 100%;
+  height: 310px;
+}
+
+.pos-img-profil {
+  position: absolute;
+  left: 10%;
+  bottom: 1%;
+}
+
+.pos {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+}
+
+.dnone {
+  display: none;
+}
+
+.prec {
+  font-size: 1.2rem;
+}
+
+/* media queries */
 
 @media screen and (min-width: 576px) {
   .heightconv {
@@ -328,7 +407,11 @@ input[type="file"]::-webkit-file-upload-button {
   }
 }
 
+
 @media screen and (min-width: 768px) {
+  .ico {
+    font-size: 2em;
+  }
 
   .imgprofil {
     width: 90px;
@@ -339,8 +422,8 @@ input[type="file"]::-webkit-file-upload-button {
     width: 50%;
   }
 
-  .w50{
-    width : 50% !important;
+  .w50 {
+    width: 50% !important;
   }
 }
 
@@ -402,46 +485,6 @@ input[type="file"]::-webkit-file-upload-button {
   .widthscreen {
     width: 80%;
   }
-
-  /* .titleconnect {
-        margin-top: 50%;
-    } */
-}
-
-/* newspaper */
-
-.arround-newspaper {
-  width: 110px !important;
-  height: 108px !important;
-  border-radius: 50%;
-  border: solid white 5px;
-}
-
-.cover-newspaper {
-  background-position: bottom 50% right 50%;
-  background-size: cover;
-  width: 100%;
-  height: 310px;
-}
-
-.pos-img-profil {
-  position: absolute;
-  left: 10%;
-  bottom: 1%;
-}
-
-.pos {
-  position: absolute;
-  bottom: 0;
-  right: 1rem;
-}
-
-.dnone {
-  display: none;
-}
-
-.prec {
-  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -453,56 +496,8 @@ input[type="file"]::-webkit-file-upload-button {
   .prec {
     font-size: 1em;
   }
-}
 
-/* contact */
-
-.bord-input-contact {
-  border: none;
-  border-bottom: solid black 1px;
-}
-
-/* friend*/
-
-.arround-search {
-  width: 80px !important;
-  height: 78px !important;
-}
-
-.addfriend,
-.accepted,
-.rejected,
-.deleted {
-  cursor: pointer;
-}
-
-.addfriend:hover,
-.accepted:hover,
-.rejected:hover,
-.deleted:hover {
-  color: #68c2e8;
-}
-
-.listfriendaction:hover{
-  color: #0d1d3d !important;
-}
-
-@media screen and (max-width: 1024px) {
   .w75 {
     width: 75%;
   }
-}
-
-@media screen and (min-width: 767px) {
-  .ico {
-    font-size: 2em;
-  }
-}
-
-.div-com {
-  display: none;
-}
-
-.grab {
-  cursor: grab;
 }

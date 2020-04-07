@@ -1,8 +1,10 @@
+// charge before the page to ensure the ajax execution if the user exit from the page before his load
+
 if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
   let idcontact = window.location.pathname.split("/")[
     window.location.pathname.split("/").length - 1
   ];
-  // charge before the page to ensure the execution if the user exit from the page before his load
+
   const idtodelete = $(`.renderdiscussion[iddest=${idcontact}]`).attr("iddisc");
 
   window.onbeforeunload = function () {
@@ -16,15 +18,45 @@ if (window.location.pathname.match(/^\/message\/([\d]*)$/)) {
 }
 
 $(document).ready(function () {
+  // Change the title dynamiccaly for the topmobile
+
   $(".currentpagetitle").html(`<h1>${$(".titlepage").text()}</h1>`);
+
+  // form connexion
+
+  $(".btnconnexion").click(function () {
+    $(".formmobileconnect").append(formconnect);
+    $(".formmobilesubscribe").html("");
+    $(".closesubscribe").css("opacity", 0);
+    $(".closeconnect").css("opacity", 1);
+  });
+
+  $(".closeconnect").click(function () {
+    $(".closeconnect").css("opacity", 0);
+    $(".formmobileconnect").html("");
+  });
+
+  $(".btnsubscribe").click(function () {
+    $(".formmobilesubscribe").append(formsubscribe);
+    $(".formmobileconnect").html("");
+    $(".closeconnect").css("opacity", 0);
+    $(".closesubscribe").css("opacity", 1);
+  });
+
+  $(".closesubscribe").click(function () {
+    $(".closesubscribe").css("opacity", 0);
+    $(".formmobilesubscribe").html("");
+  });
+
+  // Change the display form of the connexion page on resize window
+
   let formconnect = $(".formconnect").clone();
   let formsubscribe = $(".formsubscribe").clone();
+
   $(window).resize(function () {
     if (
-      window.location.pathname == "/newco/html/front/suggestionpage.php" ||
-      window.location.pathname == "/newco/html/front/notificationpage.php" ||
-      window.location.pathname == "/newco/html/front/suggestionpage" ||
-      window.location.pathname == "/newco/html/front/notificationpage"
+      window.location.pathname == "/newco/html/front/suggestion" ||
+      window.location.pathname == "/newco/html/front/notification"
     ) {
       if ($(window).width() > 991) {
         document.location.href = "index.php";
@@ -58,6 +90,8 @@ $(document).ready(function () {
     $(".btninscription").addClass("bgcolor0d1d3d");
   }
 
+  // Change text of the notification and suggestion button show more (The button is actually not displayed for the notification)
+
   $(".showmore").on("click", function () {
     if ($(this).html() == "Voir plus") {
       $(this).text("Voir moins");
@@ -66,6 +100,8 @@ $(document).ready(function () {
     }
     $(this).prev().children().last().toggleClass("d-none");
   });
+
+  // Change the appearance of the image profil form on the mouse enter
 
   $(".imgprofil").mouseenter(function () {
     $(".editimgprofil").css("opacity", 1);
@@ -82,33 +118,12 @@ $(document).ready(function () {
   $(".fileprofil").mouseleave(function () {
     $(".editimgprofil").css("opacity", 0);
   });
+
   $(".imgprofil").mouseleave(function () {
     $(".editimgprofil").css("opacity", 0);
   });
 
-  $(".btnconnexion").click(function () {
-    $(".formmobileconnect").append(formconnect);
-    $(".formmobilesubscribe").html("");
-    $(".closesubscribe").css("opacity", 0);
-    $(".closeconnect").css("opacity", 1);
-  });
-
-  $(".closeconnect").click(function () {
-    $(".closeconnect").css("opacity", 0);
-    $(".formmobileconnect").html("");
-  });
-
-  $(".btnsubscribe").click(function () {
-    $(".formmobilesubscribe").append(formsubscribe);
-    $(".formmobileconnect").html("");
-    $(".closeconnect").css("opacity", 0);
-    $(".closesubscribe").css("opacity", 1);
-  });
-
-  $(".closesubscribe").click(function () {
-    $(".closesubscribe").css("opacity", 0);
-    $(".formmobilesubscribe").html("");
-  });
+  // ???????????
 
   $(".link-com").on("click", function () {
     $(".div-com").toggle(500);
@@ -118,31 +133,11 @@ $(document).ready(function () {
     $(".menu").toggle(3000, "slow");
   });
 
+  // comments clear and show
+
   $(".clearcomment").click(function () {
     $(this).parent().remove();
   });
-
-  $(".zoom").click(function (e) {
-    $(".zoomer").html("");
-    let imgtozoom = $(this).clone();
-    imgtozoom.removeClass("arround-newspaper rounded-circle mr-2");
-    imgtozoom.addClass("w-100 imgen");
-    $(".zoomer").css("display", "block");
-    $(".zoomer").append(imgtozoom);
-    e.stopPropagation();
-  });
-
-  if (
-    window.location.pathname == "/newco/html/front/journal.php" ||
-    window.location.pathname == "/newco/html/front/journal"
-  ) {
-    $(document).click(function (e) {
-      if (!$(e.target).hasClass("imgen")) {
-        $(".zoomer").html("");
-        $(".zoomer").css("display", "none");
-      }
-    });
-  }
 
   $(".comment").click(function () {
     if ($(".addcomment").hasClass("d-none")) {
@@ -156,6 +151,29 @@ $(document).ready(function () {
       });
     }
   });
+
+  // zoom image publication on click
+
+  $(".zoom").click(function (e) {
+    $(".zoomer").html("");
+    let imgtozoom = $(this).clone();
+    imgtozoom.removeClass("arround-newspaper rounded-circle mr-2");
+    imgtozoom.addClass("w-100 imgen");
+    $(".zoomer").css("display", "block");
+    $(".zoomer").append(imgtozoom);
+    e.stopPropagation();
+  });
+
+  if (window.location.pathname == "/newco/html/front/journal") {
+    $(document).click(function (e) {
+      if (!$(e.target).hasClass("imgen")) {
+        $(".zoomer").html("");
+        $(".zoomer").css("display", "none");
+      }
+    });
+  }
+
+  // send the form contact ajax, if all it's ok, display a succesfull message
 
   $(".formcontact").submit(function (e) {
     e.preventDefault();
@@ -171,7 +189,6 @@ $(document).ready(function () {
       data: data,
     }).done(function (resp) {
       if (!resp.error) {
-        // strict equal to true because the controller have to return true and a string is also true.
         $(".successsend").removeClass("d-none");
         setTimeout(function () {
           $(".formcontact")[0].reset();
@@ -183,19 +200,16 @@ $(document).ready(function () {
     });
   });
 
+  // Hide the success message after two second
+
   if ($(".containform").children(".alert-success").length == 1) {
     setTimeout(function () {
       $(".alert-success").remove();
     }, 2000);
   }
 
-  $(".renderdiscussion").click(function (e) {
-    $(".renderdiscussion").each(function (elt) {
-      $(".renderdiscussion").removeClass("backgray");
-    });
-    $(this).addClass("backgray");
-    ajaxConversation($(this).attr("iddisc"), $(this).attr("idowner"));
-  });
+  // send an ajax request to display the first conversation depending the width of the window and the page that the client has requested
+  // (The client can request /message or /message/id )
 
   if ($(window).width() > 576) {
     if (window.location.pathname.match(/^\/message$/)) {
@@ -226,11 +240,25 @@ $(document).ready(function () {
     }
   }
 
+  // add the class blackgray to the .renderdiscussion selected, then send an ajax request to display the conversation
+
+  $(".renderdiscussion").click(function (e) {
+    $(".renderdiscussion").each(function (elt) {
+      $(".renderdiscussion").removeClass("backgray");
+    });
+    $(this).addClass("backgray");
+    ajaxConversation($(this).attr("iddisc"), $(this).attr("idowner"));
+  });
+
+  // go to the previous page for the mobile device on the discussion page
+
   let prevlistmessage = $(".prevlistmessage");
 
   prevlistmessage.click(function () {
     location.reload("message");
   });
+
+  // ajaxconversation function, that charge the conversation requested by the client. Then launch the updateseenmessage
 
   function ajaxConversation(arg1, arg2, arg3) {
     const iddisc = arg1;
@@ -253,13 +281,15 @@ $(document).ready(function () {
         $(window).scrollTop($(document).height());
         prevlistmessage.removeClass("d-none");
       }
+      sendmessage(arg1, arg2, arg3);
+      $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
       setTimeout(function () {
         updateisSeenMessage(idowner, iddisc, idexp, $(".backgray"));
       }, 2000);
-      sendmessage(arg1, arg2, arg3);
-      $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
     });
   }
+
+  // sendmessage function come to add a message to the front after sending an ajax request to the database in order to save this message
 
   function sendmessage(iddisc, idowner, idexp) {
     $(".sendmessagemobile").submit(function (e) {
@@ -306,14 +336,17 @@ $(document).ready(function () {
     });
   }
 
+  // update the isseen field in the database (message table)
+
   function updateisSeenMessage(userId, id, idexp, arg3) {
     arg3.children().last().removeClass("font-weight-bold");
-    console.log(`/updateseen/${userId}/${id}/${idexp}`);
     $.ajax({
       type: "POST",
       url: `/updateseen/${userId}/${id}/${idexp}`,
     }).done(function (res) {});
   }
+
+  // update the user profil and reset the password field
 
   $(".formupdate").submit(function (e) {
     e.preventDefault();
@@ -339,7 +372,9 @@ $(document).ready(function () {
     });
   });
 
-  function addFriendEvent() {
+  // function that return an object with method event
+
+  function friendActionEvent() {
     return {
       addfriend: function () {
         return $(".addfriend").click(function () {
@@ -407,7 +442,11 @@ $(document).ready(function () {
     };
   }
 
-  const friendEvent = addFriendEvent();
+  // get all the method available in the friendactionevent
+
+  const friendEvent = friendActionEvent();
+
+  // launch the event after the ajax request dynamically and dependending the option selected or the page
 
   if (window.location.pathname == "/friendaction") {
     $.ajax({
@@ -417,6 +456,8 @@ $(document).ready(function () {
       friendEvent.delete();
     });
   }
+
+  // detect the change of the select option in order to display the friend action page, and charge the event depending the page
 
   $(".selectlistfriendaction").change(function () {
     if ($(this).val() == 1) {
@@ -452,6 +493,8 @@ $(document).ready(function () {
       });
     }
   });
+
+  // access directly to the option requested when the user comes from the notification page for example (/friendaction/2)
 
   if (window.location.pathname.match(/^\/friendaction\/([\d]*)$/)) {
     let page = window.location.pathname.split("/")[
@@ -494,7 +537,8 @@ $(document).ready(function () {
     }
   }
 
-  const notif = notifEvent();
+  // function that return an object with method event
+
   function notifEvent() {
     return {
       notSeen: function () {
@@ -549,9 +593,15 @@ $(document).ready(function () {
     };
   }
 
+  // get all the method available in the notifevent
+
+  const notif = notifEvent();
+
   notif.notSeen();
   notif.seen();
   notif.desactivate();
+
+  // add the event to the right side notification
 
   $.ajax({
     url: `/notificationlist`,

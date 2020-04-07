@@ -18,6 +18,9 @@ class NotificationController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $idUserRequest = $this->getUser()->getId();
+
+        // send only the active notification sort by date of the user to the notification page
+
         $notifications = $entityManager->getRepository(Notification::class)->findBy(
             [
                 'user' => $idUserRequest,
@@ -38,6 +41,9 @@ class NotificationController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $idUserRequest = $this->getUser()->getId();
+
+        // send only the active notification sort by date of the user to the notification rightside mobile device
+
         $notifications = $entityManager->getRepository(Notification::class)->findBy(
             [
                 'user' => $idUserRequest,
@@ -58,6 +64,9 @@ class NotificationController extends AbstractController
     {
 
         $entityManager = $this->getDoctrine()->getManager();
+
+        // find notification by id and update isSeen to true, otherwise send a jsonresponse setting error to true
+
         $notification = $entityManager->getRepository(Notification::class)->find($id);
 
         if (!$notification) {
@@ -77,6 +86,9 @@ class NotificationController extends AbstractController
     {
 
         $entityManager = $this->getDoctrine()->getManager();
+
+        // find notification by id and update isSeen to false, otherwise send a jsonresponse setting error to true
+
         $notification = $entityManager->getRepository(Notification::class)->find($id);
 
         if (!$notification) {
@@ -96,6 +108,9 @@ class NotificationController extends AbstractController
     {
 
         $entityManager = $this->getDoctrine()->getManager();
+
+        // find notification by id and update isActive to false, otherwise send a jsonresponse error setting to true
+
         $notification = $entityManager->getRepository(Notification::class)->find($id);
 
         if (!$notification) {

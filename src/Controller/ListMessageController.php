@@ -22,6 +22,9 @@ class ListMessageController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $iduserrequest = $this->getUser();
+
+        //if id is check, we will check if there are an existing discussion, otherwise, we will create this by create a new discussion.
+
         if ($id) {
             $checkifexistexptodest = $entityManager
                 ->getRepository(Discussion::class)
@@ -43,6 +46,12 @@ class ListMessageController extends AbstractController
                     $userdest = $entityManager
                         ->getRepository(Users::class)
                         ->find($id);
+
+                    // if the id sended by the client is not existing, render the original view whithout value
+
+                    if (!$userdest) {
+                        return $this->render('front/list_message/index.html.twig');
+                    }
                     $newdisc = new Discussion();
                     $newdisc->setDest($userdest);
                     $userexp->addDiscussion($newdisc);
@@ -53,8 +62,12 @@ class ListMessageController extends AbstractController
         }
 
         $discussion = $entityManager->getRepository(Discussion::class);
+
+        // get all discussion and send it to the view, otherwise  render the original view whithout value
+
         $result = $discussion->findAllDiscussionByUser($iduserrequest);
-        if (!$discussion) {
+
+        if (!$result) {
             return $this->render('front/list_message/index.html.twig');
         };
 
@@ -70,11 +83,15 @@ class ListMessageController extends AbstractController
     public function deleteemptydisc($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // check if this is an existing discussion and if the discussionhistories are empty and delete it
+
         $discussion = $entityManager
             ->getRepository(Discussion::class)
             ->find(
                 $id
             );
+
         if (count($discussion->getDiscussionHistories()) == 0) {
             $entityManager->remove($discussion);
             $entityManager->flush();
@@ -88,11 +105,17 @@ class ListMessageController extends AbstractController
     public function discussionhistories($userId, $id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // get the current iddiscussion of the discussion history
+
         $discussionhist = $entityManager
             ->getRepository(DiscussionHistory::class)
             ->findBy(
                 ['discussion' => $id]
             );
+
+        // get the current discussion
+
         $discussion = $entityManager
             ->getRepository(Discussion::class)
             ->find($id);
@@ -101,17 +124,26 @@ class ListMessageController extends AbstractController
             ->getRepository(Users::class)
             ->find($userId);
 
+        // create a new discussion history (message)
+
         $message = new DiscussionHistory();
         $message->setUser($user);
         $message->setDiscussion($discussion);
+
         $discussion->setDateUpdate(new DateTime());
+
+        // create the form
+
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $addmessage = $form->getData();
             $entityManager->persist($addmessage);
             $idsendernotif = $this->getUser();
             $idusernotif = $discussion->getDest()->getId() == $this->getUser()->getId() ?  $discussion->getIdExp() : $discussion->getDest();
+
+            // check that there is no existing and active notification associated with this message
 
             $isNotifExist = $entityManager->getRepository(Notification::class)->findBy([
                 'user' => $idusernotif,
@@ -121,6 +153,7 @@ class ListMessageController extends AbstractController
                 'isSeen' => false
             ]);
 
+            // if there is no notification, create one, then flush and return a jsonresponse with error setting to false
 
             if (!$isNotifExist) {
                 $notification = new Notification();
@@ -131,8 +164,11 @@ class ListMessageController extends AbstractController
             }
 
             $entityManager->flush();
-            return new JsonResponse(true);
+            return new JsonResponse(['error' => false]);
         }
+
+        // return the view for the first request or on reload
+
         return $this->render('front/list_message/discussion.html.twig', [
             'discussion' => $discussionhist,
             'iduserrequest' => $userId,
@@ -146,16 +182,25 @@ class ListMessageController extends AbstractController
     public function updateseenmessage($userId, $iddisc, $expId)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        // check if this is an existing message and discussion
+
         $discussionhist = $entityManager
             ->getRepository(DiscussionHistory::class)
             ->findAllDiscussionWhereNotUser($userId, $iddisc);
+
         $discussion = $entityManager
             ->getRepository(Discussion::class)
             ->find($iddisc);
 
+
+        // setisseen to true for each message
+
         foreach ($discussionhist as $key) {
             $key->setIsSeen(true);
         }
+
+        // set idesendernotif depending the owner of the request, to set a different id in the field sender
 
         if ($userId == $expId) {
             $idsendernotif = $discussion->getDest()->getId() == $expId ? $discussion->getIdExp() :  $discussion->getDest();
@@ -170,6 +215,8 @@ class ListMessageController extends AbstractController
             'isActive' => true,
             'isSeen' => false
         ]);
+
+        // update isSeen to all notification that is associated to this message
 
         if ($isMessNotifNotSeen) {
             foreach ($isMessNotifNotSeen as $notification) {
