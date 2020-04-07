@@ -24,9 +24,9 @@
 									<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 										<h6 class="font-weight-bold">
 											{% if userlist.idexp.id == iduserrequest %}
-												{{ userlist.dest.firstname }}
+												{{ userlist.dest.pseudo }}
 											{% else %}
-												{{ userlist.idexp.firstname }}
+												{{ userlist.idexp.pseudo }}
 											{% endif %}
 										</h6>
 										<pre></pre>
@@ -36,9 +36,9 @@
 								<li iddisc="{{userlist.id}}" idowner="{{iduserrequest}}" idexp="{{userlist.idexp.id}}" iddest="{{userlist.dest.id}}" class="list-unstyled color0d1d3d rounded p-2 my-1 renderdiscussion backWhite">
 									<h6 class="font-weight-bold">
 										{% if userlist.idexp.id == iduserrequest %}
-											{{ userlist.dest.firstname }}
+											{{ userlist.dest.pseudo }}
 										{% else %}
-											{{ userlist.idexp.firstname }}
+											{{ userlist.idexp.pseudo }}
 										{% endif %}
 									</h6>
 									{% if userlist.discussionHistories|last.message is defined %}

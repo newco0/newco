@@ -1,0 +1,42 @@
+<ul class="list-unstyled">
+{% for notif in notifications %}
+	{% if notif.type == 0 %}
+		{% if notif.isSeen %}
+			<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/message">{{notif.sender.pseudo}}
+				vous a envoyé un message</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% else %}
+			<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/message">{{notif.sender.pseudo}}
+				vous a envoyé un message</a><i class="iconotifseen mx-2 icofont-eye"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% endif %}
+	{% elseif notif.type == 1 %}
+		{% if notif.isSeen %}
+			<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/friendaction/4">{{notif.sender.pseudo}}
+				vous a demandé en ami</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% else %}
+			<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/friendaction/4">{{notif.sender.pseudo}}
+				vous a demandé en ami</a><i class="iconotifseen mx-2 icofont-eye"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% endif %}
+	{% elseif notif.type == 2 %}
+		{% if notif.isSeen %}
+			<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/friendaction">{{notif.sender.pseudo}}
+				a accepté votre demande d'ami</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% else %}
+			<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="/friendaction">{{notif.sender.pseudo}}
+				a accepté votre demande d'ami</a>
+				<i class="iconotifseen mx-2 icofont-eye"></i>
+				<i class="icodesactivate icofont-close"></i>
+			</li>
+		{% endif %}
+	{% endif %}
+{% endfor %}
+</ul>

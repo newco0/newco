@@ -2,26 +2,51 @@
 {% block title %}Notifications
 {% endblock %}
 {% block content %}
-
-            
-
-        <div class="col-12 col-sm-10 col-lg-6 border text-center">{{ dump(notification) }}
-            <h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Notifications</h5>
+	<div class="col-12 col-sm-10 border text-center">
+		<h5 class="ml-3 my-2 d-none d-sm-block text-center text-md-left">Notifications</h5>
+		<div class="w-100 mx-auto mt-5 w50">
             <ul class="list-unstyled">
-                <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Dimitry Payet vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Florian Thauvin vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Hugo LLoris vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Kylian Mbappé vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Raphaël Varane vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Dimitry Payet vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Florian Thauvin vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Hugo LLoris vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-                <li class="p-2 unread rounded my-2">Kylian Mbappé vous a demandé en ami<i class="mx-2 icofont-eye"></i></li>
-            </ul>
-
+            			{% for notif in notifications %}
+            				{% if notif.type == 0 %}
+            					{% if notif.isSeen %}
+            						<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="message">{{notif.sender.pseudo}}
+            							vous a envoyé un message</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% else %}
+            						<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="message">{{notif.sender.pseudo}}
+            							vous a envoyé un message</a><i class="iconotifseen mx-2 icofont-eye"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% endif %}
+            				{% elseif notif.type == 1 %}
+            					{% if notif.isSeen %}
+            						<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="friendaction">{{notif.sender.pseudo}}
+            							vous a demandé en ami</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% else %}
+            						<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="friendaction">{{notif.sender.pseudo}}
+            							vous a demandé en ami</a><i class="iconotifseen mx-2 icofont-eye"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% endif %}
+            				{% elseif notif.type == 2 %}
+            					{% if notif.isSeen %}
+            						<li class="p-2 rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="friendaction">{{notif.sender.pseudo}}
+            							a accepté votre demande d'ami</a><i class="iconotifnotseen mx-2 icofont-eye-blocked"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% else %}
+            						<li class="p-2 unread rounded my-2" idnotif={{notif.id}}><a class="text-decoration-none color0d1d3d" href="friendaction">{{notif.sender.pseudo}}
+            							a accepté votre demande d'ami</a>
+            							<i class="iconotifseen mx-2 icofont-eye"></i>
+            							<i class="icodesactivate icofont-close"></i>
+            						</li>
+            					{% endif %}
+            				{% endif %}
+            			{% endfor %}
+            		</ul>
         </div>
-{% endblock %}
-{% block rightside %}
-    {% include './front/partial/rightside.html.twig' %}
+	</div>
 {% endblock %}

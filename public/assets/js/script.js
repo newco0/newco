@@ -73,7 +73,6 @@ $(document).ready(function () {
 
   $(".editimgprofil").mouseenter(function () {
     $(".editimgprofil").css("opacity", 1);
-    console.log("coucou");
   });
 
   $(".fileprofil").mouseenter(function () {
@@ -218,7 +217,11 @@ $(document).ready(function () {
       } else if ($(`.renderdiscussion[idexp=${idcontact}]`).length > 0) {
         idtocontact = $(`.renderdiscussion[idexp=${idcontact}]`);
       }
-      ajaxConversation(idtocontact.attr("iddisc"), idtocontact.attr("idowner"), idtocontact.attr("idexp"));
+      ajaxConversation(
+        idtocontact.attr("iddisc"),
+        idtocontact.attr("idowner"),
+        idtocontact.attr("idexp")
+      );
       idtocontact.addClass("backgray");
     }
   }
@@ -229,7 +232,7 @@ $(document).ready(function () {
     location.reload("message");
   });
 
-  function ajaxConversation(arg1, arg2,arg3) {
+  function ajaxConversation(arg1, arg2, arg3) {
     const iddisc = arg1;
     const idowner = arg2;
     const idexp = arg3;
@@ -340,7 +343,6 @@ $(document).ready(function () {
     return {
       addfriend: function () {
         return $(".addfriend").click(function () {
-          console.log("coucou");
           const id = $(this).attr("idadded");
           const parent = $(this).parent();
           $.ajax({
@@ -430,6 +432,8 @@ $(document).ready(function () {
       }).done(function (resp) {
         $(".contentfriend").html(resp);
         friendEvent.addfriend();
+        friendEvent.accept();
+        friendEvent.reject();
       });
     } else if ($(this).val() == 3) {
       $.ajax({
@@ -447,5 +451,114 @@ $(document).ready(function () {
         friendEvent.reject();
       });
     }
+  });
+
+  if (window.location.pathname.match(/^\/friendaction\/([\d]*)$/)) {
+    let page = window.location.pathname.split("/")[
+      window.location.pathname.split("/").length - 1
+    ];
+    switch (page) {
+      case "2":
+        $(".selectlistfriendaction").val(2);
+        $.ajax({
+          url: `/searchfriends`,
+        }).done(function (resp) {
+          $(".contentfriend").html(resp);
+          friendEvent.addfriend();
+          friendEvent.accept();
+          friendEvent.reject();
+        });
+        break;
+      case "3":
+        $(".selectlistfriendaction").val(3);
+        $.ajax({
+          url: `/friendrequest`,
+        }).done(function (resp) {
+          $(".contentfriend").html(resp);
+          friendEvent.delete();
+        });
+        break;
+      case "4":
+        $(".selectlistfriendaction").val(4);
+        $.ajax({
+          url: `/friendreceive`,
+        }).done(function (resp) {
+          $(".contentfriend").html(resp);
+          friendEvent.accept();
+          friendEvent.reject();
+        });
+        break;
+      default:
+        console.log("erreur");
+        break;
+    }
+  }
+
+  const notif = notifEvent();
+  function notifEvent() {
+    return {
+      notSeen: function () {
+        return $("li").on("click", ".iconotifnotseen", function () {
+          const id = $(this).parent().attr("idnotif");
+          const ico = $(this);
+          $.ajax({
+            url: `/updatenotseennotification/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              ico.parent().addClass("unread");
+              ico.removeClass("icofont-eye-blocked");
+              ico.addClass("icofont-eye");
+              ico.addClass("iconotifseen");
+              ico.removeClass("iconotifnotseen");
+            }
+          });
+        });
+      },
+
+      seen: function () {
+        return $("li").on("click", ".iconotifseen", function () {
+          const id = $(this).parent().attr("idnotif");
+          const ico = $(this);
+          $.ajax({
+            url: `/updateseennotification/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              ico.parent().removeClass("unread");
+              ico.addClass("icofont-eye-blocked");
+              ico.removeClass("icofont-eye");
+              ico.removeClass("iconotifseen");
+              ico.addClass("iconotifnotseen");
+            }
+          });
+        });
+      },
+
+      desactivate: function () {
+        return $("li .icodesactivate").click(function () {
+          const id = $(this).parent().attr("idnotif");
+          const ico = $(this);
+          $.ajax({
+            url: `/desactivatenotification/${id}`,
+          }).done(function (resp) {
+            if (!resp.error) {
+              ico.parent().remove();
+            }
+          });
+        });
+      },
+    };
+  }
+
+  notif.notSeen();
+  notif.seen();
+  notif.desactivate();
+
+  $.ajax({
+    url: `/notificationlist`,
+  }).done(function (resp) {
+    $(".notificationpart").html(resp);
+    notif.notSeen();
+    notif.seen();
+    notif.desactivate();
   });
 });

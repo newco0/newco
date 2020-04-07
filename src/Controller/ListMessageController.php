@@ -155,7 +155,6 @@ class ListMessageController extends AbstractController
 
         foreach ($discussionhist as $key) {
             $key->setIsSeen(true);
-            $entityManager->persist($key);
         }
 
         if ($userId == $expId) {
@@ -175,7 +174,6 @@ class ListMessageController extends AbstractController
         if ($isMessNotifNotSeen) {
             foreach ($isMessNotifNotSeen as $notification) {
                 $notification->setIsSeen(1);
-                $entityManager->persist($notification);
             }
         }
 

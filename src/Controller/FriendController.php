@@ -12,9 +12,9 @@ use App\Entity\Notification;
 class FriendController extends AbstractController
 {
     /**
-     * @Route("/friendaction", name="friendaction")
+     * @Route("/friendaction/{page}", name="friendaction")
      */
-    public function index()
+    public function index($page=null)
     {
         return $this->render('front/friend/index.html.twig');
     }

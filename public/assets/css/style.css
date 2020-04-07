@@ -122,7 +122,6 @@ h1 {
 }
 
 .unread {
-  font-size: 1.2rem;
   background-color: rgba(104, 194, 232, 0.25);
   color: #0d1d3d;
 }
@@ -300,7 +299,8 @@ input[type="file"]::-webkit-file-upload-button {
 
 /* historical */
 
-.icofont-close:hover {
+.icofont-close:hover, .icofont-eye-blocked:hover,
+.icofont-eye:hover {
   cursor: pointer;
 }
 
@@ -337,6 +337,10 @@ input[type="file"]::-webkit-file-upload-button {
 
   .pseudoprofil {
     width: 50%;
+  }
+
+  .w50{
+    width : 50% !important;
   }
 }
 

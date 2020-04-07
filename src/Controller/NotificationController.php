@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Discussion;
+use App\Entity\Notification;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class NotificationController extends AbstractController
@@ -17,20 +18,93 @@ class NotificationController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $idUserRequest = $this->getUser()->getId();
-        $getDiscId = $entityManager->getRepository(Discussion::class)->findAllDiscussionByUser($idUserRequest);
-        $notification= [];
-
-        foreach ($getDiscId as $discHistories) {
-            $result = $discHistories->getDiscussionHistories();
-            foreach ($result as $message) {
-                if ($message->getUser()->getId() != $idUserRequest && !$message->getIsSeen() ) {
-                    $notification[] = $message;
-                }
-            }
-        }
+        $notifications = $entityManager->getRepository(Notification::class)->findBy(
+            [
+                'user' => $idUserRequest,
+                'isActive' => true
+            ],
+            ['date_register' => 'DESC']
+        );
 
         return $this->render('front/notification/index.html.twig', [
-            'notification' => $notification,
+            'notifications' => $notifications,
         ]);
+    }
+    /**
+     * @Route("/notificationlist", name="notificationlist")
+     */
+    public function list()
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $idUserRequest = $this->getUser()->getId();
+        $notifications = $entityManager->getRepository(Notification::class)->findBy(
+            [
+                'user' => $idUserRequest,
+                'isActive' => true
+            ],
+            ['date_register' => 'DESC']
+        );
+
+        return $this->render('front/notification/notification.html.twig', [
+            'notifications' => $notifications,
+        ]);
+    }
+
+    /**
+     * @Route("/updateseennotification/{id}", name="updateseennotification")
+     */
+    public function updateIsSeen($id)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $notification = $entityManager->getRepository(Notification::class)->find($id);
+
+        if (!$notification) {
+            return new JsonResponse(["error" => true]);
+        }
+
+        $notification->setIsseen(true);
+        $entityManager->flush();
+
+        return new JsonResponse(["error" => false]);
+    }
+
+    /**
+     * @Route("/updatenotseennotification/{id}", name="updatenotseennotification")
+     */
+    public function updateIsSeenFalse($id)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $notification = $entityManager->getRepository(Notification::class)->find($id);
+
+        if (!$notification) {
+            return new JsonResponse(["error" => true]);
+        }
+
+        $notification->setIsseen(false);
+        $entityManager->flush();
+
+        return new JsonResponse(["error" => false]);
+    }
+
+    /**
+     * @Route("/desactivatenotification/{id}", name="desactivatenotification")
+     */
+    public function desactivateNotif($id)
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $notification = $entityManager->getRepository(Notification::class)->find($id);
+
+        if (!$notification) {
+            return new JsonResponse(["error" => true]);
+        }
+
+        $notification->setIsActive(false);
+        $entityManager->flush();
+
+        return new JsonResponse(["error" => false]);
     }
 }
