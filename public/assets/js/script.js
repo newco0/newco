@@ -293,4 +293,34 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('.btn-collection-add').click(function (e) {
+    var test = $(this).attr('data-prototype-add')
+    addDocumentation($(test));
+    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+    return false;
+    });
+    // La fonction qui ajoute un formulaire CategoryType
+    function addDocumentation($container) {
+    console.log($container.html())
+      var index = $container.find(':input').length;
+    // Dans le contenu de l'attribut « data-prototype », on remplace :
+    // - le texte "name" qu'il contient par le numéro du champ
+    var template = $container.attr('data-prototype').replace(/name/g, index);
+    // On crée un objet jquery qui contient ce template
+    var $prototype = $(template);
+    // On ajoute le prototype modifié à la fin de la balise <div>
+    $container.append($prototype);
+    // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+    index++;
+    }
+    // Ajout du listener sur le clic du lien pour effectivement supprimer l'entrée de la collection.
+    $(document).on('click', '.btn-collection-delete', function (e) {
+    $(this).closest('.panel').remove();
+    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+    return false;
+    });
+    if(window.location.pathname == '/index'){
+      $('fieldset').children().first().remove();
+    }
 });

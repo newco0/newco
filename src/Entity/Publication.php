@@ -60,7 +60,7 @@ class Publication
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publication", cascade={"persist"})
      */
     private $image;
 
@@ -71,7 +71,7 @@ class Publication
         $this->setDateUpdate(new \DateTime());
         $this->interactions = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->images = new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,14 +218,14 @@ class Publication
      */
     public function getImage(): Collection
     {
-        return $this->images;
+        return $this->image;
     }
 
     public function addImage(Image $image): self
     {
         if (!$this->image->contains($image)) {
             $this->image[] = $image;
-            $image->setPubli($this);
+            $image->setPublication($this);
         }
 
         return $this;
@@ -236,8 +236,8 @@ class Publication
         if ($this->image->contains($image)) {
             $this->image->removeElement($image);
             // set the owning side to null (unless already changed)
-            if ($image->getPubli() === $this) {
-                $image->setPubli(null);
+            if ($image->getPublication() === $this) {
+                $image->setPublication(null);
             }
         }
 

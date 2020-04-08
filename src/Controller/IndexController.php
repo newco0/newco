@@ -19,33 +19,34 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, SluggerInterface $slugger)
     {
-        unset($form);
         $entityManager = $this->getDoctrine()->getManager();
-        //$idusers = $this->getUser();
+        $users = $this->getUser();
         $publication = new Publication();
         $image = new Image();
-        // $image->setType(0);
-        // $publication->getImage()->add($image);
-        //dd($publication->getImage());
+        $image->setType(0);
+        $image->setPublication($publication);
+        $publication->getImage()->add($image);
         // $users = $entityManager
-        //     ->getRepository(Users::class)
-        //     ->find($idusers);
-        // $publication->setUser($users);
+        //      ->getRepository(Users::class)
+        //      ->find($users);
+        $publication->setUser($users);
         $form = $this->createForm(PublicationType::class, $publication);
-        //dd($form->createView());
         $form->handleRequest($request);
-        //dd($form->getData());
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $publi = $form->getData();
             //dd($publication);
             $entityManager->persist($publi);
             $entityManager->flush();
+            // dd($form);
+            return $this->redirectToRoute('index');
         }
         $publiaff = $entityManager
-            ->getRepository(Publication::class)
-            ->findAll();
+                ->getRepository(Publication::class)
+                ->findAll();
+        
+
         return $this->render('front/index/index.html.twig', [
-            'image' => $form['image'],
             'publication' => $publiaff,
             'form' => $form->createView()
         ]);

@@ -134,6 +134,7 @@ class Users implements UserInterface, \Serializable
         $this->setIsActive(true);
         $this->setDateRegister(new \DateTime('now'));
         $this->setRoles('ROLE_USER');
+        $this->setRol('ROLE_USER');
     }
 
     public function getId(): ?int

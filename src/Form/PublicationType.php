@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Image;
 use App\Form\ImageType;
 use App\Entity\Publication;
 use Symfony\Component\Form\AbstractType;
@@ -11,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+
 
 class PublicationType extends AbstractType
 {
@@ -22,14 +21,16 @@ class PublicationType extends AbstractType
             ->add('poster', SubmitType::class);
         $builder
         ->add(
-            'image',
-            CollectionType::class,
+            'image', CollectionType::class,
             array(
                 'entry_type' => ImageType::class,
-                'by_reference' => true,
+                'by_reference' => false,
                 'allow_add'    => true,
                 'allow_delete' => true,
-                'label' => true,
+                'label' => false,
+                'prototype' => true,
+                
+            
             )
             );
     }
