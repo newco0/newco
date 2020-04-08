@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
+ *  @Vich\Uploadable
  */
 class Image
 {
@@ -20,6 +23,13 @@ class Image
      * @ORM\Column(type="integer")
      */
     private $type;
+
+    /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="name")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -60,6 +70,13 @@ class Image
      * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="images")
      */
     private $user;
+
+    /**
+    * @ORM\Column(type="datetime", nullable=true)
+    *
+    * @var \DateTimeInterface|null
+    */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -177,7 +194,30 @@ class Image
     public function setUser(?users $user): self
     {
         $this->user = $user;
-
+        
         return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return  File|null
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|UploadedFile|null $imageFile
+     */ 
+    public function setImageFile(?File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 }

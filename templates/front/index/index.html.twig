@@ -18,9 +18,8 @@
 			<div class="w-100 d-flex justify-content-around formpubli">
 				<div class="position-relative d-flex justify-content-center align-items-center text-center">
 					<i class="icofont-image ico-size w-100"></i>
-					{# <input class="opa" name="images" type="file"> #}
-					{# {{ form_label(form.path, { 'attr': {'class': 'd-none'}}) }} #}
-					{{ form_widget(form.images, { 'attr': {'class': 'opa h50px position-absolute'}})}}
+					{# <input class="opa" value="{{form.image}}" type="file"> #}
+					{{ form_widget(form.image,{ 'attr': {'class': 'h50px position-absolute'}})}}
 				</div>
 				<div class="position-relative text-center">
 					<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
@@ -33,7 +32,7 @@
 		</div>
 		<div class="sep"></div>
 		{# affichage des publications #}
-		{% for publi in publication %}
+		{# {% for publi in publication %} #}
 		
 		<div class="w-100 border">
 			<div class="d-flex">
@@ -45,7 +44,7 @@
 				</div>
 			</div>
 			<div class="mt-2 ml-5">
-				<p>{{publi.text}}</p>
+				{# <p>{{publi.text}}</p> #}
 			</div>
 			<div class="row w-100 mx-auto">
 				<div class="col-12 p-0">
@@ -105,7 +104,7 @@
 			</div>
 		</div>
 		<div class="sep"></div>
-		{% endfor %}
+		{# {% endfor %} #}
 	</div>
 {% endblock %}
 {% block rightside %}

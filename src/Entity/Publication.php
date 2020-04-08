@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PublicationRepository")
  */
@@ -59,9 +60,9 @@ class Publication
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi", cascade={"persist"})
      */
-    private $images;
+    private $image;
 
     public function __construct()
     {
@@ -215,15 +216,15 @@ class Publication
     /**
      * @return Collection|Image[]
      */
-    public function getImages(): Collection
+    public function getImage(): Collection
     {
         return $this->images;
     }
 
     public function addImage(Image $image): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
             $image->setPubli($this);
         }
 
@@ -232,8 +233,8 @@ class Publication
 
     public function removeImage(Image $image): self
     {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
+        if ($this->image->contains($image)) {
+            $this->image->removeElement($image);
             // set the owning side to null (unless already changed)
             if ($image->getPubli() === $this) {
                 $image->setPubli(null);
@@ -248,10 +249,11 @@ class Publication
      *
      * @return  self
      */ 
-    public function setImages($images)
+    public function setImage($image)
     {
-        $this->images = $images;
+        $this->image = $image;
 
         return $this;
     }
+
 }

@@ -231,7 +231,7 @@ $(document).ready(function () {
         prevlistmessage.removeClass("d-none");
       }
       sendmessage(arg1, arg2);
-      $(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
+      //$(".listmessage").scrollTop($(".listmessage")[0].scrollHeight);
     });
   }
 
