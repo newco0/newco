@@ -37,14 +37,13 @@
 		<div class="sep"></div>
 		{# affichage des publications #}
 		{% for publi in publication %}
-		{{ dump(publi) }}
 		<div class="w-100 border">
 			<div class="d-flex">
 				<div class="mt-2">
 					<img class="arround rounded-circle ml-2" src="/assets/img/orang.jpg" alt="photo de profil">
 				</div>
 				<div class="d-flex">
-					<a class="ml-2 mt-2" href="myprofil">Save the orang-utang</a>
+					<a class="ml-2 mt-2" href="myprofil">{{ users.pseudo }}</a>
 				</div>
 			</div>
 			<div
@@ -52,7 +51,7 @@
 			</div>
 			<div class="row w-100 mx-auto">
 				<div class="col-12 p-0"> {# <img class="img-fluid rounded" src="/assets/img/centenario.jpg" alt=""> #}
-					{# <img class="img-fluid rounded" src={{ asset('uploads/img/' ~ publi.imageFile) }}> #}
+					<img class="img-fluid rounded" src={{ asset('uploads/img/' ~ publi.image_name) }}>
 				</div>
 			</div>
 

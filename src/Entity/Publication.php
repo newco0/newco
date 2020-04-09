@@ -221,23 +221,23 @@ class Publication
         return $this->image;
     }
 
-    public function addImage(Image $image): self
+    public function addImage(Image $images): self
     {
-        if (!$this->image->contains($image)) {
-            $this->image[] = $image;
-            $image->setPublication($this);
+        if (!$this->image->contains($images)) {
+            $this->image[] = $images;
+            $images->setPublication($this);
         }
 
         return $this;
     }
 
-    public function removeImage(Image $image): self
+    public function removeImage(Image $images): self
     {
-        if ($this->image->contains($image)) {
-            $this->image->removeElement($image);
+        if ($this->image->contains($images)) {
+            $this->image->removeElement($images);
             // set the owning side to null (unless already changed)
-            if ($image->getPublication() === $this) {
-                $image->setPublication(null);
+            if ($images->getPublication() === $this) {
+                $images->setPublication(null);
             }
         }
 
@@ -249,9 +249,9 @@ class Publication
      *
      * @return  self
      */ 
-    public function setImage($image)
+    public function setImage($images)
     {
-        $this->image = $image;
+        $this->image = $images;
 
         return $this;
     }

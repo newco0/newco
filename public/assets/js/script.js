@@ -280,7 +280,7 @@ $(document).ready(function () {
       });
     $.ajax({
       type: "POST",
-      url: `/admin/edituser`,
+      url: `/myprofil`,
       data: data
     }).done(function (resp) {
       if (resp === true) {
