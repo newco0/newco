@@ -358,8 +358,8 @@ $(document).ready(function () {
       });
     $.ajax({
       type: "POST",
-      url: `/admin/edituser`,
-      data: data,
+      url: `/myprofil`,
+      data: data
     }).done(function (resp) {
       if (resp === true) {
         $(".mdp").val("");

@@ -73,6 +73,16 @@ h1 {
   width: 50px;
 }
 
+.formpubli label{
+  display: none;
+}
+
+.h50px {
+  height: 50px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 .w-80 {
   width: 80%;
 }
@@ -485,6 +495,46 @@ input[type="file"]::-webkit-file-upload-button {
   .widthscreen {
     width: 80%;
   }
+
+  /* .titleconnect {
+        margin-top: 50%;
+    } */
+}
+
+/* wall */
+
+.arround-newspaper {
+  width: 110px !important;
+  height: 108px !important;
+  border-radius: 50%;
+  border: solid white 5px;
+}
+
+.cover-newspaper {
+  background-position: bottom 50% right 50%;
+  background-size: cover;
+  width: 100%;
+  height: 310px;
+}
+
+.pos-img-profil {
+  position: absolute;
+  left: 10%;
+  bottom: 1%;
+}
+
+.pos {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+}
+
+.dnone {
+  display: none;
+}
+
+.prec {
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 1024px) {

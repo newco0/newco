@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
+ *  @Vich\Uploadable
  */
 class Image
 {
@@ -22,49 +25,53 @@ class Image
     private $type;
 
     /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
+     * @var File|null
+     * 
+    */
+    private $imageFile;
+
+    /**
      * @ORM\Column(type="string", length=50)
      */
-    private $name;
+    private $imageName;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $path;
-
-    /**
-     * @ORM\Column(type="boolean", options={"default": true})
+     * @ORM\Column(type="boolean", nullable=true , options={"default": true})
      */
     private $isActive;
 
     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_register;
 
     /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    private $date_update;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
     private $date_delete;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\publication", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="App\Entity\publication", inversedBy="image")
      */
-    private $publi;
+    private $publication;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="images")
      */
     private $user;
 
+    /**
+    * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+    *
+    * @var \DateTimeInterface|null
+    */
+    private $updatedAt;
+
     public function __construct()
     {
         $this->setDateRegister(new \DateTime());
-        $this->setDateUpdate(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -84,26 +91,14 @@ class Image
         return $this;
     }
 
-    public function getName(): ?string
+    public function getImageName()
     {
-        return $this->name;
+        return $this->imageName;
     }
 
-    public function setName(string $name): self
+    public function setImageName($imageName): self
     {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    public function setPath(string $path): self
-    {
-        $this->path = $path;
+        $this->imageName = $imageName;
 
         return $this;
     }
@@ -132,17 +127,6 @@ class Image
         return $this;
     }
 
-    public function getDateUpdate(): ?\DateTimeInterface
-    {
-        return $this->date_update;
-    }
-
-    public function setDateUpdate(\DateTimeInterface $date_update): self
-    {
-        $this->date_update = $date_update;
-
-        return $this;
-    }
 
     public function getDateDelete(): ?\DateTimeInterface
     {
@@ -156,14 +140,14 @@ class Image
         return $this;
     }
 
-    public function getPubli(): ?publication
+    public function getPublication(): ?publication
     {
-        return $this->publi;
+        return $this->publication;
     }
 
-    public function setPubli(?publication $publi): self
+    public function setPublication(?publication $publication): self
     {
-        $this->publi = $publi;
+        $this->publication = $publication;
 
         return $this;
     }
@@ -176,6 +160,53 @@ class Image
     public function setUser(?users $user): self
     {
         $this->user = $user;
+        
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return  File|null
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|UploadedFile|null $imageFile
+     */ 
+    public function setImageFile(?File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTimeInterface|null
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTimeInterface|null  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

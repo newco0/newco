@@ -11,48 +11,56 @@
 			<div>
 				<img class="arround rounded-circle mr-2" src="/assets/img/orang.jpg" alt="photo de profil">
 			</div>
-			<form method="POST" action="" class="w-100">
-				<div
-					class="w-100">
-					<!-- <img class="arround rounded-circle mr-2" src="../img/orang.jpg" alt="photo de profil"> -->
-					<textarea class="bord outline resize w-100" name="" id="" rows="5" placeholder="post"></textarea>
+			{{ form_start(form, {'attr': {'method': 'post', 'class': 'coucou w-100'}}) }}
+			<div class="w-100">
+				{{ form_widget(form.text, {'attr': {'class': 'bord shadow-none resize w-100', 'type':'text','rows':'5','cols':'60', 'placeholder': 'Post'}}) }}
+			</div>
+			<div class="w-100 d-flex justify-content-around formpubli">
+				<div class="position-relative d-flex justify-content-center align-items-center text-center">
+					<i class="icofont-image ico-size w-100"></i>
+					{# <input class="opa" value="{{form.image}}" type="file"> #}
+					<a href="#" id="add_documentation" data-prototype-add="#publication_image" class="btn d-none btn-default btn-collection-add">
+						<span class="glyphicon glyphicon-plus"></span>
+						Ajouter une documentation
+					</a>
+					{{ form_widget(form.image,{ 'attr': {'class': 'h50px position-absolute'}})}}
 				</div>
-				<div class="w-100 d-flex justify-content-around">
-					<div class="position-relative text-center">
-						<i class="icofont-image ico-size position-absolute w-100"></i>
-						<input class="opa" name="publi" type="file">
-						<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
-					</div>
-					<div>
-						<button type="submit" class="btn bgcolor68c2e8 text-white">Poster</button>
-					</div>
+				<div class="position-relative text-center">
+					<i class="icofont-slightly-smile ico-size position-absolute w-100"></i>
 				</div>
-			</form>
+				<div>
+					{{ form_widget(form.poster, {'attr': {'class': 'btn bgcolor68c2e8 text-white', 'type':'submit'}}) }}
+				</div>
+			</div>
+			{{ form_end(form) }}
 		</div>
 		<div class="sep"></div>
+		{# affichage des publications #}
+		{% for publi in publication %}
 		<div class="w-100 border">
 			<div class="d-flex">
 				<div class="mt-2">
 					<img class="arround rounded-circle ml-2" src="/assets/img/orang.jpg" alt="photo de profil">
 				</div>
 				<div class="d-flex">
-					<a class="ml-2 mt-2" href="myprofil">Save the orang-utang</a>
+					<a class="ml-2 mt-2" href="myprofil">{{ users.pseudo }}</a>
 				</div>
 			</div>
-			<div class="mt-2 ml-5">
-				<p>Ceci est notre premier post :-)</p>
+			<div
+				class="mt-2 ml-5"><p>{{publi.text}}</p>
 			</div>
 			<div class="row w-100 mx-auto">
-				<div class="col-12 p-0">
-					<img class="img-fluid rounded" src="/assets/img/centenario.jpg" alt="">
+				<div class="col-12 p-0"> {# <img class="img-fluid rounded" src="/assets/img/centenario.jpg" alt=""> #}
+					<img class="img-fluid rounded" src={{ asset('uploads/img/' ~ publi.image_name) }}>
 				</div>
 			</div>
+
 			<div class="row w-100 p-0 mx-auto mt-3 d-flex justify-content-center">
-				<div class="col-6 p-1">
-					<img class="img-fluid w-100 rounded" src="/assets/img/centenario.jpg" alt="">
+				<div
+					class="col-6 p-1">{# <img class="img-fluid w-100 rounded" src={{ asset('uploads/img/' ~ publi.images.path) }} alt=""> #}
 				</div>
-				<div class="col-6 p-1">
-					<img class="img-fluid w-100 rounded" src="/assets/img/centenario.jpg" alt="">
+				<div
+					class="col-6 p-1">{# <img class="img-fluid w-100 rounded" src={{ asset('uploads/img/' ~ publi.images.path) }} alt=""> #}
 				</div>
 			</div>
 			<div class="text-center d-flex justify-content-center">
@@ -97,6 +105,8 @@
 				</div>
 			</div>
 		</div>
+		<div class="sep"></div>
+		{% endfor %}
 	</div>
 {% endblock %}
 {% block rightside %}

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Image;
 use App\Entity\Publication;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -22,19 +23,37 @@ class PublicationRepository extends ServiceEntityRepository
     // /**
     //  * @return Publication[] Returns an array of Publication objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    
+    // public function findWithImage()
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->innerJoin(Image::class, 'i', 'p.id = i.publication')
+    //         ->orderBy('p.date_register', 'DESC')
+    //         ->Where('p.id')
+    //         ->andWhere('i','i.publication')
+    //         ->setMaxResults(100)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    public function findWithImage()
+{
+    $conn = $this->getEntityManager()->getConnection();
+
+    $sql = '
+    SELECT * FROM publication INNER JOIN image ON publication.id = image.publication_id ';
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    // returns an array of arrays (i.e. a raw data set)
+    return $stmt->fetchAll();
+}
+
+// 'SELECT p, c
+// FROM App\Entity\Publication p
+// INNER JOIN p.category c
+// WHERE p.id = :id'
 
     /*
     public function findOneBySomeField($value): ?Publication

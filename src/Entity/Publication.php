@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PublicationRepository")
  */
@@ -19,25 +20,24 @@ class Publication
     private $id;
 
     /**
-     * @ORM\Column(type="boolean",  options={"default": true})
+     * @ORM\Column(type="boolean", nullable=true , options={"default": true})
      */
     private $isActive;
-    
-    /**
-     * @ORM\Column(type="string", length=1000)
-     */
-    private $text;
 
-     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_register;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"}, nullable=true)
      */
     private $date_update;
 
+/**
+     * @ORM\Column(type="string", length=1000)
+     */
+    private $text;
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -60,9 +60,9 @@ class Publication
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publi")
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="publication", cascade={"persist"})
      */
-    private $images;
+    private $image;
 
     public function __construct()
     {
@@ -71,7 +71,7 @@ class Publication
         $this->setDateUpdate(new \DateTime());
         $this->interactions = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->images = new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,31 +216,44 @@ class Publication
     /**
      * @return Collection|Image[]
      */
-    public function getImages(): Collection
+    public function getImage(): Collection
     {
-        return $this->images;
+        return $this->image;
     }
 
-    public function addImage(Image $image): self
+    public function addImage(Image $images): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setPubli($this);
+        if (!$this->image->contains($images)) {
+            $this->image[] = $images;
+            $images->setPublication($this);
         }
 
         return $this;
     }
 
-    public function removeImage(Image $image): self
+    public function removeImage(Image $images): self
     {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
+        if ($this->image->contains($images)) {
+            $this->image->removeElement($images);
             // set the owning side to null (unless already changed)
-            if ($image->getPubli() === $this) {
-                $image->setPubli(null);
+            if ($images->getPublication() === $this) {
+                $images->setPublication(null);
             }
         }
 
         return $this;
     }
+    
+    /**
+     * Set the value of images
+     *
+     * @return  self
+     */ 
+    public function setImage($images)
+    {
+        $this->image = $images;
+
+        return $this;
+    }
+
 }
